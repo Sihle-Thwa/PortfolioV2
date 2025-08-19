@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
-import "../../styles/header.css";
+import "./header.css";
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,10 +15,10 @@ export default function Header() {
     useEffect(() => setMounted(true), []);
     const activeTheme = theme === "system" ? systemTheme : theme;
     return (
-        <header className="c_header-container">
-            <div className="c_header-content">
+        <header className="c-header">
+            <div className="container">
                 {/* Logo / Brand Name */}
-                <Link href="/" className="text-2xl font-bold">
+                <Link href="/" className="c-header-brand">
                     SBM
                 </Link>
 
@@ -31,7 +31,7 @@ export default function Header() {
                 <button
                     aria-label="Toggle theme"
                     onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
-                    className="p-2 rounded-md button button-ghost"
+                    className="c-header-toggle"
                 >
                     {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
                 </button>
@@ -39,7 +39,7 @@ export default function Header() {
                 {/* Contact CTA (visible on desktop) */}
                 <Link
                     href="#contact"
-                    className="hidden md:inline-block button button-accent"
+                    className="c-header-cta"
                 >
                     Contact
                 </Link>

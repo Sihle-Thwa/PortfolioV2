@@ -1,0 +1,43 @@
+/* Component: Hero */
+.c-hero {
+	min-height: 70vh;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	padding: 3rem 0;
+	background: var(--colour-bg);
+}
+
+.c-hero-title {
+	color: var(--colour-primary);
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.c-hero-subtitle {
+	color: var(--colour-fg-muted);
+	max-width: 48ch;
+	margin-inline: auto;
+	margin-top: 1rem;
+}
+
+.c-hero-actions {
+	margin-top: 2rem;
+	display: flex;
+	gap: 0.75rem;
+}
+
+.c-hero-button-primary {
+	background: var(--colour-primary);
+	color: #fff;
+	border-radius: var(--radius-md);
+	padding: 0.625rem 1rem;
+	font-weight: 600;
+}
+
+.c-hero-button-ghost {
+	border: 1px solid var(--colour-border);
+	color: var(--colour-fg);
+	border-radius: var(--radius-md);
+	padding: 0.625rem 1rem;
+}

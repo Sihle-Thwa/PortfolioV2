@@ -10,11 +10,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ServicesSection />
-      <ProjectsSection />
-      <AboutSection />
-      <SkillSection />
-      <ContactSection />
+      <section className="container"><ServicesSection /></section>
+      <section className="container"><ProjectsSection /></section>
+      <section className="container"><AboutSection /></section>
+      <section className="container"><SkillSection /></section>
+      <section className="container"><ContactSection /></section>
     </>
   );
 }

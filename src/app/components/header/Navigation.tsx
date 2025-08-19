@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "../../styles/navigation.css";
+import "./navigation.css";
 
 const NAV_LINKS = [
     { href: "#about", label: "About" },
@@ -10,17 +10,17 @@ const NAV_LINKS = [
 
 export default function Navigation() {
     return (
-        <>
+        <div className="c-nav">
             {NAV_LINKS.map(({ href, label }) => (
                 <Link
                     key={label}
                     href={href}
-                    className="link"
+                    className="c-nav-link"
                 > <div className="button">
                         {label}
                     </div>
                 </Link>
             ))}
-        </>
+        </div>
     );
 }

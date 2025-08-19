@@ -1,0 +1,11 @@
+/* Component: ServicesSection */
+.c-services {
+	padding: 4rem 0;
+	background: var(--colour-bg);
+}
+
+.c-services-title {
+	text-align: center;
+	color: var(--colour-primary);
+	font-weight: 600;
+}

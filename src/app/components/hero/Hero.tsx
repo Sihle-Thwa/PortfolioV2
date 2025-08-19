@@ -1,13 +1,20 @@
 // app/components/hero/Hero.tsx
+import "./hero.css";
 export default function Hero() {
     return (
-        <section id="home" className="hero min-h-screen flex flex-col items-center justify-center text-center bg-gray-100 dark:bg-gray-900">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                Siphesihle B. Mthethwa
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-xl">
-                Full-Stack Developer passionate about crafting interactive web experiences.
+        <section id="home" className="c-hero">
+            <h1 className="c-hero-title">Siphesihle B. Mthethwa</h1>
+            <p className="c-hero-subtitle">
+                Full‑Stack Developer crafting minimal, modern web experiences.
             </p>
+            <div className="c-hero-actions">
+                <a href="#projects" className="c-hero-button-primary">
+                    View Work
+                </a>
+                <a href="#contact" className="c-hero-button-ghost">
+                    Get in Touch
+                </a>
+            </div>
         </section>
     );
 }
