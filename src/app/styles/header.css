@@ -1,0 +1,20 @@
+.c_header-container {
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	box-shadow: var(--shadow-lg);
+	background-color: var(--colour-bg);
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--colour-border);
+}
+
+.c_header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px;
+	margin-inline: auto;
+	max-width: 1200px;
+	width: 100%;
+}

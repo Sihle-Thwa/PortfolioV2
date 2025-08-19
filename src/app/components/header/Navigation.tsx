@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "../../styles/navigation.css";
 
 const NAV_LINKS = [
     { href: "#about", label: "About" },
@@ -14,9 +15,10 @@ export default function Navigation() {
                 <Link
                     key={label}
                     href={href}
-                    className="hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                    {label}
+                    className="link"
+                > <div className="button">
+                        {label}
+                    </div>
                 </Link>
             ))}
         </>

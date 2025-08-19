@@ -9,9 +9,8 @@ import Footer from "./components/footer/Footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" style={{ colorScheme: "dark" }} className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        {/* Wrap in ThemeProvider to enable dark/light theme switching */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <main>{children}</main>
