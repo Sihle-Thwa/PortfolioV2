@@ -1,0 +1,13 @@
+:root {
+	--color-bg: #ffffff;
+	--color-text: #1a1a1a;
+	--color-primary: #2563eb; /* e.g., Tailwind blue-600 */
+	--radius-md: 0.5rem;
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+	/* ...other tokens for spacing, etc... */
+}
+html.dark {
+	--color-bg: #111827;
+	--color-text: #f3f4f6;
+	--color-primary: #3b82f6; /* adjust if needed for dark contrast */
+}
