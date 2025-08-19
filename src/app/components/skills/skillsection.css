@@ -1,0 +1,11 @@
+/* Component: SkillSection */
+.c-skill {
+	padding: 4rem 0;
+	background: var(--colour-bg);
+}
+
+.c-skill-title {
+	text-align: center;
+	color: var(--colour-primary);
+	font-weight: 600;
+}
