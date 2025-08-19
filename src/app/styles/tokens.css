@@ -1,13 +1,49 @@
 :root {
-	--color-bg: #ffffff;
-	--color-text: #1a1a1a;
-	--color-primary: #2563eb; /* e.g., Tailwind blue-600 */
-	--radius-md: 0.5rem;
-	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-	/* ...other tokens for spacing, etc... */
+  /* ===== Raw brand palette ===== */
+  --beige-500: #F4DEB7;   /* Warm Beige */
+  --espresso-700: #3B2C24;/* Rich Espresso */
+  --sand-200: #E3D5C0;    /* Soft Sand */
+  --sun-500: #F9C949;     /* Sunlight Yellow */
+  --charcoal-900: #1C1C1C;/* Charcoal Black */
+  --olive-500: #A5A682;   /* Muted Olive */
+
+  /* ===== Radii & Shadows ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+
+  /* ===== LIGHT THEME ===== */
+  --colour-bg: var(--sand-200);            /* page background */
+  --colour-surface: #fff;                  /* cards/panels */
+  --colour-muted: var(--beige-500);        /* subtle strips */
+  --colour-fg: #2A2724;                    /* softer than pure black */
+  --colour-fg-muted: rgba(42,39,36,0.72);  /* secondary text */
+
+  --colour-primary: var(--espresso-700);   /* brand ink */
+  --colour-accent: var(--sun-500);         /* CTA accent */
+  --colour-secondary: var(--olive-500);          /* secondary accent */
+
+  --colour-link: var(--espresso-700);
+  --colour-border: rgba(0,0,0,0.08);
+  --colour-ring: colour-mix(in oklab, var(--sun-500) 55%, white);
 }
+
 html.dark {
-	--color-bg: #111827;
-	--color-text: #f3f4f6;
-	--color-primary: #3b82f6; /* adjust if needed for dark contrast */
+  /* ===== DARK THEME ===== */
+  --colour-bg: var(--charcoal-900);        /* page background */
+  --colour-surface: #2A241F;               /* espresso-tinted surface */
+  --colour-muted: #2F2A25;                 /* subtle panels */
+  --colour-fg: #F2EFEA;                    /* warm off-white */
+  --colour-fg-muted: rgba(242,239,234,0.72);
+
+  --colour-primary: var(--beige-500);      /* flip brand ink for contrast */
+  --colour-accent: var(--sun-500);         /* accent stays vivid */
+  --colour-secondary: colour-mix(in oklab, var(--olive-500) 85%, white);
+
+  --colour-link: var(--beige-500);
+  --colour-border: rgba(255,255,255,0.12);
+  --colour-ring: colour-mix(in oklab, var(--sun-500) 60%, white);
 }

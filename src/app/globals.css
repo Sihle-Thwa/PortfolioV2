@@ -2,14 +2,57 @@
 @import "./styles/tokens.css";
 
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root, html.dark {
+  /* Let Tailwind use our variables */
+  color-scheme: light dark;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background: var(--colour-bg);
+  color: var(--colour-fg);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.button {
+  border-radius: var(--radius-md);
+  padding: 0.625rem 1rem;
+  font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.button-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.button-accent {
+  background: var(--color-accent);
+  color: #1C1C1C; /* ensure contrast on yellow */
+}
+.button-ghost {
+  background: transparent;
+  color: var(--color-fg);
+  border: 1px solid var(--color-border);
+}
+
+.link { color: var(--color-link); text-underline-offset: 2px; }
+.link:hover { text-decoration: underline; }
+
+input, textarea {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg);
+  border-radius: var(--radius-sm);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 2px;
 }
