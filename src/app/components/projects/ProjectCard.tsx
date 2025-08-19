@@ -1,23 +1,23 @@
 // app/components/projects/ProjectCard.tsx
 import Image from "next/image";
 import type { Project } from "@/data/projects";
+import "./projectcard.css"; 
 
 export default function ProjectCard({ project }: { project: Project }) {
     return (
-        <div className="rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
+        <div className="c-project">
             {project.image && (
                 <Image
                     src={project.image}
                     alt={project.title}
-                    width={400}
-                    height={300}
-                    className="object-cover w-full h-48"
+                    fill={true}
+                    className="c-project-media"
                 />
             )}
-            <div className="p-4">
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+            <div className="c-project-body">
+                <h3 className="c-project-title">{project.title}</h3>
                 {project.tags && project.tags.length > 0 && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    <p className="c-project-tags">
                         {project.tags.join(', ')}
                     </p>
                 )}
@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                     href={project.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-500 hover:underline inline-flex items-center"
+                    className="c-project-link"
                 >
                     View Project
                     {/* You could include an external link icon here for visual cue */}
