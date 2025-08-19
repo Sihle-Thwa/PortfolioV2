@@ -22,7 +22,7 @@ export default function AboutSection() {
                 {/* Image Content */}
                 <div className="md:w-1/2 mt-8 md:mt-0">
                     <Image
-                        src="./AnimatedPortrait.png"
+                        src="" //Fix this
                         alt="Profile picture"
                         className="c-about-image"
                         fill={true}
