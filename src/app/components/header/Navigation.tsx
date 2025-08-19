@@ -2,9 +2,9 @@
 import Link from "next/link";
 
 const NAV_LINKS = [
-    { href: "#services", label: "Services" },
-    { href: "#projects", label: "Works" },    // "Works" section (projects)
     { href: "#about", label: "About" },
+    { href: "#services", label: "Services" },
+    { href: "#projects", label: "Projects" },    // "Works" section (projects)
     { href: "#contact", label: "Contact" },
 ];
 
