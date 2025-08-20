@@ -1,4 +1,3 @@
-// app/components/contact/ContactSection.tsx
 "use client";
 import { useEffect, useState } from "react";
 import "./contactsection.css";
@@ -14,7 +13,7 @@ export default function ContactSection() {
         return () => clearInterval(timer);
     }, []);
 
-    // Format the time as HH:MM (24-hour or 12-hour as preferred)
+    // Format the time as HH:MM 
     const timeString = currentTime.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -28,7 +27,6 @@ export default function ContactSection() {
                 media.
             </p>
 
-            {/* Contact Form (placeholder, no action) */}
             <form className="c-contact-form">
                 <input
                     type="text"
@@ -52,7 +50,6 @@ export default function ContactSection() {
                 </button>
             </form>
 
-            {/* Local time and Back-to-top */}
             <div className="c-contact-meta">
                 <span className="mr-4">📍 Local Time: {timeString}</span>
                 <a
@@ -61,13 +58,12 @@ export default function ContactSection() {
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="underline"
+                    className="c-contact-link"
                 >
                     Back to top
                 </a>
             </div>
 
-            {/* Social Media Links */}
             <div className="c-contact-links">
                 <a
                     href="https://linkedin.com/in/siphesihle-mthethwa"

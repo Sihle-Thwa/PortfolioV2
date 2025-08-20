@@ -1,4 +1,3 @@
-/* Component: Header */
 .c-header {
 	--hdr-bg: color-mix(in oklab, var(--color-bg) 85%, white);
 	--hdr-border: var(--colour-border);
@@ -48,10 +47,17 @@
 	gap: 0.25rem;
 }
 
+@media (min-width: 768px) {
+	.c-header-toggle,
+	.c-header-hamburger {
+		display: none;
+	}
+}
+
 .c-header-hamburger span {
 	width: 24px;
 	height: 2px;
-	background: var(--color-fg);
+	background: var(--colour-fg);
 	display: block;
 }
 
