@@ -4,7 +4,7 @@ import "./navigation.css";
 const NAV_LINKS = [
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
-    { href: "#projects", label: "Projects" },    
+    { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
 ];
 
@@ -16,9 +16,8 @@ export default function Navigation() {
                     key={label}
                     href={href}
                     className="c-nav-link"
-                > <div className="button">
-                        {label}
-                    </div>
+                >
+                    {label}
                 </Link>
             ))}
         </div>

@@ -16,51 +16,37 @@ export default function Header() {
     const activeTheme = theme === "system" ? systemTheme : theme;
     return (
         <header className="c-header">
-            <div className="container">
-                {/* Logo / Brand Name */}
+            <div className="container c-header-inner">
                 <Link href="/" className="c-header-brand">
                     SBM
                 </Link>
 
-                {/* Desktop Navigation Links */}
-                <nav className="hidden md:flex space-x-6">
+                <nav className="c-header-nav md:flex hidden">
                     <Navigation />
+
+                    <Link href="#contact" className="c-header-cta">
+                        Contact
+                    </Link>
+
+                    <button
+                        aria-label="Toggle theme"
+                        onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
+                        className="c-header-toggle"
+                    >
+                        {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
+                    </button>
                 </nav>
 
-                {/* Theme Toggle Button */}
                 <button
-                    aria-label="Toggle theme"
-                    onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
-                    className="c-header-toggle"
+                    className="c-header-hamburger md:hidden"
+                    onClick={() => setMobileOpen(true)}
+                    aria-label="Open Menu"
                 >
-                    {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
-                </button>
-
-                {/* Contact CTA (visible on desktop) */}
-                <Link
-                    href="#contact"
-                    className="c-header-cta"
-                >
-                    Contact
-                </Link>
-
-                {/* Mobile Menu Toggle (Hamburger icon) */}
-                <button
-                    className="md:hidden p-2 rounded button "
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label="Toggle Menu"
-                >
-                    {/* Simple hamburger icon using bars (could use an SVG icon here) */}
-                    <div className="w-6 h-0.5 bg-black dark:bg-white mb-1"></div>
-                    <div className="w-6 h-0.5 bg-black dark:bg-white mb-1"></div>
-                    <div className="w-6 h-0.5 bg-black dark:bg-white"></div>
+                    <span /><span /><span />
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
-            {mobileOpen && (
-                <MobileMenu onClose={() => setMobileOpen(false)} />
-            )}
+            {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} />}
         </header>
     );
 }

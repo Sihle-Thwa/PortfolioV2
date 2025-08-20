@@ -1,24 +1,70 @@
 /* Component: AboutSection */
 .c-about {
-	padding: 4rem 0;
-	background: var(--colour-bg);
-    width: 100%;
+  padding: 4rem 0;
+  background: var(--colour-bg);
+  color: var(--colour-fg);
+}
+
+.c-about-inner {
+  max-width: 72rem; /* ~1152px */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .c-about-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.c-about-textblock {
+  flex: 1;
 }
 
 .c-about-title {
-	color: var(--colour-primary);
-	font-weight: 600;
+  color: var(--colour-primary);
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
+
 .c-about-text {
-	color: var(--colour-fg);
-	margin-top: 1rem;
+  color: var(--colour-fg);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
+
 .c-about-muted {
-	color: var(--colour-fg-muted);
-	margin-top: 0.75rem;
+  color: var(--colour-fg-muted);
+  line-height: 1.6;
+}
+
+.c-about-imagewrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .c-about-image {
-    /* Profile image fix this */
-	
+  width: 16rem;
+  height: 16rem;
+  object-fit: cover;
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: var(--colour-surface);
+}
+
+/* Dark theme (automatically applied via html.dark) */
+html.dark .c-about {
+  background: var(--colour-bg);
+}
+
+html.dark .c-about-title {
+  color: var(--colour-primary);
 }

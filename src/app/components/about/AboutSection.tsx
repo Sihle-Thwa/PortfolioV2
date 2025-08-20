@@ -6,9 +6,9 @@ import "./aboutsection.css";
 export default function AboutSection() {
     return (
         <section id="about" className="c-about">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center">
+            <div className="c-about-inner">
                 {/* Text Content */}
-                <div className="md:w-1/2 px-4">
+                <div className="c-about-textblock">
                     <h2 className="c-about-title">About Me</h2>
                     <p className="c-about-text">
                         I am a dedicated developer with a passion for building efficient and scalable web applications.
@@ -19,13 +19,13 @@ export default function AboutSection() {
                         and stay up-to-date with industry trends to deliver modern, high-quality results.
                     </p>
                 </div>
-                {/* Image Content */}
-                <div className="md:w-1/2 mt-8 md:mt-0">
+                <div className="c-about-imagewrap">
                     <Image
-                        src="" //Fix this
+                        src="/AnimatedPortrait.png"
                         alt="Profile picture"
                         className="c-about-image"
-                        fill={true}
+                        width={640}
+                        height={640}
                     />
                 </div>
             </div>

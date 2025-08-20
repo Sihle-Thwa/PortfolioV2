@@ -16,7 +16,16 @@
 	padding: 1.5rem;
 	border-left: 1px solid var(--colour-border);
 }
-
+.c-mm-close {
+	font-size: 1.75rem;
+	background: none;
+	border: none;
+	color: var(--color-fg);
+	margin-bottom: 1rem;
+}
+.c-mm-nav {
+	display:flex; flex-direction:column; gap:.75rem;
+}
 .c-mm-link {
 	display: block;
 	padding: 0.5rem 0;

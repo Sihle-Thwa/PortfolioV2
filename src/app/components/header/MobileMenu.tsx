@@ -1,4 +1,3 @@
-// app/components/header/MobileMenu.tsx
 "use client";
 import Link from "next/link";
 import "./mobilemenu.css";
@@ -8,34 +7,30 @@ interface MobileMenuProps {
 }
 export default function MobileMenu({ onClose }: MobileMenuProps) {
     return (
-        // Semi-transparent backdrop covering entire viewport
-        <div className="c-mm-backdrop">
-            {/* Slide-out menu panel on right side */}
-            <div className="c-mm-panel">
-                {/* Close button */}
+        <div className="c-mm-backdrop" onClick={onClose}>
+            <aside className="c-mm-panel" onClick={(e) => e.stopPropagation()}>
                 <button
                     onClick={onClose}
-                    className="button button-primary"
+                    className="c-mm-close"
                     aria-label="Close Menu"
                 >
                     &times;
                 </button>
-                {/* Vertical nav links */}
-                <nav className="c-mm-link">
-                    <Link href="#services" onClick={onClose} className="c-mm-link c-mm-link--cta">
+                <nav className="c-mm-nav">
+                    <Link href="#services" onClick={onClose} className="c-mm-link">
                         Services
                     </Link>
-                    <Link href="#projects" onClick={onClose} className="c-mm-link c-mm-link--cta">
+                    <Link href="#projects" onClick={onClose} className="c-mm-link ">
                         Works
                     </Link>
-                    <Link href="#about" onClick={onClose} className="c-mm-link c-mm-link--cta">
+                    <Link href="#about" onClick={onClose} className="c-mm-link">
                         About
                     </Link>
                     <Link href="#contact" onClick={onClose} className="c-mm-link c-mm-link--cta">
                         Contact
                     </Link>
                 </nav>
-            </div>
+            </aside>
         </div>
     );
 }
