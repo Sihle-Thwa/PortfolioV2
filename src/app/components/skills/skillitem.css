@@ -1,6 +1,6 @@
-/* Component: SkillItem */
 .c-skill-item {
-	color: var(--colour-fg);
+	color: var(--colour-primary);
+	
 }
 .c-skill-item::marker {
 	color: var(--colour-accent);

@@ -1,10 +1,11 @@
 /* Component: Hero */
 .c-hero {
-	min-height: 70vh;
+	height: 75vh;
 	display: grid;
 	place-items: center;
-	padding: 3rem 0;
+	padding: 4rem 0;
 	background: var(--colour-bg);
+	width: 100%;
 }
 
 .c-hero-content {
@@ -45,7 +46,7 @@
 }
 
 .c-hero-button-ghost {
-	background: transparent;
-	border: var(--colour-border);
+	background: var(--colour-accent);
+	border: 1px solid var(--colour-border);
 	color: var(--colour-fg);
 }

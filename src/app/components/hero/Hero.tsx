@@ -1,4 +1,3 @@
-// app/components/hero/Hero.tsx
 import "./hero.css";
 export default function Hero() {
     return (
@@ -6,7 +5,11 @@ export default function Hero() {
             <div className="c-hero-content">
                 <h1 className="c-hero-title">Siphesihle B. Mthethwa</h1>
                 <p className="c-hero-subtitle">
-                    Full‑Stack Developer crafting minimal, modern web experiences.
+                    Turning creative ideas into reality.
+                    <br />
+                    Building better web experiences.
+                    <br />
+                    Teaching IT and Comp Sci.
                 </p>
                 <div className="c-hero-actions">
                     <a href="#projects" className=" c-hero-button c-hero-button-primary">

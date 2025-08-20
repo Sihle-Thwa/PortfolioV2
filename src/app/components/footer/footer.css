@@ -2,13 +2,15 @@
 	margin-top: 4rem;
 	border-top: 1px solid var(--colour-border);
 	background: color-mix(in oklab, var(--colour-bg) 90%, white);
+	width: 100%;
 }
 
 .c-footer-inner {
-	padding: 1rem 0;
+	padding: 1rem 1rem;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 0.75rem;
+	
 }
 
 @media (min-width: 768px) {
