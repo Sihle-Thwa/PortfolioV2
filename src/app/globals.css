@@ -4,7 +4,6 @@
 
 
 :root, html.dark {
-  /* Let Tailwind use our variables */
   color-scheme: light dark;
 }
 
@@ -19,7 +18,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .container {
-  max-width: 1280px;
+  max-width: 1440px;
   width: 100%;
   height: 100%;
   margin-inline: auto;
@@ -53,7 +52,7 @@ body {
 
 .button-accent {
   background: var(--colour-accent);
-  color: #1C1C1C; /* ensure contrast on yellow */
+  color: #1C1C1C; 
 }
 .button-ghost {
   background: transparent;

@@ -2,7 +2,7 @@
   /* ===== Raw brand palette ===== */
   --beige-500: #F4DEB7;   /* Warm Beige */
   --espresso-700: #3B2C24;/* Rich Espresso */
-  --sand-200: #E3D5C0;    /* Soft Sand */
+  --sand-200: #FBF8F5;    /* Soft Sand */
   --sun-500: #F9C949;     /* Sunlight Yellow */
   --charcoal-900: #1C1C1C;/* Charcoal Black */
   --olive-500: #A5A682;   /* Muted Olive */
@@ -19,15 +19,16 @@
   --colour-bg: var(--sand-200);            /* page background */
   --colour-surface: #fff;                  /* cards/panels */
   --colour-muted: var(--beige-500);        /* subtle strips */
-  --colour-fg: #2A2724;                    /* softer than pure black */
+  --colour-fg: var(--charcoal-900);                    /* softer than pure black */
   --colour-fg-muted: rgba(42,39,36,0.72);  /* secondary text */
 
-  --colour-primary: var(--espresso-700);   /* brand ink */
+  --colour-primary: var(--charcoal-900);   /* brand ink */
   --colour-accent: var(--sun-500);         /* CTA accent */
   --colour-secondary: var(--olive-500);          /* secondary accent */
 
   --colour-link: var(--espresso-700);
   --colour-border: rgba(0,0,0,0.08);
+  --colour-nav-border: var(--espresso-700);
   --colour-ring: colour-mix(in oklab, var(--sun-500) 55%, white);
 }
 

@@ -1,5 +1,4 @@
-// app/layout.tsx
-"use client";  // mark as client to use ThemeProvider (which relies on client-side context)
+"use client";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import "./styles/tokens.css";

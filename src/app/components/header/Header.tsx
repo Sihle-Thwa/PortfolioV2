@@ -27,15 +27,15 @@ export default function Header() {
                         Contact
                     </Link>
 
-                    <button
-                        aria-label="Toggle theme"
-                        onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
-                        className="c-header-toggle"
-                    >
-                        {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
-                    </button>
-                </nav>
 
+                </nav>
+                <button
+                    aria-label="Toggle theme"
+                    onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
+                    className="c-header-toggle"
+                >
+                    {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
+                </button>
                 <button
                     className="c-header-hamburger md:hidden"
                     onClick={() => setMobileOpen(true)}
