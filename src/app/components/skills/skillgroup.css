@@ -5,7 +5,7 @@
 	border: 1px solid var(--colour-border);
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-sm);
-	padding: 1.5rem;
+	padding: 1.25rem;
 }
 
 .c-skill-group--title {

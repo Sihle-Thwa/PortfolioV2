@@ -1,4 +1,3 @@
-// app/components/skills/SkillGroup.tsx
 import SkillItem from "./SkillItem";
 import "./skillgroup.css";
 interface SkillGroupProps {

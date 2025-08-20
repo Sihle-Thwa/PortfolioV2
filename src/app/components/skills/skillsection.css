@@ -9,3 +9,15 @@
 	color: var(--colour-primary);
 	font-weight: 600;
 }
+
+.c-skill-grid {
+	margin-top: 2rem;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr;
+}
+@media (min-width:768px) {
+	.c-skill-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
