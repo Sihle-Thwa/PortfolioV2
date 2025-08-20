@@ -1,16 +1,16 @@
-// app/components/projects/ProjectCard.tsx
 import Image from "next/image";
 import type { Project } from "@/data/projects";
 import "./projectcard.css"; 
 
 export default function ProjectCard({ project }: { project: Project }) {
     return (
-        <div className="c-project">
+        <article className="c-project">
             {project.image && (
                 <Image
                     src={project.image}
                     alt={project.title}
-                    fill={true}
+                    width={600}
+                    height={400}
                     className="c-project-media"
                 />
             )}
@@ -27,10 +27,10 @@ export default function ProjectCard({ project }: { project: Project }) {
                     rel="noopener noreferrer"
                     className="c-project-link"
                 >
-                    View Project
+                    View Project →
                     {/* You could include an external link icon here for visual cue */}
                 </a>
             </div>
-        </div>
+        </article>
     );
 }
