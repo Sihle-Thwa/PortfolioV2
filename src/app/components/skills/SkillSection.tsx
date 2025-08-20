@@ -1,4 +1,3 @@
-// app/components/skills/SkillSection.tsx
 import { skills } from "@/data/skills";
 import SkillGroup from "./SkillGroup";
 import "./skillsection.css";

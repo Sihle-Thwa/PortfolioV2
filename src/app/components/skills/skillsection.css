@@ -1,7 +1,10 @@
-/* Component: SkillSection */
 .c-skill {
 	padding: 4rem 0;
 	background: var(--colour-bg);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
 }
 
 .c-skill-title {
@@ -11,16 +14,28 @@
 }
 
 .c-skill-grid {
-	margin-top: 2rem;
+	margin-top: 1rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	gap: 1rem;
+	width: 100%;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+	.c-skill {
+		max-width: 388px;
+		min-width: 250px;
+		width: 100%;
+		justify-content: space-between;
+		gap: 1rem;
+	}
 	.c-skill-grid {
-		display: grid;
-		gap: 1.5rem;
-		grid-template-columns: repeat(3, 1fr);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+		
 	}
 }
