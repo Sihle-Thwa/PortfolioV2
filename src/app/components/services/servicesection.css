@@ -1,4 +1,3 @@
-/* Component: ServicesSection */
 .c-services {
 	padding: 4rem 0;
 	background: var(--colour-bg);
@@ -8,4 +7,17 @@
 	text-align: center;
 	color: var(--colour-primary);
 	font-weight: 600;
+}
+
+c.services-grid {
+	margin-top: 2rem;
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width:768px) {
+	.c-services-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }

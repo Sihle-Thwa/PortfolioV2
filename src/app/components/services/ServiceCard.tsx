@@ -1,4 +1,3 @@
-// app/components/services/ServiceCard.tsx
 import type { Service } from "@/data/services";
 import "./servicecard.css";
 

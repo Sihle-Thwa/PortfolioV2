@@ -1,11 +1,10 @@
-/* Component: ServiceCard */
 .c-service {
 	background: var(--colour-surface);
 	color: var(--colour-fg);
 	border: 1px solid var(--colour-border);
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-sm);
-	padding: 1.5rem;
+	padding: 1.25rem;
 }
 
 .c-service-title {
