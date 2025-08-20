@@ -1,0 +1,57 @@
+/* Component: ContactSection */
+.c-contact {
+	padding: 4rem 0;
+	background: var(--colour-bg);
+	text-align: center;
+}
+
+.c-contact-title {
+	color: var(--colour-primary);
+	font-weight: 600;
+}
+.c-contact-subtitle {
+	color: var(--colour-fg-muted);
+	margin-top: 0.5rem;
+}
+
+.c-contact-form {
+	margin: 2rem auto 0;
+	max-width: 42rem;
+}
+
+.c-contact-input,
+.c-contact-textarea {
+	width: 100%;
+	background: var(--colour-surface);
+	color: var(--colour-fg);
+	border: 1px solid var(--colour-border);
+	border-radius: var(--radius-sm);
+	padding: 0.8rem;
+	margin-bottom: 0.75rem;
+}
+
+.c-contact-submit {
+	width: 100%;
+	background: var(--colour-accent);
+	color: #1c1c1c;
+	border-radius: var(--radius-md);
+	padding: 0.7rem 1rem;
+	font-weight: 700;
+}
+
+.c-contact-meta {
+	margin-top: 1rem;
+	color: var(--colour-fg-muted);
+}
+.c-contact-links {
+	margin-top: 1rem;
+	display: flex;
+	gap: 1.25rem;
+	justify-content: center;
+}
+.c-contact-link {
+	color: var(--colour-link);
+}
+.c-contact-link:hover {
+	text-decoration: underline;
+}

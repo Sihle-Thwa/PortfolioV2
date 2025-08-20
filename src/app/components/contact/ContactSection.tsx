@@ -1,6 +1,7 @@
 // app/components/contact/ContactSection.tsx
 "use client";
 import { useEffect, useState } from "react";
+import "./contactsection.css";
 
 export default function ContactSection() {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -14,46 +15,52 @@ export default function ContactSection() {
     }, []);
 
     // Format the time as HH:MM (24-hour or 12-hour as preferred)
-    const timeString = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const timeString = currentTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
     return (
-        <section id="contact" className="py-16 bg-white dark:bg-gray-900 text-center">
-            <h2 className="text-3xl font-semibold mb-4">Let’s Make It Happen</h2>
-            <p className="mb-8">Feel free to reach out via the form below or connect with me on social media.</p>
+        <section id="contact" className="c-contact">
+            <h2 className="c-contact-title">Let’s Make It Happen</h2>
+            <p className="c-contact-subtitle">
+                Feel free to reach out via the form below or connect with me on social
+                media.
+            </p>
 
             {/* Contact Form (placeholder, no action) */}
-            <form className="max-w-md mx-auto mb-8">
+            <form className="c-contact-form">
                 <input
                     type="text"
                     name="name"
                     placeholder="Your Name"
-                    className="w-full mb-4 p-3 rounded border border-gray-300 dark:border-gray-700"
+                    className="c-contact-input"
                 />
                 <input
                     type="email"
                     name="email"
                     placeholder="Your Email"
-                    className="w-full mb-4 p-3 rounded border border-gray-300 dark:border-gray-700"
+                    className="c-contact-input"
                 />
                 <textarea
                     name="message"
                     placeholder="Your Message"
-                    className="w-full mb-4 p-3 rounded border border-gray-300 dark:border-gray-700 h-32"
+                    className="c-contact-textarea"
                 />
-                <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700"
-                >
+                <button type="submit" className="c-contact-submit">
                     Send Message
                 </button>
             </form>
 
             {/* Local time and Back-to-top */}
-            <div className="mb-8 text-gray-700 dark:text-gray-300">
+            <div className="c-contact-meta">
                 <span className="mr-4">📍 Local Time: {timeString}</span>
                 <a
                     href="#top"
-                    onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     className="underline"
                 >
                     Back to top
@@ -61,14 +68,31 @@ export default function ContactSection() {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex justify-center space-x-6 text-2xl">
-                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer">
+            <div className="c-contact-links">
+                <a
+                    href="https://linkedin.com/in/siphesihle-mthethwa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="c-contact-link"
+                >
                     LinkedIn
                 </a>
-                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="https://github.com/Sihle-Thwa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="c-contact-link"
+
+                >
                     GitHub
                 </a>
-                <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="https://instagram.com/username"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="c-contact-link"
+
+                >
                     Instagram
                 </a>
             </div>

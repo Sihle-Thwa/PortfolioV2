@@ -1,17 +1,28 @@
 // app/components/footer/Footer.tsx
+import React from "react";
+import "./footer.css";
 export default function Footer() {
     return (
-        <footer className="bg-gray-100 dark:bg-gray-800 py-4 text-sm text-gray-600 dark:text-gray-400">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-                <p className="mb-2 md:mb-0">
-                    &copy; {new Date().getFullYear()} Siphesihle B. Mthethwa. All rights reserved.
+        <footer className="c-footer">
+            <div className="container c-footer-inner">
+                <p className="c-footer-copy">
+                    &copy; {new Date().getFullYear()} Siphesihle B. Mthethwa. All rights
+                    reserved.
                 </p>
-                <div>
-                    <a href="#services" className="mx-2 hover:underline">Services</a>
-                    <a href="#projects" className="mx-2 hover:underline">Works</a>
-                    <a href="#about" className="mx-2 hover:underline">About</a>
-                    <a href="#contact" className="mx-2 hover:underline">Contact</a>
-                </div>
+                <nav className="c-footer-nav">
+                    <a href="#services" className="c-footer-link">
+                        Services
+                    </a>
+                    <a href="#projects" className="c-footer-link">
+                        Works
+                    </a>
+                    <a href="#about" className="c-footer-link">
+                        About
+                    </a>
+                    <a href="#contact" className="c-footer-link">
+                        Contact
+                    </a>
+                </nav>
             </div>
         </footer>
     );
