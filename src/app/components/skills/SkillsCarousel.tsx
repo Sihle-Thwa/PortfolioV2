@@ -17,17 +17,17 @@ const icon_overrides: Record<string, string> = {
     "MaterialUI": "/icons/materialui.svg",
     "Radix UI": "/icons/radixui.svg",
     "Styled Components": "/icons/styledcomponents.svg",
-    "Vanilla CSS": "/icons/css3.svg",
+    "Vanilla CSS": "/icons/css.svg",
     "Bootstrap": "/icons/bootstrap.svg",
-    "GraphQL": "/icons/graphql.svg",
-    "REST API": "/icons/rest.svg",
+    "GraphQL": "/icons/graphsql.svg",
+    "REST API": "",
     "Swagger.io": "/icons/swagger.svg",
     "Postman": "/icons/postman.svg",
     "Express": "/icons/express.svg",
     "AuthO": "/icons/auth0.svg",
     "Firebase Auth": "/icons/firebase.svg",
     "Supabase Auth": "/icons/supabase.svg",
-    "NextAuth": "/icons/nextauth.svg",
+    "NextAuth": "/icons/nextjs.svg",
     "Azure MySQL": "/icons/azure.svg",
     "Firebase": "/icons/firebase.svg",
     "MongoDB": "/icons/mongodb.svg",
@@ -48,7 +48,7 @@ const icon_overrides: Record<string, string> = {
 function slugify(name: string) {
     return name
         .toLowerCase()
-        .replace(/(\.js|\sui|\sio)$/g, "")     // trim common suffixes
+        .replace(/(\.js|\sui|\sio)$/g, "")
         .replace(/[+]/g, "plus")
         .replace(/[^a-z0-9]+/g, "")
         .trim();
@@ -63,12 +63,7 @@ function resolveIcon(skill: string): { src: string; alt: string } {
     return { src: `/icons/${slug}.svg`, alt: `${skill} icon` };
 }
 
-/**
- * To achieve seamless infinite marquee, we duplicate the row content.
- * aria-label on the row announces skills for assistive tech (without category name).
- */
 export default function SkillsCarousel() {
-    // Flatten to ensure stable keys and deterministic order per row
     const rows = useMemo(() => {
         return skillGroups.map((group) => ({
             key: slugify(group.category) || cryptoRandom(),
@@ -103,7 +98,6 @@ export default function SkillsCarousel() {
     );
 }
 
-// Small random for keys when slug is empty (shouldn't happen with given data)
 function cryptoRandom() {
     if (typeof crypto !== "undefined" && "getRandomValues" in crypto) {
         const a = new Uint32Array(1);
