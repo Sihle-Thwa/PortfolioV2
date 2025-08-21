@@ -52,8 +52,8 @@
 
 .c-skill-grid {
 	margin-top: 1rem;
-	display: flex;
-	flex-direction: row;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	justify-content: center;
 	gap: 1rem;
 	width: 100%;
