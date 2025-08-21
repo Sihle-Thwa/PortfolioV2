@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import "./contactsection.css";
 
@@ -6,14 +5,12 @@ export default function ContactSection() {
     const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
-        // Update the time every minute
         const timer = setInterval(() => {
             setCurrentTime(new Date());
         }, 60000);
         return () => clearInterval(timer);
     }, []);
 
-    // Format the time as HH:MM 
     const timeString = currentTime.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -31,17 +28,20 @@ export default function ContactSection() {
                 <input
                     type="text"
                     name="name"
+                    autoComplete="name"
                     placeholder="Your Name"
                     className="c-contact-input"
                 />
                 <input
                     type="email"
                     name="email"
+                    autoComplete="email"
                     placeholder="Your Email"
                     className="c-contact-input"
                 />
                 <textarea
                     name="message"
+                    autoComplete="message"
                     placeholder="Your Message"
                     className="c-contact-textarea"
                 />
@@ -51,7 +51,7 @@ export default function ContactSection() {
             </form>
 
             <div className="c-contact-meta">
-                <span className="mr-4">📍 Local Time: {timeString}</span>
+                <div className="mr-4">📍 Local Time: {timeString}</div>
                 <a
                     href="#top"
                     onClick={(e) => {
