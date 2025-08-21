@@ -1,4 +1,3 @@
-
 .c-header {
 	--hdr-bg: color-mix(in oklab, var(--colour-bg) 85%, white);
 	--hdr-border: var(--colour-nav-border);
@@ -10,10 +9,12 @@
 	background: color-mix(in oklab, var(--hdr-bg) 80%, transparent);
 	border-bottom: 1px solid var(--hdr-border);
 	color: var(--hdr-fg);
+	
 }
 
 .c-header-inner {
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0.75rem 1rem;
@@ -49,9 +50,12 @@
 }
 
 @media (min-width: 768px) {
+	
 	.c-header-hamburger {
 		display: none;
 	}
+
+	
 }
 
 .c-header-hamburger span {

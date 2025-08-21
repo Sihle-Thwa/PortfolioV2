@@ -15,7 +15,7 @@ export default function Header() {
     const activeTheme = theme === "system" ? systemTheme : theme;
     return (
         <header className="c-header">
-            <div className="container c-header-inner">
+            <div className="c-header-inner">
                 <Link href="/" className="c-header-brand">
                     SBM
                 </Link>
