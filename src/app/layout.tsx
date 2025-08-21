@@ -1,20 +1,38 @@
-"use client";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import type { Metadata } from "next";
 import "./styles/tokens.css";
+import "./globals.css";
+
+import ClientProviders from "./ClientProviders";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
+export const metadata: Metadata = {
+  title: { default: "Siphesihle B. Mthethwa | Portfolio", template: "%s | SBM Portfolio" },
+  description: "Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
+  icons: {
+    icon: "/icons/SBMLogo.png",
+    shortcut: "/icons/SBMLogo.png",
+    apple: "/icons/SBMLogo.png",
+  },
+  openGraph: {
+    title: "Siphesihle B. Mthethwa | Portfolio",
+    description: "Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
+    url: "https://siphesihle-b-mthethwa.vercel.app",
+    siteName: "SBM Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ClientProviders>
           <Header />
           <main>{children}</main>
           <Footer />
-        </ThemeProvider>
+        </ClientProviders>
       </body>
     </html>
   );
