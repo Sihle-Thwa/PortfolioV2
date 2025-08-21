@@ -1,4 +1,3 @@
-// app/components/skills/SkillItem.tsx
 import "./skillitem.css";
 interface SkillItemProps {
     skill: string;
