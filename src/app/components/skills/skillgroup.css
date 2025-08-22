@@ -1,9 +1,11 @@
 .c-skill-group {
-	background: var(--colour-surface);
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 	color: var(--colour-fg);
 	border: 1px solid var(--colour-border);
 	border-radius: var(--radius-lg);
-	box-shadow: var(--shadow-sm);
+	box-shadow: var(--shadow-lg);
 	padding: 1.25rem;
 	display: flex;
 	flex-direction: column;
