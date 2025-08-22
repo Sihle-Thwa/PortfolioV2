@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./contactsection.css";
+import Image from "next/image";
+
 
 export default function ContactSection() {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -52,19 +54,9 @@ export default function ContactSection() {
 
             <div className="c-contact-meta">
                 <div className="mr-4">📍 Local Time: {timeString}</div>
-                <a
-                    href="#top"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="c-contact-link"
-                >
-                    Back to top
-                </a>
             </div>
 
-            <div className="c-contact-links">
+            <div className="c-contact-links" suppressHydrationWarning>
                 <a
                     href="https://linkedin.com/in/siphesihle-mthethwa"
                     target="_blank"
@@ -90,6 +82,25 @@ export default function ContactSection() {
 
                 >
                     Instagram
+                </a>
+            </div>
+            <div className="c-contact-nav-cta">
+                <a
+                    href="#top"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="c-contact-link"
+                >
+                    <div className="c-contact-backtotop animate-bounce">
+                        <Image
+                            src="/icons/uparrow.svg"
+                            alt="Back to top"
+                            width={64}
+                            height={64}
+                        />
+                    </div>
                 </a>
             </div>
         </section>

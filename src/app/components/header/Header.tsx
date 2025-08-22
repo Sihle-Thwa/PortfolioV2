@@ -22,12 +22,6 @@ export default function Header() {
 
                 <nav className="c-header-nav md:flex hidden">
                     <Navigation />
-
-                    <Link href="#contact" className="c-header-cta">
-                        Contact
-                    </Link>
-
-
                 </nav>
                 <button
                     aria-label="Toggle theme"

@@ -10,6 +10,9 @@
 .c-skill-title {
 	text-align: center;
 	color: var(--colour-primary);
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
 	font-weight: 600;
 }
 
@@ -79,6 +82,14 @@
 		align-items: center;
 		gap: 1rem;
 		width: 100%;
+	}
+	.c-skill-title {
+		text-align: center;
+		color: var(--colour-primary);
+		font-size: 30px;
+		line-height: 38px;
+		letter-spacing: 0em;
+		font-weight: 600;
 	}
 }
 

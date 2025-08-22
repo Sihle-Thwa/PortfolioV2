@@ -3,7 +3,7 @@ import "./navigation.css";
 
 const NAV_LINKS = [
     { href: "#about", label: "About" },
-    { href: "#services", label: "Services" },
+    { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
 ];
