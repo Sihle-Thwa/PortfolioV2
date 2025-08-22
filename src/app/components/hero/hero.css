@@ -1,9 +1,8 @@
-/* Component: Hero */
 .c-hero {
 	height: 75vh;
 	display: grid;
 	place-items: center;
-	padding: 4rem 0;
+	padding: 2rem 0;
 	background: var(--colour-bg);
 	width: 100%;
 }
@@ -23,6 +22,9 @@
 	color: var(--colour-fg-muted);
 	max-width: 48ch;
 	margin: 1rem auto 0;
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 500;
 }
 
 .c-hero-actions {
@@ -42,11 +44,28 @@
 .c-hero-button-primary {
 	background: var(--colour-primary);
 	color: #fff;
-	
 }
 
 .c-hero-button-ghost {
 	background: var(--colour-accent);
 	border: 1px solid var(--colour-border);
 	color: var(--colour-fg);
+}
+
+@media (max-width: 768px) {
+	.c-hero {
+		height: auto;
+		padding: 2rem 1rem;
+	}
+
+	.c-hero-title {
+		font-size: 2rem;
+	}
+
+	.c-hero-subtitle {
+		font-size: 16px;
+		line-height: 26px;
+		font-weight: 500;
+		max-width: 100%;
+	}
 }

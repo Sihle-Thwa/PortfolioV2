@@ -81,3 +81,14 @@ font-size: 36px;
 	animation: bounce 1s infinite;
 	padding: 0.5rem;
 }
+
+@media (max-width: 768px) {
+	.c-contact-nav-cta {
+		align-items: center;
+	}
+	.c-contact-backtotop {
+		right: 0.5rem;
+		width: 42px;
+		height: 42px;
+	}
+}

@@ -71,8 +71,9 @@ html.dark .c-about-title {
 	}
 	.c-about-title {
 		color: var(--colour-primary);
-		font-size: 14px;
-		line-height: 24px;
+		font-size: 30px;
+		line-height: 38px;
+		letter-spacing: 0em;
 		font-weight: 600;
 		margin-bottom: 1rem;
 	}
