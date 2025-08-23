@@ -1,4 +1,3 @@
-/* Background slider container */
 .creative-bg--slider {
 	position: relative;
 	width: 100vw;
@@ -185,7 +184,5 @@ html.dark .creative-slider--wrap .slide-bg::before {
 		flex-direction: column;
 		gap: 12px;
 	}
-	.creative-status {
-		display: none;
-	}
+	
 }

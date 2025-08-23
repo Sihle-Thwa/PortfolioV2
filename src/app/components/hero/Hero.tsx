@@ -11,7 +11,6 @@ export default function Hero() {
     const { theme, systemTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // avoid hydration mismatch by waiting for client mount
     useEffect(() => setMounted(true), []);
 
     const lightSlides = [
@@ -26,12 +25,11 @@ export default function Hero() {
         { src: "/offwhite-bg-1.jpg", alt: "Background 3" },
     ];
 
-    // figure out which theme is active (light/dark)
     const activeTheme = theme === "system" ? systemTheme : theme;
     const slides = activeTheme === "dark" ? darkSlides : lightSlides;
 
     if (!mounted) {
-        // render nothing or a placeholder until mounted (prevents mismatch)
+
         return <section id="home" className="creative-bg--slider" />;
     }
 
@@ -63,7 +61,6 @@ export default function Hero() {
                 </Swiper>
             </div>
 
-            {/* Foreground content (your old hero content) */}
             <div className="slider-content">
                 <div className="content-row">
                     <div className="content-column">
