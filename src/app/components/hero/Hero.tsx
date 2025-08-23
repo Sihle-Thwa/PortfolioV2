@@ -3,14 +3,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
 
-    const slides = [
-        { src: "https://resonance.bestlooker.pro/images/full-width-images/section-bg-7.jpg", alt: "Background 1" },
-        { src: "https://resonance.bestlooker.pro/images/full-width-images/section-bg-8.jpg", alt: "Background 2" },
-        { src: "https://resonance.bestlooker.pro/images/full-width-images/section-bg-9.jpg", alt: "Background 3" },
+    const { theme, systemTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    // avoid hydration mismatch by waiting for client mount
+    useEffect(() => setMounted(true), []);
+
+    const lightSlides = [
+        { src: "/sand-bg-1.png", alt: "Background 1" },
+        { src: "/sand-bg-2.png", alt: "Background 2" },
+        { src: "/sand-bg-3.png", alt: "Background 3" },
     ];
+
+    const darkSlides = [
+        { src: "/charcoal-bg-1.png", alt: "Background 1" },
+        { src: "/charcoal-bg-2.png", alt: "Background 2" },
+        { src: "/offwhite-bg-1.jpg", alt: "Background 3" },
+    ];
+
+    // figure out which theme is active (light/dark)
+    const activeTheme = theme === "system" ? systemTheme : theme;
+    const slides = activeTheme === "dark" ? darkSlides : lightSlides;
+
+    if (!mounted) {
+        // render nothing or a placeholder until mounted (prevents mismatch)
+        return <section id="home" className="creative-bg--slider" />;
+    }
 
     return (
         <section id="home" className="creative-bg--slider">
