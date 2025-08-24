@@ -31,15 +31,15 @@ export default function Hero() {
 
     if (!mounted) {
 
-        return <section id="home" className="creative-bg--slider" />;
+        return <section id="home" className="hero-bg--slider" />;
     }
 
     return (
-        <section id="home" className="creative-bg--slider">
+        <section id="home" className="hero-bg--slider">
             {/* Background slider */}
-            <div className="creative-slider--wrap">
+            <div className="hero-slider--wrap">
                 <Swiper
-                    className="creative-slider"
+                    className="hero-slider"
                     modules={[Autoplay, EffectFade, A11y]}
                     effect="fade"
                     speed={1000}
@@ -71,7 +71,7 @@ export default function Hero() {
                         <p className="slide-subheading">
                             <span className="slide-subheading-token">
                                 Turning
-                            </span> creative ideas into reality.
+                            </span> hero ideas into reality.
                             <br />
                             <span className="slide-subheading-token">
                                 Building
@@ -81,14 +81,14 @@ export default function Hero() {
                                 Teaching
                             </span> IT and Comp Sci.
                         </p>
-                        <div className="creative-buttons--wrap">
-                            <a href="#projects" className="creative-button">
+                        <div className="hero-buttons--wrap">
+                            <a href="#projects" className="hero-button">
                                 <span className="button-animate-y">
                                     <span className="button-animate-y-1">View Work</span>
                                     <span className="button-animate-y-2" aria-hidden="true">View Work</span>
                                 </span>
                             </a>
-                            <a href="#contact" className="creative-button button-fill">
+                            <a href="#contact" className="hero-button button-fill">
                                 <span className="button-animate-y">
                                     <span className="button-animate-y-1">Get in Touch</span>
                                     <span className="button-animate-y-2" aria-hidden="true">Get in Touch</span>
@@ -98,7 +98,7 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className="creative-status">
+                <div className="hero-status">
                     Based in South Africa, Johannesburg
                 </div>
             </div>
