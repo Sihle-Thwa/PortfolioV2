@@ -17,7 +17,7 @@
 
   /* ===== LIGHT THEME ===== */
   --colour-bg: var(--sand-200);            
-  --colour-surface: #fff;                 
+  --colour-surface: var(--sand-200);                 
   --colour-muted: var(--beige-500);        
   --colour-fg: var(--charcoal-900);        
   --colour-fg-muted: rgba(42,39,36,0.72);  
@@ -26,7 +26,7 @@
   --colour-secondary: var(--olive-500);       
 
   --colour-link: var(--espresso-700);
-  --colour-border: rgba(0,0,0,0.08);
+  --colour-border: var(--olive-500);
   --colour-nav-border: var(--espresso-700);
   --colour-ring: colour-mix(in oklab, var(--sun-500) 55%, white);
 }

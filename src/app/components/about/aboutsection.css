@@ -51,7 +51,7 @@
 	height: 16rem;
 	object-fit: cover;
 	border: 1px solid var(--colour-border);
-	border-radius: var(--radius-lg);
+	border-radius: 50%;
 	box-shadow: var(--shadow-md);
 	background: var(--colour-surface);
 }

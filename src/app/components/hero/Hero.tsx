@@ -6,6 +6,7 @@ import "swiper/css/effect-fade";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Typewriter from "@/app/styles/Typewriter";
+import HeadlineBanner from "./HeadlineBanner";
 
 export default function Hero() {
 
@@ -97,9 +98,14 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div className="hero-bottom-wrap">
                 <div className="hero-status">
                     Based in South Africa, Johannesburg
+                </div>
+                <div className="hero-banner">
+                    <HeadlineBanner />
+
                 </div>
             </div>
         </section>
