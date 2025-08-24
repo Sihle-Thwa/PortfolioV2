@@ -50,7 +50,7 @@ export default function SkillGroup({ category, skills }: SkillGroupProps) {
                                     unoptimized
                                 />
                             ) : (
-                                <span aria-hidden className="c-skill-item-fallback" />
+                                    <span aria-hidden className="c-skill-item" />
                             )}
                         </SkillItem>
                     );

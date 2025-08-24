@@ -59,7 +59,6 @@ function resolveIcon(skill: string): { src: string; alt: string } {
         return { src: icon_overrides[skill], alt: `${skill} icon` };
     }
     const slug = slugify(skill);
-    // Prefer SVG, fallback PNG
     return { src: `/icons/${slug}.svg`, alt: `${skill} icon` };
 }
 

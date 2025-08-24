@@ -30,13 +30,6 @@
   object-fit: contain;
 }
 
-.c-skill-item-fallback {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-lg);
-  background: var(--colour-accent, var(--colour-primary));
-}
 
 .c-skill-item-label {
   font-size: .95rem;
