@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Typewriter from "@/app/styles/Typewriter";
 
 export default function Hero() {
 
@@ -64,13 +65,21 @@ export default function Hero() {
             <div className="slider-content">
                 <div className="content-row">
                     <div className="content-column">
-                        <h1 className="slide-heading">Siphesihle B. Mthethwa</h1>
+                        <h1 className="slide-heading">
+                            <Typewriter>Siphesihle B. Mthethwa</Typewriter>
+                        </h1>
                         <p className="slide-subheading">
-                            Turning creative ideas into reality.
+                            <span className="slide-subheading-token">
+                                Turning
+                            </span> creative ideas into reality.
                             <br />
-                            Building better web experiences.
+                            <span className="slide-subheading-token">
+                                Building
+                            </span> better web experiences.
                             <br />
-                            Teaching IT and Comp Sci.
+                            <span className="slide-subheading-token">
+                                Teaching
+                            </span> IT and Comp Sci.
                         </p>
                         <div className="creative-buttons--wrap">
                             <a href="#projects" className="creative-button">
