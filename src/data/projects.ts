@@ -1,30 +1,28 @@
-// data/projects.ts
 export type Project = {
     title: string;
-    subtitle?: string;    // e.g., project category or role like "Full-Stack Development"
+    subtitle?: string;
     year?: number;
-    href: string;         // external link to project demo or repo
-    tags?: string[];      // tech stack tags, e.g. ["Next.js", "Tailwind"]
-    image?: string;       // path to project image in /public/images
+    href: string;
+    tags?: string[];
+    image?: string;
 };
 
-// Sample project entries (placeholder content)
 export const projects: Project[] = [
     {
-        title: "Project Alpha",
-        subtitle: "Full-Stack Development",
+        title: "U-Organise",
+        subtitle: "CRM Product Marketing Website",
         year: 2024,
-        href: "https://example.com/project-alpha",
-        tags: ["Next.js", "Tailwind", "Node.js"],
-        image: "/images/project-alpha.png",
+        href: "https://uorganise-product-site.vercel.app/",
+        tags: ["Next.js", "Vite", "TailwindCSS", "TypeScript", "Lucide Icons"],
+        image: "/UOrganiseMarketSite.png",
     },
     {
-        title: "UI Portfolio",
-        subtitle: "Frontend/UI",
-        year: 2023,
+        title: "Siphesihle B. Mthethwa Portfolio",
+        subtitle: "Personal Portfolio Website",
+        year: 2025,
         href: "https://example.com/ui-portfolio",
-        tags: ["React", "Tailwind"],
-        image: "/images/project-ui.png",
+        tags: ["Next.js", "TailwindCSS", "TypeScript"],
+        image: "/SBMPortfolio.png",
     },
     // ...additional projects
 ];

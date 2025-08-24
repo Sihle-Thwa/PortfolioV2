@@ -16,6 +16,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             )}
             <div className="c-project-body">
                 <h3 className="c-project-title">{project.title}</h3>
+                <div className="c-project-subtitle">{project.subtitle}</div>
                 {project.tags && project.tags.length > 0 && (
                     <p className="c-project-tags">
                         {project.tags.join(', ')}
