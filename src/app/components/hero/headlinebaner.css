@@ -44,8 +44,8 @@
 	align-items: center;
 	box-shadow: var(--shadow-md);
 	color: var(--colour-fg);
-	background-color: var(--colour-surface);
-	border: 1px solid var(--colour-ring);
+	background-color: var(--colour-bg);
+	border: 1px solid var(--colour-border);
 	min-width: max-content;
 }
 

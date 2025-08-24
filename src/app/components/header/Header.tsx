@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 import "./header.css";
+import Image from "next/dist/shared/lib/image-external";
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,8 +17,13 @@ export default function Header() {
     return (
         <header className="c-header">
             <div className="c-header-inner">
-                <Link href="/" className="c-header-brand">
-                    SBM
+                <Link href="#Home" className="c-header-brand">
+                    <Image
+                        src="/icons/SBMLogo.png"
+                        alt="Logo"
+                        width={38}
+                        height={38}
+                    />
                 </Link>
 
                 <nav className="c-header-nav md:flex hidden">

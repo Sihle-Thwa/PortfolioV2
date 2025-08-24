@@ -1,28 +1,32 @@
 import React from "react";
 import "./footer.css";
+
+
+const footNavLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+]
 export default function Footer() {
     return (
         <footer className="c-footer">
             <div className="container c-footer-inner">
-                <p className="c-footer-copy">
-                    &copy; {new Date().getFullYear()} Siphesihle B. Mthethwa. All rights
+                <div className="c-footer-copy">
+                    &copy; {new Date().getFullYear()}
+
+                    {" "}Siphesihle B. Mthethwa. All rights
                     reserved.
-                </p>
+                </div>
                 <nav className="c-footer-nav">
-                    <a href="#services" className="c-footer-link">
-                        Services
-                    </a>
-                    <a href="#projects" className="c-footer-link">
-                        Works
-                    </a>
-                    <a href="#about" className="c-footer-link">
-                        About
-                    </a>
-                    <a href="#contact" className="c-footer-link">
-                        Contact
-                    </a>
+                    {footNavLinks.map((link) => (
+                        <a key={link.label} href={link.href} className="c-footer-link">
+                            {link.label}
+                        </a>
+                    ))}
                 </nav>
             </div>
         </footer>
     );
-}
+}               
