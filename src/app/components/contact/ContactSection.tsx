@@ -20,11 +20,11 @@ export default function ContactSection() {
 
     return (
         <section id="contact" className="c-contact">
-            <h2 className="c-contact-title">Let’s Make It Happen</h2>
-            <p className="c-contact-subtitle">
+            <div className="c-contact-title">Let’s Make It Happen</div>
+            <div className="c-contact-subtitle">
                 Feel free to reach out via the form below or connect with me on social
                 media.
-            </p>
+            </div>
 
             <form className="c-contact-form">
                 <input
@@ -97,8 +97,8 @@ export default function ContactSection() {
                         <Image
                             src="/icons/uparrow.svg"
                             alt="Back to top"
-                            width={64}
-                            height={64}
+                            width={48}
+                            height={48}
                         />
                     </div>
                 </a>

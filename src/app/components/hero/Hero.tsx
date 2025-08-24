@@ -101,7 +101,7 @@ export default function Hero() {
             </div>
             <div className="hero-bottom-wrap">
                 <div className="hero-status">
-                    Based in South Africa, Johannesburg
+                    📍 Based in South Africa, Johannesburg
                 </div>
                 <div className="hero-banner">
                     <HeadlineBanner />
