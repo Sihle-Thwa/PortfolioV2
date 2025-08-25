@@ -7,7 +7,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
 export const metadata: Metadata = {
-  title: { default: "Siphesihle B. Mthethwa | Portfolio", template: "%s | SBM Portfolio" },
+  title: "Siphesihle B. Mthethwa | Portfolio",
   description: "Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
   icons: {
     icon: "/icons/SBMLogo.png",
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
       <body>
         <ClientProviders>
           <Header />
