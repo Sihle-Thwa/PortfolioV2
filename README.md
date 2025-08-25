@@ -1,6 +1,4 @@
-====================================================
-Siphesihle B. Mthethwa | Portfolio Website
-====================================================
+# Siphesihle B. Mthethwa | Portfolio Website
 
 ![Next.js](https://img.shields.io/badge/Next.js-13-black?style=for-the-badge&logo=next.js)  
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
@@ -9,15 +7,15 @@ Siphesihle B. Mthethwa | Portfolio Website
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)  
 ![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)  
 
-A minimal, modern, and responsive **Personal Portfolio Website** 
-built with **Next.js (App Router)**, **TailwindCSS v4.1**, and 
-**Vanilla CSS**. This portfolio showcases my professional 
-profile, projects, skills, and contact information with a 
+A minimal, modern, and responsive **Personal Portfolio Website**
+built with **Next.js (App Router)**, **TailwindCSS v4.1**, and
+**Vanilla CSS**. This portfolio showcases my professional
+profile, projects, skills, and contact information with a
 focus on design tokens, dark/light theming, and performance.
 
-----------------------------------------------------
-🚀 Features
-----------------------------------------------------
+---
+
+## 🚀 Features
 
 1. **Responsive Design**
    - Works seamlessly on mobile, tablet, and desktop.
@@ -62,9 +60,9 @@ focus on design tokens, dark/light theming, and performance.
       • Shadows  
       • Spacing  
 
-----------------------------------------------------
-🛠️ Tech Stack
-----------------------------------------------------
+---
+
+## 🛠️ Tech Stack
 
 - **Framework**: Next.js (App Router)
 - **Styling**: TailwindCSS v4.1 + Vanilla CSS
@@ -73,47 +71,14 @@ focus on design tokens, dark/light theming, and performance.
 - **Icons**: Local SVG/PNG icons (skills & social)
 - **TypeScript**: Strong typing for skills, services, projects
 
-----------------------------------------------------
-📂 Project Structure
-----------------------------------------------------
+---
 
-app/
-  layout.tsx         -> Root layout with metadata + ThemeProvider
-  page.tsx           -> Main homepage composition
+---
 
-  /components
-    /hero            -> Hero.tsx + hero.css
-    /about           -> AboutSection.tsx + aboutsection.css
-    /skills          -> SkillSection.tsx, SkillGroup.tsx, SkillsCarousel.tsx, SkillItem.tsx
-    /services        -> ServicesSection.tsx + ServiceCard.tsx
-    /projects        -> ProjectsSection.tsx + ProjectCard.tsx
-    /contact         -> ContactSection.tsx
-    /footer          -> Footer.tsx
-    /header          -> Header.tsx, Nav.tsx, MobileMenu.tsx
-
-  /data
-    skills.ts        -> Alphabetized skill groups
-    skillsdata.ts    -> Mapping of skill -> icon path
-    services.ts      -> Service offerings
-    projects.ts      -> Project metadata
-
-  /styles
-    globals.css      -> Base + Tailwind imports
-    tokens.css       -> Design tokens
-    sections.css     -> Section-specific overrides
-
-public/
-  /icons             -> Skill + brand icons
-  /images            -> Project and profile images
-  /sand-bg-*.png     -> Light theme hero backgrounds
-  /charcoal-bg-*.png -> Dark theme hero backgrounds
-
-----------------------------------------------------
-⚙️ Installation & Setup
-----------------------------------------------------
+## ⚙️ Installation & Setup
 
 1. Clone the repository:
-   git clone https://github.com/Sihle-Thwa/portfolio.git
+   git clone <https://github.com/Sihle-Thwa/portfolio.git>
    cd portfolio
 
 2. Install dependencies:
@@ -122,47 +87,49 @@ public/
 3. Run development server:
    npm run dev
 
-   → Visit http://localhost:3000
+   → Visit <http://localhost:3000>
 
 4. Build for production:
    npm run build
    npm start
 
-----------------------------------------------------
-🎨 Theming
-----------------------------------------------------
+---
+
+## 🎨 Theming
 
 - Tokens (`tokens.css`) unify design across both modes.
 
-----------------------------------------------------
-📦 Data-driven Config
-----------------------------------------------------
+---
 
-- **Skills**: Alphabetical by category (skills.ts). 
+## 📦 Data-driven Config
+
+- **Skills**: Alphabetical by category (skills.ts).
 - **Icons**: Defined in skillsdata.ts (skill name → icon path).
 - **Projects/Services**: Easily extended by editing `projects.ts` / `services.ts`.
 
-----------------------------------------------------
-🌐 Deployment
-----------------------------------------------------
+---
+
+## 🌐 Deployment
 
 Deployed via Vercel for optimal Next.js performance:
 
-  https://siphesihle-b-mthethwa.vercel.app
+  <https://siphesihle-b-mthethwa.vercel.app>
 
-----------------------------------------------------
-📜 License
-----------------------------------------------------
+---
 
-This project is open-source and free to use for inspiration 
+## 📜 License
+
+This project is open-source and free to use for inspiration
 and educational purposes. Attribution is appreciated.
 
-----------------------------------------------------
-👤 Author
-----------------------------------------------------
+---
 
-**Siphesihle B. Mthethwa**
-- Location: Johannesburg, South Africa
-- Portfolio: https://siphesihle-b-mthethwa.vercel.app
-- GitHub:   https://github.com/Sihle-Thwa
-- LinkedIn: https://linkedin.com/in/siphesihle-mthethwa
+## 👤 Author
+
+### Siphesihle B. Mthethwa
+
+Full-Stack Developer | Web Engineer | IT Educator  
+
+- Portfolio: [siphesihle-b-mthethwa.vercel.app](https://siphesihle-b-mthethwa.vercel.app)
+- LinkedIn: [linkedin.com/in/siphesihle-mthethwa](https://linkedin.com/in/siphesihle-mthethwa)  
+- GitHub: [@Sihle-Thwa](https://github.com/Sihle-Thwa)  
