@@ -27,5 +27,14 @@ export const projects: Project[] = [
         tags: ["Next.js", "TailwindCSS", "TypeScript"],
         image: "/SBMPortfolio.png",
     },
+    {
+        title: "Open Shop",
+        subtitle: "E-commerce Platform",
+        year: 2025,
+        href: "",
+        codebase: "https://github.com/Sihle-Thwa/OpenShop",
+        tags: ["React.js", "React Router DOM", "Vite.js", "Bootstrap", "Bootstrap", "Bootstrap Icons"],
+        image: "/OpenshopMain.png",
+    },
     // ...additional projects
 ];
