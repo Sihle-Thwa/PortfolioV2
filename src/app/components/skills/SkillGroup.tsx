@@ -8,7 +8,6 @@ interface SkillGroupProps {
     skills: string[];
 }
 
-// SkillMeta represents metadata for a skill, currently only its icon path.
 type SkillMeta = { icon: string };
 
 const normalizeSkillName = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();

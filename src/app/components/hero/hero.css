@@ -8,16 +8,15 @@
 	border-radius: 16px;
 }
 
-/* ====== Custom background deck (no swiper classes) ====== */
+/* ====== Custom background ====== */
 .hero-slider--wrap {
 	position: absolute;
 	inset: 0;
 	overflow: hidden;
-	border-radius: 16px; /* subtle rounding like your previous */
+	border-radius: 16px;
 }
 
 /* A single slide */
-
 .hero-slide {
 	position: absolute;
 	inset: 0;
@@ -359,7 +358,7 @@ html.dark .hero-slide::before {
 		color: var(--colour-fg);
 		width: 100%;
 	}
-	
+
 	.hero-banner {
 		width: 100%;
 		display: flex;
@@ -368,7 +367,6 @@ html.dark .hero-slide::before {
 		font-size: 14px;
 		color: var(--colour-fg);
 	}
-
 }
 
 /* ==========================================================================

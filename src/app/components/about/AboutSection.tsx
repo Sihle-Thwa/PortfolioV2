@@ -2,11 +2,6 @@
 import Image from "next/image";
 import "./aboutsection.css";
 
-/**
- * AboutSection component displays information about the developer,
- * including a brief bio and a profile image.
- * This component does not accept any props.
- */
 export default function AboutSection() {
     return (
 			<section id="about" className="c-about">

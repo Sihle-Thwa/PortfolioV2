@@ -12,14 +12,12 @@ export default function Hero() {
 	const { theme, systemTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
-	// slider state
 	const [active, setActive] = useState(0);
 	const [exiting, setExiting] = useState<number | null>(null);
 	const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 	useEffect(() => setMounted(true), []);
 
-	// slides for each theme
 	const lightSlides: Slide[] = useMemo(
 		() => [
 			{ src: "/sand-bg-1.png", alt: "Background 1", effect: "fade" },
@@ -60,7 +58,6 @@ export default function Hero() {
 		timerRef.current = setInterval(() => {
 			setExiting((prev) => (prev === null ? active : active));
 			setActive((prev) => (prev + 1) % slides.length);
-			// clear "exiting" flag after the CSS animation finishes (match fadeOut duration)
 			setTimeout(() => setExiting(null), 1000);
 		}, DURATION);
 		return () => {
@@ -72,12 +69,10 @@ export default function Hero() {
 
 	return (
 		<section id="home" className="hero-bg--slider" aria-label="Hero slider">
-			{/* Background deck (stacked absolutely) */}
 			<div className="hero-slider--wrap" aria-hidden>
 				{slides.map((s, i) => {
 					const isActive = i === active;
 					const isExiting = exiting === i;
-					// pick effect (fallback 'fade')
 					const effect = s.effect ?? "fade";
 					return (
 						<div
@@ -96,7 +91,6 @@ export default function Hero() {
 				})}
 			</div>
 
-			{/* Foreground content (unchanged, from your current Hero) */}
 			<div className="slider-content">
 				<div className="content-row">
 					<div className="content-column">
@@ -135,7 +129,6 @@ export default function Hero() {
 				</div>
 			</div>
 
-			{/* Bottom strip */}
 			<div className="hero-bottom-wrap">
 				<div className="hero-status">
 					📍 Based in South Africa, Johannesburg
