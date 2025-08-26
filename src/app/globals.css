@@ -28,7 +28,7 @@ body {
 }
 
 .card {
-  background: var(--colour-surface);
+  background: var(--surface-bg);
   border: 1px solid var(--colour-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
