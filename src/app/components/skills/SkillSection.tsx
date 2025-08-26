@@ -8,55 +8,55 @@ import "./skillsection.css";
 type ViewMode = "groups" | "carousel";
 
 export default function SkillSection() {
-    const [view, setView] = useState<ViewMode>("groups");
+    const [viewMode, setViewMode] = useState<ViewMode>("groups");
 
-    return (
-        <section id="skills" className="c-skill">
-            <h2 className="c-skill-title">Skills</h2>
+		return (
+			<section id="skills" className="c-skill">
+				<h2 className="c-skill-title">Skills</h2>
 
-            {/* View toggle */}
-            <fieldset className="c-skill-toggle" aria-label="Skills view">
-                <legend className="sr-only">Choose skills view</legend>
+				{/* View toggle */}
+				<fieldset className="c-skill-toggle" aria-label="Skills view">
+					<legend className="sr-only">Choose skills view</legend>
 
-                <label className="c-skill-toggle-option">
-                    <input
-                        type="radio"
-                        name="skills-view"
-                        value="groups"
-                        checked={view === "groups"}
-                        onChange={() => setView("groups")}
-                    />
-                    <span>Standard</span>
-                </label>
+					<div className="c-skill-toggle-option">
+						<input
+							type="radio"
+							name="skills-view"
+							value="groups"
+							checked={viewMode === "groups"}
+							onChange={() => setViewMode("groups")}
+						/>
+						<span>Standard</span>
+					</div>
 
-                <label className="c-skill-toggle-option">
-                    <input
-                        type="radio"
-                        name="skills-view"
-                        value="carousel"
-                        checked={view === "carousel"}
-                        onChange={() => setView("carousel")}
-                    />
-                    <span>Carousel</span>
-                </label>
-            </fieldset>
+					<label className="c-skill-toggle-option">
+						<input
+							type="radio"
+							name="skills-view"
+							value="carousel"
+							checked={viewMode === "carousel"}
+							onChange={() => setViewMode("carousel")}
+						/>
+						<span>Carousel</span>
+					</label>
+				</fieldset>
 
-            {/* Content */}
-            {view === "groups" ? (
-                <div className="c-skill-grid" role="list">
-                    {skills.map((group) => (
-                        <SkillGroup
-                            key={group.category}
-                            category={group.category}
-                            skills={group.skills}
-                        />
-                    ))}
-                </div>
-            ) : (
-                <div className="c-skill-carousel-wrap">
-                    <SkillsCarousel />
-                </div>
-            )}
-        </section>
-    );
+				{/* Content */}
+				{viewMode === "groups" ? (
+					<div className="c-skill-grid" role="list">
+						{skills.map((group) => (
+							<SkillGroup
+								key={group.category}
+								category={group.category}
+								skills={group.skills}
+							/>
+						))}
+					</div>
+				) : (
+					<div className="c-skill-carousel-wrap">
+						<SkillsCarousel />
+					</div>
+				)}
+			</section>
+		);
 }

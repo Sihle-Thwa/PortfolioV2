@@ -10,6 +10,8 @@ import Footer from "./components/footer/Footer";
 const josefin = Josefin_Sans({
 	subsets: ["latin"],
 });
+// The metadata object defines SEO and social sharing information for the Next.js app.
+// It is used by Next.js to populate <head> tags and Open Graph data for better discoverability.
 export const metadata: Metadata = {
 	title: "Siphesihle B. Mthethwa | Portfolio",
 	description: "Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
@@ -35,8 +37,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning className={josefin.className}>
-			<head />
+		<html lang="en" suppressHydrationWarning className={`${josefin.className}`}>
 			<body>
 				<ClientProviders>
 					<Header />

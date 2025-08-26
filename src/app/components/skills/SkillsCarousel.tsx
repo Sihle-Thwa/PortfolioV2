@@ -64,37 +64,47 @@ function resolveIcon(skill: string): { src: string; alt: string } {
 
 export default function SkillsCarousel() {
     const rows = useMemo(() => {
-        return skillGroups.map((group) => ({
-            key: slugify(group.category) || cryptoRandom(),
-            items: group.skills.map((s) => ({ skill: s, icon: resolveIcon(s) })),
-        }));
-    }, []);
+			return skillGroups.map((group) => ({
+				key:
+					slugify(group.category) !== ""
+						? slugify(group.category)
+						: cryptoRandom(),
+				items: group.skills.map((s) => ({ skill: s, icon: resolveIcon(s) })),
+			}));
+		}, []);
 
-    return (
-        <section className="c-skillscarousel" aria-label="Skills carousel">
-            {rows.map((row) => (
-                <div key={row.key} className="c-row" aria-label="skills">
-                    <div className="c-track" role="list">
-                        {row.items.concat(row.items).map(({ skill, icon }, idx) => (
-                            <div className="c-item" role="listitem" key={`${row.key}-${idx}-${skill}`}>
-                                <span className="c-item-icon" aria-hidden="true">
-                                    <Image
-                                        src={icon.src}
-                                        alt=""
-                                        width={20}
-                                        height={20}
-                                        unoptimized
-                                        className="c-item-iconimg"
-                                    />
-                                </span>
-                                <span className="c-item-label">{skill}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </section>
-    );
+		return (
+			<section className="c-skillscarousel" aria-label="Skills carousel">
+				{rows.map((row) => (
+					<div key={row.key} className="c-row" aria-label="skills">
+						<div className="c-track" role="list">
+							{row.items.concat(row.items).map(({ skill, icon }, idx) => (
+								<div
+									className="c-item"
+									role="listitem"
+									key={`${row.key}-${idx}-${skill}`}
+								>
+									<span className="c-item-icon" aria-hidden="true">
+										{icon.src ? (
+											<Image
+												src={icon.src}
+												alt=""
+												width={20}
+												height={20}
+												className="c-item-iconimg"
+											/>
+										) : (
+											<span className="c-item-icon-placeholder" />
+										)}
+									</span>
+									<span className="c-item-label">{skill}</span>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
+			</section>
+		);
 }
 
 function cryptoRandom() {

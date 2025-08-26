@@ -15,7 +15,7 @@ export default function Hero() {
 	// slider state
 	const [active, setActive] = useState(0);
 	const [exiting, setExiting] = useState<number | null>(null);
-	const timerRef = useRef<number | null>(null);
+	const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 	useEffect(() => setMounted(true), []);
 
@@ -38,7 +38,13 @@ export default function Hero() {
 		[],
 	);
 
-	const activeTheme = theme === "system" ? systemTheme : theme;
+	function getActiveTheme(
+		theme: string | undefined,
+		systemTheme: string | undefined,
+	) {
+		return theme === "system" ? systemTheme : theme;
+	}
+	const activeTheme = getActiveTheme(theme, systemTheme);
 	const slides = (activeTheme === "dark" ? darkSlides : lightSlides) as Slide[];
 
 	// restart index when theme changes so we don't show mismatched frames
@@ -50,17 +56,17 @@ export default function Hero() {
 	// autoplay
 	useEffect(() => {
 		const DURATION = 8000; // time each slide stays visible
-		if (timerRef.current) window.clearInterval(timerRef.current);
-		timerRef.current = window.setInterval(() => {
+		if (timerRef.current) clearInterval(timerRef.current);
+		timerRef.current = setInterval(() => {
 			setExiting((prev) => (prev === null ? active : active));
 			setActive((prev) => (prev + 1) % slides.length);
 			// clear "exiting" flag after the CSS animation finishes (match fadeOut duration)
-			window.setTimeout(() => setExiting(null), 1000);
-		}, DURATION) as unknown as number;
+			setTimeout(() => setExiting(null), 1000);
+		}, DURATION);
 		return () => {
 			if (timerRef.current) window.clearInterval(timerRef.current);
 		};
-	}, [active, slides.length]);
+	}, [slides.length, activeTheme, active]);
 
 	if (!mounted) return <section id="home" className="hero-bg--slider" />;
 

@@ -8,16 +8,17 @@ interface SkillGroupProps {
     skills: string[];
 }
 
+// SkillMeta represents metadata for a skill, currently only its icon path.
 type SkillMeta = { icon: string };
 
-const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
+const normalizeSkillName = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
 
 function useSkillIconIndex() {
     return useMemo(() => {
         const map = new Map<string, SkillMeta>();
         for (const { skill, icon } of skillsData) {
             if (!skill) continue;
-            const key = norm(skill);
+            const key = normalizeSkillName(skill);
             if (!map.has(key) || (map.get(key)?.icon === "" && icon)) {
                 map.set(key, { icon: icon || "" });
             }
@@ -31,14 +32,14 @@ export default function SkillGroup({ category, skills }: SkillGroupProps) {
 
     return (
         <article className="c-skill-group" aria-label={`${category} skills`}>
-            <h3 className="c-skill-group--title">{category}</h3>
+            <div className="c-skill-group--title">{category}</div>
 
             <ul className="c-skill-group--list" role="list">
-                {skills.map((skill) => {
-                    const meta = index.get(norm(skill));
+                {skills.map((skill, idx) => {
+                    const meta = index.get(normalizeSkillName(skill));
                     const iconSrc = meta?.icon || "";
                     return (
-                        <SkillItem key={skill} skill={skill}>
+                        <SkillItem key={`${category}-${skill}-${idx}`} skill={skill}>
                             {iconSrc ? (
                                 <Image
                                     src={iconSrc}

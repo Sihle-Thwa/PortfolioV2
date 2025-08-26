@@ -7,12 +7,18 @@ import ContactSection from "./components/contact/ContactSection";
 
 export default function HomePage() {
   return (
-    <>
-      <section className="container"><Hero /></section>
-      <section className="container"><ProjectsSection /></section>
-      <section className="container"><AboutSection /></section>
-      <section className="container"><SkillSection /></section>
-      <section className="container"><ContactSection /></section>
-    </>
-  );
+		<>
+			{[
+				<Hero key="hero" />,
+				<ProjectsSection key="projects" />,
+				<AboutSection key="about" />,
+				<SkillSection key="skills" />,
+				<ContactSection key="contact" />,
+			].map((Component, idx) => (
+				<section className="container" key={idx}>
+					{Component}
+				</section>
+			))}
+		</>
+	);
 }
