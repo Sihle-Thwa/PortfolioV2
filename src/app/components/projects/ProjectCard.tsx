@@ -40,7 +40,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 						)
 					}
 				>
-					View Code →
+					View Code
 				</Link>
 				<Link
 					href={
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 						)
 					}
 				>
-					View Project →
+					View Project
 				</Link>
 			</div>
 		</article>
