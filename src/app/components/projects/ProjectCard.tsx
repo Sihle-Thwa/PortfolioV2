@@ -25,6 +25,25 @@ export default function ProjectCard({ project }: { project: Project }) {
 				)}
 				<Link
 					href={
+						typeof project.codebase === "string" &&
+						project.codebase.startsWith("http")
+							? project.codebase
+							: "#"
+					}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="c-project-link"
+					aria-disabled={
+						!(
+							typeof project.codebase === "string" &&
+							project.codebase.startsWith("http")
+						)
+					}
+				>
+					View Code →
+				</Link>
+				<Link
+					href={
 						typeof project.href === "string" && project.href.startsWith("http")
 							? project.href
 							: "#"
