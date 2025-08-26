@@ -1,0 +1,292 @@
+.heading-xl-regular {
+	font-size: 60px;
+	line-height: 72px;
+	letter-spacing: -0.02em;
+}
+.heading-xl-medium {
+	font-size: 60px;
+	line-height: 72px;
+	letter-spacing: -0.02em;
+	font-weight: 500;
+}
+
+.heading-xl-semibold {
+	font-size: 60px;
+	line-height: 72px;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.heading-xl-bold {
+	font-size: 60px;
+	line-height: 72px;
+	letter-spacing: -0.02em;
+	font-weight: 700;
+}
+
+/* Heading LG */
+
+.heading-lg-regular {
+	font-size: 48px;
+	line-height: 60px;
+	letter-spacing: -0.02em;
+}
+
+.heading-lg-medium {
+	font-size: 48px;
+	line-height: 60px;
+	letter-spacing: -0.02em;
+	font-weight: 500;
+}
+
+.heading-lg-semibold {
+	font-size: 48px;
+	line-height: 60px;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.heading-lg-bold {
+	font-size: 48px;
+	line-height: 60px;
+	letter-spacing: -0.02em;
+	font-weight: 700;
+}
+
+/* Heading MD */
+.heading-md-regular {
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.heading-md-medium {
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
+	font-weight: 500;
+}
+
+.heading-md-semibold {
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.heading-md-bold {
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
+	font-weight: 700;
+}
+
+/* Heading SM */
+.heading-sm-regular {
+	font-size: 30px;
+	line-height: 38px;
+	letter-spacing: 0em;
+	font-weight: 400;
+}
+
+.heading-sm-medium {
+	font-size: 30px;
+	line-height: 38px;
+	letter-spacing: 0em;
+	font-weight: 500;
+}
+
+.heading-sm-semibold {
+	font-size: 30px;
+	line-height: 38px;
+	letter-spacing: 0em;
+	font-weight: 600;
+}
+
+.heading-sm-bold {
+	font-size: 30px;
+	line-height: 38px;
+	letter-spacing: 0em;
+	font-weight: 700;
+}
+
+/* Heading XS */
+.heading-xs-regular {
+	font-size: 24px;
+	line-height: 34px;
+	letter-spacing: 0em;
+	font-weight: 400;
+}
+
+.heading-xs-medium {
+	font-size: 24px;
+	line-height: 34px;
+	letter-spacing: 0em;
+	font-weight: 500;
+}
+
+.heading-xs-semibold {
+	font-size: 24px;
+	line-height: 34px;
+	letter-spacing: 0em;
+	font-weight: 600;
+}
+
+.heading-xs-bold {
+	font-size: 24px;
+	line-height: 34px;
+	letter-spacing: 0em;
+	font-weight: 700;
+}
+
+/* Text XL */
+
+.text-xl-regular {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 0em;
+}
+
+.text-xl-medium {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 0em;
+	font-weight: 500;
+}
+
+.text-xl-semibold {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 0em;
+	font-weight: 600;
+}
+
+.text-xl-bold {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 0em;
+	font-weight: 700;
+}
+
+/* Text LG */
+
+.text-lg-regular {
+	font-size: 18px;
+	line-height: 28px;
+}
+
+.text-lg-medium {
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 500;
+}
+
+.text-lg-semibold {
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 600;
+}
+
+.text-lg-bold {
+	font-size: 18px;
+	line-height: 28px;
+	font-weight: 700;
+}
+
+/* Text MD */
+.text-md-regular {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.text-md-medium {
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 500;
+}
+
+.text-md-semibold {
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 600;
+}
+
+.text-md-bold {
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 700;
+}
+
+/* Text SM */
+
+.text-sm-regular {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.text-sm-medium {
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 500;
+}
+
+.text-sm-semibold {
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 600;
+}
+
+.text-sm-bold {
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 700;
+}
+
+/* Text XS */
+.text-xs-regular {
+	font-size: 12px;
+	line-height: 22px;
+}
+
+.text-xs-medium {
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: 500;
+}
+
+.text-xs-semibold {
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: 600;
+}
+
+.text-xs-bold {
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: 700;
+}
+
+/* Text XXS */
+.text-xxs-regular {
+	font-size: 10px;
+	line-height: 20px;
+}
+
+.text-xxs-medium {
+	font-size: 10px;
+	line-height: 20px;
+	font-weight: 500;
+}
+
+.text-xxs-semibold {
+	font-size: 10px;
+	line-height: 20px;
+	font-weight: 600;
+}
+
+.text-xxs-bold {
+	font-size: 10px;
+	line-height: 20px;
+	font-weight: 700;
+}

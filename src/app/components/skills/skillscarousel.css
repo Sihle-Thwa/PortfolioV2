@@ -1,0 +1,122 @@
+.c-skillscarousel {
+	display: grid;
+	gap: 0.75rem;
+	padding-block: 1rem;
+	background: var(--colour-bg);
+	overflow-x: hidden;
+}
+
+.c-row {
+	--row-height: 40px;
+	position: relative;
+	height: var(--row-height);
+	overflow: hidden;
+	mask-image: linear-gradient(
+		to right,
+		transparent 0,
+		#000 32px,
+		#000 calc(100% - 32px),
+		transparent 100%
+	);
+}
+
+.c-track {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding-inline: 0.5rem;
+	min-width: max-content;
+	animation: kc-marquee 24s linear infinite;
+}
+
+.c-row:hover .c-track {
+	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.c-track {
+		animation: none;
+		gap: 0.75rem;
+	}
+}
+
+.c-item {
+	--pill-bg: var(--colour-surface);
+	--pill-fg: var(--colour-fg);
+	--pill-bd: var(--colour-border);
+
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	height: calc(var(--row-height) - 8px);
+	padding-inline: 0.75rem;
+	border-radius: 999px;
+
+	background: var(--pill-bg);
+	color: var(--pill-fg);
+	border: 1px solid var(--pill-bd);
+	box-shadow: var(--shadow-sm);
+	white-space: nowrap;
+
+	transform: translateZ(0);
+	transition: transform 0.2s ease, box-shadow 0.2s ease,
+		background-color 0.2s ease, border-color 0.2s ease;
+}
+.c-item:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-md);
+	border-color: color-mix(
+		in oklab,
+		var(--colour-border) 40%,
+		var(--colour-primary)
+	);
+}
+
+.c-item-icon {
+	display: inline-grid;
+	place-items: center;
+	width: 20px;
+	height: 20px;
+}
+.c-item-iconimg {
+	width: 20px;
+	height: 20px;
+	object-fit: contain;
+	filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+/* Label */
+.c-item-label {
+	font-size: 16px;
+	line-height: 1;
+	letter-spacing: 0.01em;
+}
+
+/* Seamless looping: translate one full set width to the left.
+   Because we duplicate the list in TSX, this appears continuous. */
+@keyframes kc-marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+/* Density adjustments on larger screens */
+@media (min-width: 768px) {
+	.c-skillscarousel {
+		gap: 1rem;
+	}
+	.c-row {
+		--row-height: 44px;
+	}
+	.c-item-label {
+		font-size: 1rem;
+	}
+}
+
+html.dark .c-item {
+	--pill-bg: color-mix(in oklab, var(--colour-surface) 92%, black);
+}

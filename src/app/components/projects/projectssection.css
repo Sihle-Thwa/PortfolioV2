@@ -1,0 +1,36 @@
+.c-projects {
+	padding: 4rem 0;
+	background: var(--colour-bg);
+	color: var(--colour-fg);
+}
+
+.c-projects-title {
+	text-align: center;
+	color: var(--colour-primary);
+	font-size: 36px;
+	line-height: 44px;
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.c-projects-grid {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+@media (max-width: 768px) {
+	.c-projects-grid {
+		display: flex;
+		flex-direction: column;
+	}
+	.c-projects-title {
+		color: var(--colour-primary);
+		font-size: 30px;
+		line-height: 38px;
+		letter-spacing: 0em;
+		font-weight: 600;
+		margin-bottom: 1rem;
+	}
+}

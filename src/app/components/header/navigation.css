@@ -1,0 +1,17 @@
+.c-nav {
+	display: flex;
+	gap: 1rem;
+}
+
+.c-nav-link {
+	color: var(--colour-fg-muted);
+	transition: color 0.2s ease;
+}
+
+.c-nav-link:hover {
+	color: var(--colour-primary);
+}
+
+html.dark .c-nav-link {
+	color: var(--colour-fg-muted);
+}
