@@ -104,11 +104,11 @@ export default function Hero() {
 							<Typewriter>Siphesihle B. Mthethwa</Typewriter>
 						</h1>
 						<p className="slide-subheading">
-							<span className="slide-subheading-token">Turning</span> hero ideas
-							into reality.
-							<br />
 							<span className="slide-subheading-token">Building</span> better
 							web experiences.
+							<br />
+							<span className="slide-subheading-token">Turning</span> client
+							ideas into reality.
 							<br />
 							<span className="slide-subheading-token">Teaching</span> IT and
 							Comp Sci.
