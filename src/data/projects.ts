@@ -20,7 +20,7 @@ export const projects: Project[] = [
         title: "Siphesihle B. Mthethwa Portfolio",
         subtitle: "Personal Portfolio Website",
         year: 2025,
-        href: "https://example.com/ui-portfolio",
+        href: "https://portfolio-sbm-portfolio.vercel.app/",
         tags: ["Next.js", "TailwindCSS", "TypeScript"],
         image: "/SBMPortfolio.png",
     },
