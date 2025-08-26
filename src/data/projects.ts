@@ -30,7 +30,7 @@ export const projects: Project[] = [
     {
         title: "Open Shop",
         subtitle: "E-commerce Platform",
-        year: 2025,
+        year: 2024,
         href: "",
         codebase: "https://github.com/Sihle-Thwa/OpenShop",
         tags: ["React.js", "React Router DOM", "Vite.js", "Bootstrap", "Bootstrap", "Bootstrap Icons"],
