@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ".//navigation.css";
+import "./navigation.css";
 
 const NAV_LINKS = [
 	{ href: "#about", label: "About" },

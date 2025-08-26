@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ".//contactsection.css";
+import "./contactsection.css";
 import Image from "next/image";
 
 export default function ContactSection() {

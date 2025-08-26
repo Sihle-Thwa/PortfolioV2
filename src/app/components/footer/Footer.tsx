@@ -1,4 +1,4 @@
-import ".//footer.css";
+import "./footer.css";
 
 const footNavLinks = [
 	{ href: "#home", label: "Home" },

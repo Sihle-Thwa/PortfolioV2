@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import ".//mobilemenu.css";
+import "./mobilemenu.css";
 
 interface MobileMenuProps {
 	onClose: () => void;

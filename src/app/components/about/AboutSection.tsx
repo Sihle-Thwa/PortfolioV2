@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import ".//aboutsection.css";
+import "./aboutsection.css";
 
 /**
  * AboutSection component displays information about the developer,

@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import Navigation from ".//Navigation";
+import Navigation from "./Navigation";
 import dynamic from "next/dynamic";
-import ".//header.css";
+import "./header.css";
 import Image from "next/image";
 
 const MobileMenu = dynamic(() => import("./MobileMenu"));
