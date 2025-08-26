@@ -10,11 +10,10 @@ export default function ProjectCard({ project }: { project: Project }) {
 				<Image
 					src={project.image}
 					alt={project.title}
-					width={600}
-					height={400}
+					width={500}
+					height={500}
 					className="c-project-media"
 					priority
-					sizes="(max-width: 600px) 100vw, 600px"
 				/>
 			)}
 			<div className="c-project-body">
