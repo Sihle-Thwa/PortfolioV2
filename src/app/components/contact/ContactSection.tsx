@@ -18,90 +18,115 @@ export default function ContactSection() {
     });
 
     return (
-        <section id="contact" className="c-contact">
-            <div className="c-contact-title">Let’s Make It Happen</div>
-            <div className="c-contact-subtitle">
-                Feel free to reach out via the form below or connect with me on social
-                media.
-            </div>
+			<section id="contact" className="c-contact">
+				<div className="c-contact-title">Let’s Make It Happen</div>
+				<div className="c-contact-subtitle">
+					Feel free to reach out via the form below or connect with me on social
+					media.
+				</div>
 
-            <form className="c-contact-form">
-                <input
-                    type="text"
-                    name="name"
-                    autoComplete="name"
-                    placeholder="Your Name"
-                    className="c-contact-input"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder="Your Email"
-                    className="c-contact-input"
-                />
-                <textarea
-                    name="message"
-                    autoComplete="message"
-                    placeholder="Your Message"
-                    className="c-contact-textarea"
-                />
-                <button type="submit" className="c-contact-submit">
-                    Send Message
-                </button>
-            </form>
+				<form
+					className="c-contact-form"
+					onSubmit={async (e) => {
+						e.preventDefault();
+						const form = e.currentTarget;
+						const data = {
+							name: (form.elements.namedItem("name") as HTMLInputElement).value,
+							email: (form.elements.namedItem("email") as HTMLInputElement)
+								.value,
+							message: (
+								form.elements.namedItem("message") as HTMLTextAreaElement
+							).value,
+						};
 
-            <div className="c-contact-meta">
-                <div className="mr-4">📍 Local Time: {timeString}</div>
-            </div>
+						const res = await fetch("/api/contact", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify(data),
+						});
 
-            <div className="c-contact-links" suppressHydrationWarning>
-                <a
-                    href="https://linkedin.com/in/siphesihle-mthethwa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
-                >
-                    LinkedIn
-                </a>
-                <a
-                    href="https://github.com/Sihle-Thwa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
+						if (res.ok) {
+							alert("✅ Message sent successfully!");
+							form.reset();
+						} else {
+							alert("❌ Failed to send message. Please try again.");
+						}
+					}}
+				>
+					<input
+						type="text"
+						name="name"
+						autoComplete="name"
+						placeholder="Your Name"
+						className="c-contact-input"
+					/>
+					<input
+						type="email"
+						name="email"
+						autoComplete="email"
+						placeholder="Your Email"
+						className="c-contact-input"
+					/>
+					<textarea
+						name="message"
+						autoComplete="message"
+						placeholder="Your Message"
+						className="c-contact-textarea"
+					/>
+					<button type="submit" className="c-contact-submit">
+						Send Message
+					</button>
+				</form>
 
-                >
-                    GitHub
-                </a>
-                <a
-                    href="https://instagram.com/username"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
+				<div className="c-contact-meta">
+					<div className="mr-4">📍 Local Time: {timeString}</div>
+				</div>
 
-                >
-                    Instagram
-                </a>
-            </div>
-            <div className="c-contact-nav-cta">
-                <a
-                    href="#top"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="c-contact-link"
-                >
-                    <div className="c-contact-backtotop animate-bounce">
-                        <Image
-                            src="/icons/uparrow.svg"
-                            alt="Back to top"
-                            width={48}
-                            height={48}
-                        />
-                    </div>
-                </a>
-            </div>
-        </section>
-    );
+				<div className="c-contact-links" suppressHydrationWarning>
+					<a
+						href="https://linkedin.com/in/siphesihle-mthethwa"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="c-contact-link"
+					>
+						LinkedIn
+					</a>
+					<a
+						href="https://github.com/Sihle-Thwa"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="c-contact-link"
+					>
+						GitHub
+					</a>
+					<a
+						href="https://instagram.com/username"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="c-contact-link"
+					>
+						Instagram
+					</a>
+				</div>
+				<div className="c-contact-nav-cta">
+					<a
+						href="#top"
+						onClick={(e) => {
+							e.preventDefault();
+							window.scrollTo({ top: 0, behavior: "smooth" });
+						}}
+						className="c-contact-link"
+					>
+						<div className="c-contact-backtotop animate-bounce">
+							<Image
+								src="/icons/uparrow.svg"
+								alt="Back to top"
+								width={48}
+								height={48}
+							/>
+						</div>
+					</a>
+				</div>
+			</section>
+		);
 }
