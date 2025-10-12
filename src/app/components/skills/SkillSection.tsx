@@ -18,7 +18,7 @@ export default function SkillSection() {
 				<fieldset className="c-skill-toggle" aria-label="Skills view">
 					<legend className="sr-only">Choose skills view</legend>
 
-					<div className="c-skill-toggle-option">
+					<label className="c-skill-toggle-option">
 						<input
 							type="radio"
 							name="skills-view"
@@ -27,7 +27,7 @@ export default function SkillSection() {
 							onChange={() => setViewMode("groups")}
 						/>
 						<span>Standard</span>
-					</div>
+					</label>
 
 					<label className="c-skill-toggle-option">
 						<input
