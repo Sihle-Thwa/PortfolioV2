@@ -1,8 +1,3 @@
-// Ensure you have GMAIL_USER and GMAIL_PASS set in your .env.local file at the project root:
-// GMAIL_USER=your_gmail_address@gmail.com
-// GMAIL_PASS=your_gmail_app_password
-
-// File: src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
