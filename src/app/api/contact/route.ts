@@ -1,3 +1,8 @@
+// Ensure you have GMAIL_USER and GMAIL_PASS set in your .env.local file at the project root:
+// GMAIL_USER=your_gmail_address@gmail.com
+// GMAIL_PASS=your_gmail_app_password
+
+// File: src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -6,7 +11,28 @@ export async function POST(req: Request) {
         const { name, email, message } = await req.json();
 
         if (!name || !email || !message) {
-            return NextResponse.json({ ok: false, error: "Missing fields" }, { status: 400 });
+            return NextResponse.json(
+                { ok: false, error: "Missing required fields" },
+                { status: 400 }
+            );
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return NextResponse.json(
+                { ok: false, error: "Invalid email format" },
+                { status: 400 }
+            );
+        }
+
+        // Check for required environment variables
+        if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+            console.error("Missing email configuration");
+            return NextResponse.json(
+                { ok: false, error: "Server configuration error" },
+                { status: 500 }
+            );
         }
 
         const transporter = nodemailer.createTransport({
@@ -21,13 +47,23 @@ export async function POST(req: Request) {
             from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
             to: "sbcmthethwa79@gmail.com",
             replyTo: email,
-            subject: `New message from ${name}`,
+            subject: `New Portfolio Message from ${name}`,
             text: `From: ${name} <${email}>\n\n${message}`,
+            html: `
+                <h3>New Portfolio Contact Message</h3>
+                <p><strong>From:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Message:</strong></p>
+                <p>${message.replace(/\n/g, '<br>')}</p>
+            `,
         });
 
         return NextResponse.json({ ok: true });
     } catch (err) {
-        console.error("Email error:", err);
-        return NextResponse.json({ ok: false, error: "Failed to send" }, { status: 500 });
+        console.error("Email send error:", err);
+        return NextResponse.json(
+            { ok: false, error: "Failed to send message" },
+            { status: 500 }
+        );
     }
 }
