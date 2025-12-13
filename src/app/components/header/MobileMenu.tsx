@@ -5,11 +5,7 @@ import "./mobilemenu.css";
 interface MobileMenuProps {
 	onClose: () => void;
 }
-/**
- * MobileMenu component displays a mobile navigation panel.
- * @param {Object} props - Component props.
- * @param {() => void} props.onClose - Callback to close the menu.
- */
+
 export default function MobileMenu({ onClose }: MobileMenuProps) {
 	return (
 		<div className="c-mm-backdrop" onClick={onClose}>
@@ -26,7 +22,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
 						Services
 					</Link>
 					<Link href="#projects" onClick={onClose} className="c-mm-link">
-						Works
+						Projects
 					</Link>
 					<Link href="#about" onClick={onClose} className="c-mm-link">
 						About

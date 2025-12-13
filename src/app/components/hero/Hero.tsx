@@ -45,7 +45,6 @@ export default function Hero() {
 	const activeTheme = getActiveTheme(theme, systemTheme);
 	const slides = (activeTheme === "dark" ? darkSlides : lightSlides) as Slide[];
 
-	// restart index when theme changes so we don't show mismatched frames
 	useEffect(() => {
 		setActive(0);
 		setExiting(null);
@@ -53,7 +52,7 @@ export default function Hero() {
 
 	// autoplay
 	useEffect(() => {
-		const DURATION = 8000; // time each slide stays visible
+		const DURATION = 8000;
 		if (timerRef.current) clearInterval(timerRef.current);
 		timerRef.current = setInterval(() => {
 			setExiting((prev) => (prev === null ? active : active));

@@ -1,32 +1,32 @@
 {
-	"name": "sbm-portfolio",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@sendgrid/mail": "^8.1.6",
-		"next": "15.4.7",
-		"next-themes": "^0.4.6",
-		"nodemailer": "^7.0.6",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1"
-	},
-	"devDependencies": {
-		"@eslint/eslintrc": "^3",
-		"@ljharb/tsconfig": "^0.3.2",
-		"@tailwindcss/postcss": "^4",
-		"@types/node": "^20.19.21",
-		"@types/nodemailer": "^7.0.1",
-		"@types/react": "^19",
-		"@types/react-dom": "^19",
-		"eslint": "^9",
-		"eslint-config-next": "15.4.7",
-		"tailwindcss": "^4",
-		"typescript": "^5"
-	}
+  "name": "sbm-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
+    "next": "15.4.10",
+    "next-themes": "^0.4.6",
+    "nodemailer": "^7.0.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@ljharb/tsconfig": "^0.3.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20.19.21",
+    "@types/nodemailer": "^7.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^15.4.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
 }
