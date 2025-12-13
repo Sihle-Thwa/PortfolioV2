@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 			"Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
 		url: "https://siphesihle-b-mthethwa.vercel.app",
 		siteName: "SBM Portfolio",
-		locale: "en_US",
+		locale: "en_UK",
 		type: "website",
 	},
 };
@@ -36,7 +36,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning className={`${josefin.className}`}>
+		<html lang="en" className={`${josefin.className}`}>
 			<body>
 				<ClientProviders>
 					<Header />

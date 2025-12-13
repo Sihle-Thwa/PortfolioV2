@@ -1,132 +1,156 @@
+'use client';
 import { useEffect, useState } from "react";
 import "./contactsection.css";
 import Image from "next/image";
+import uparrow from "../../../public/icons/uparrow.svg";
 
 export default function ContactSection() {
-    const [currentTime, setCurrentTime] = useState(new Date());
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTime(new Date());
-        }, 60000);
-        return () => clearInterval(timer);
-    }, []);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-    const timeString = currentTime.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
 
-    return (
-			<section id="contact" className="c-contact">
-				<div className="c-contact-title">Let’s Make It Happen</div>
-				<div className="c-contact-subtitle">
-					Feel free to reach out via the form below or connect with me on social
-					media.
-				</div>
+  const timeString = currentTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-				<form
-					className="c-contact-form"
-					onSubmit={async (e) => {
-						e.preventDefault();
-						const form = e.currentTarget;
-						const data = {
-							name: (form.elements.namedItem("name") as HTMLInputElement).value,
-							email: (form.elements.namedItem("email") as HTMLInputElement)
-								.value,
-							message: (
-								form.elements.namedItem("message") as HTMLTextAreaElement
-							).value,
-						};
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
 
-						const res = await fetch("/api/contact", {
-							method: "POST",
-							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify(data),
-						});
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setStatus("sending");
 
-						if (res.ok) {
-							alert("✅ Message sent successfully!");
-							form.reset();
-						} else {
-							alert("❌ Failed to send message. Please try again.");
-						}
-					}}
-				>
-					<input
-						type="text"
-						name="name"
-						autoComplete="name"
-						placeholder="Your Name"
-						className="c-contact-input"
-					/>
-					<input
-						type="email"
-						name="email"
-						autoComplete="email"
-						placeholder="Your Email"
-						className="c-contact-input"
-					/>
-					<textarea
-						name="message"
-						autoComplete="message"
-						placeholder="Your Message"
-						className="c-contact-textarea"
-					/>
-					<button type="submit" className="c-contact-submit">
-						Send Message
-					</button>
-				</form>
+    try {
+      const res = await fetch("/api/contact/route.ts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-				<div className="c-contact-meta">
-					<div className="mr-4">📍 Local Time: {timeString}</div>
-				</div>
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
 
-				<div className="c-contact-links" suppressHydrationWarning>
-					<a
-						href="https://linkedin.com/in/siphesihle-mthethwa"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="c-contact-link"
-					>
-						LinkedIn
-					</a>
-					<a
-						href="https://github.com/Sihle-Thwa"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="c-contact-link"
-					>
-						GitHub
-					</a>
-					<a
-						href="https://instagram.com/username"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="c-contact-link"
-					>
-						Instagram
-					</a>
-				</div>
-				<div className="c-contact-nav-cta">
-					<a
-						href="#top"
-						onClick={(e) => {
-							e.preventDefault();
-							window.scrollTo({ top: 0, behavior: "smooth" });
-						}}
-						className="c-contact-link"
-					>
-						<div className="c-contact-backtotop animate-bounce">
-							<Image
-								src="/icons/uparrow.svg"
-								alt="Back to top"
-								width={48}
-								height={48}
-							/>
-						</div>
-					</a>
-				</div>
-			</section>
-		);
+  return (
+    <section id="contact" className="c-contact">
+      <div className="c-contact-title">Let’s Make It Happen</div>
+      <div className="c-contact-subtitle">
+        Feel free to reach out via the form below or connect with me on social
+        media.
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          autoComplete="name"
+          placeholder="Your Full Name"
+          className="c-contact-input"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          autoComplete="email"
+          placeholder="Your Email"
+          className="c-contact-input"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+        />
+        <textarea
+          name="message"
+          autoComplete="message"
+          placeholder="Your Message"
+          className="c-contact-textarea"
+          value={formData.message}
+          onChange={(e) =>
+            setFormData({ ...formData, message: e.target.value })
+          }
+          required
+        />
+        <button
+          type="submit"
+          className="c-contact-submit"
+          disabled={status === "sending"}
+        >
+          {status === "sending" ? "Sending..." : "Send Message"}{" "}
+        </button>
+
+        {status === "success" && <p>Message sent successfully!</p>}
+        {status === "error" && <p>Failed to send. Please try again.</p>}
+      </form>
+
+      <div className="c-contact-meta">
+        <div className="mr-4">📍 Local Time: {timeString}</div>
+      </div>
+
+      <div className="c-contact-links" suppressHydrationWarning>
+        <a
+          href="https://linkedin.com/in/siphesihle-mthethwa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="c-contact-link"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/Sihle-Thwa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="c-contact-link"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://instagram.com/username"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="c-contact-link"
+        >
+          Instagram
+        </a>
+      </div>
+      <div className="c-contact-nav-cta">
+        <a
+          href="#top"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="c-contact-link"
+        >
+          <div className="c-contact-backtotop animate-bounce">
+            <Image
+              src={uparrow}
+              alt="Back to Top"
+              className="c-contact-backtotop-icon"
+              priority
+            />
+          </div>
+        </a>
+      </div>
+    </section>
+  );
 }
