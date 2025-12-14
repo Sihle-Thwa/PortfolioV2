@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import "./styles/tokens.css";
 import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
 
 import ClientProviders from "./ClientProviders";
 
 const josefin = Josefin_Sans({
-  subsets: ["latin"],
+  subsets: ["latin"], variable: "--font-josefin", weight: ["300","400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

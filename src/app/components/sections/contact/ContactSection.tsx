@@ -1,6 +1,6 @@
 "use client";
-import ContactForm from '../../forms/contact-form';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import ContactForm from "../../forms/contact-form";
+import { Mail, MapPin } from "lucide-react";
 
 export default function ContactSection() {
   return (
@@ -23,29 +23,17 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    
-                     <a href="mailto:your.email@example.com"
+
+                    <a
+                      href="mailto:your.email@example.com"
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600"
                     >
-                      your.email@example.com
+                      infosbmconcepts@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                    <Phone className="text-blue-600" size={24} />
-                  </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    
-                      <a  href="tel:+1234567890"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600"
-                    >
-                      +1 (234) 567-890
-                    </a>
-                  </div>
-                </div>
+                
 
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
@@ -54,7 +42,7 @@ export default function ContactSection() {
                   <div>
                     <p className="font-medium">Location</p>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Your City, Country
+                      Johannesburg, South Africa
                     </p>
                   </div>
                 </div>

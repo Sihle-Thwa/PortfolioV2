@@ -1,292 +1,102 @@
-.heading-xl-regular {
-	font-size: 60px;
-	line-height: 72px;
-	letter-spacing: -0.02em;
-}
-.heading-xl-medium {
-	font-size: 60px;
-	line-height: 72px;
-	letter-spacing: -0.02em;
-	font-weight: 500;
-}
+:root {
+  /* Font Sizes */
+  /* Display Sizes */
+  --display-size-lg: 80px;
+  --display-size-md: 72px;
+  --display-size-sm: 60px;
+  --display-size-xs: 48px;
 
-.heading-xl-semibold {
-	font-size: 60px;
-	line-height: 72px;
-	letter-spacing: -0.02em;
-	font-weight: 600;
-}
+  /* Headline Sizes */
+  --headline-size-lg: 36px;
+  --headline-size-md: 32px;
+  --headline-size-sm: 30px;
+  --headline-size-xs: 24px;
 
-.heading-xl-bold {
-	font-size: 60px;
-	line-height: 72px;
-	letter-spacing: -0.02em;
-	font-weight: 700;
-}
+  /* Title Sizes */
+  --title-size-lg: 28px;
+  --title-size-md: 24px;
+  --title-size-default: 24px;
+  --title-size-sm: 20px;
 
-/* Heading LG */
+  /* Subtitle Sizes */
+  --subtitle-size-lg: 20px;
+  --subtitle-size-md: 18px;
+  --subtitle-size-default: 16px;
+  --subtitle-size-sm: 14px;
 
-.heading-lg-regular {
-	font-size: 48px;
-	line-height: 60px;
-	letter-spacing: -0.02em;
-}
+  /* Heading Sizes */
+  --heading-size-lg: 22px;
+  --heading-size-md: 20px;
+  --heading-size-default: 18px;
+  --heading-size-sm: 16px;
 
-.heading-lg-medium {
-	font-size: 48px;
-	line-height: 60px;
-	letter-spacing: -0.02em;
-	font-weight: 500;
-}
+  /* Body Sizes */
+  --body-size-lg: 18px;
+  --body-size-md: 16px;
+  --body-size-default: 16px;
+  --body-size-sm: 14px;
 
-.heading-lg-semibold {
-	font-size: 48px;
-	line-height: 60px;
-	letter-spacing: -0.02em;
-	font-weight: 600;
-}
+  /*Table Sizes*/
+  --table-size-lg: 16px;
+  --table-size-md: 14px;
+  --table-size-default: 14px;
+  --table-size-sm: 12px;
 
-.heading-lg-bold {
-	font-size: 48px;
-	line-height: 60px;
-	letter-spacing: -0.02em;
-	font-weight: 700;
-}
+  /* Caption Sizes */
+  --caption-size-lg: 14px;
+  --caption-size-md: 12px;
+  --caption-size-default: 12px;
+  --caption-size-sm: 10px;
 
-/* Heading MD */
-.heading-md-regular {
-	font-size: 36px;
-	line-height: 44px;
-	letter-spacing: -0.02em;
-	font-weight: 600;
-}
+  /* Overline Sizes */
+  --overline-size-default: 12px;
+  --overline-size-sm: 10px;
 
-.heading-md-medium {
-	font-size: 36px;
-	line-height: 44px;
-	letter-spacing: -0.02em;
-	font-weight: 500;
-}
+  /* Label Sizes */
+  --label-size-lg: 14px;
+  --label-size-md: 12px;
+  --label-size-default: 12px;
+  --label-size-sm: 10px;
 
-.heading-md-semibold {
-	font-size: 36px;
-	line-height: 44px;
-	letter-spacing: -0.02em;
-	font-weight: 600;
-}
+  /* Small Print Sizes */
+  --small-print-size-lg: 14px;
+  --small-print-size-md: 12px;
+  --small-print-size-default: 12px;
+  --small-print-size-sm: 10px;
 
-.heading-md-bold {
-	font-size: 36px;
-	line-height: 44px;
-	letter-spacing: -0.02em;
-	font-weight: 700;
-}
+  /* Button Font Sizes */
+  --button-size-lg: 18px;
+  --button-size-md: 16px;
+  --button-size-default: 16px;
+  --button-size-sm: 14px;
 
-/* Heading SM */
-.heading-sm-regular {
-	font-size: 30px;
-	line-height: 38px;
-	letter-spacing: 0em;
-	font-weight: 400;
-}
+  /**Radio Button Font Sizes**/
+  --radio-size-default: 14px;
+  --radio-size-sm: 12px;
 
-.heading-sm-medium {
-	font-size: 30px;
-	line-height: 38px;
-	letter-spacing: 0em;
-	font-weight: 500;
-}
+  /* Checkbox Font Sizes */
+  --checkbox-size-lg: 14px;
+  --checkbox-size-md: 12px;
+  --checkbox-size-default: 14px;
+  --checkbox-size-sm: 12px;
 
-.heading-sm-semibold {
-	font-size: 30px;
-	line-height: 38px;
-	letter-spacing: 0em;
-	font-weight: 600;
-}
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-.heading-sm-bold {
-	font-size: 30px;
-	line-height: 38px;
-	letter-spacing: 0em;
-	font-weight: 700;
-}
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  --line-height-extra-loose: 2.5;
 
-/* Heading XS */
-.heading-xs-regular {
-	font-size: 24px;
-	line-height: 34px;
-	letter-spacing: 0em;
-	font-weight: 400;
-}
-
-.heading-xs-medium {
-	font-size: 24px;
-	line-height: 34px;
-	letter-spacing: 0em;
-	font-weight: 500;
-}
-
-.heading-xs-semibold {
-	font-size: 24px;
-	line-height: 34px;
-	letter-spacing: 0em;
-	font-weight: 600;
-}
-
-.heading-xs-bold {
-	font-size: 24px;
-	line-height: 34px;
-	letter-spacing: 0em;
-	font-weight: 700;
-}
-
-/* Text XL */
-
-.text-xl-regular {
-	font-size: 20px;
-	line-height: 30px;
-	letter-spacing: 0em;
-}
-
-.text-xl-medium {
-	font-size: 20px;
-	line-height: 30px;
-	letter-spacing: 0em;
-	font-weight: 500;
-}
-
-.text-xl-semibold {
-	font-size: 20px;
-	line-height: 30px;
-	letter-spacing: 0em;
-	font-weight: 600;
-}
-
-.text-xl-bold {
-	font-size: 20px;
-	line-height: 30px;
-	letter-spacing: 0em;
-	font-weight: 700;
-}
-
-/* Text LG */
-
-.text-lg-regular {
-	font-size: 18px;
-	line-height: 28px;
-}
-
-.text-lg-medium {
-	font-size: 18px;
-	line-height: 28px;
-	font-weight: 500;
-}
-
-.text-lg-semibold {
-	font-size: 18px;
-	line-height: 28px;
-	font-weight: 600;
-}
-
-.text-lg-bold {
-	font-size: 18px;
-	line-height: 28px;
-	font-weight: 700;
-}
-
-/* Text MD */
-.text-md-regular {
-	font-size: 16px;
-	line-height: 26px;
-}
-
-.text-md-medium {
-	font-size: 16px;
-	line-height: 26px;
-	font-weight: 500;
-}
-
-.text-md-semibold {
-	font-size: 16px;
-	line-height: 26px;
-	font-weight: 600;
-}
-
-.text-md-bold {
-	font-size: 16px;
-	line-height: 26px;
-	font-weight: 700;
-}
-
-/* Text SM */
-
-.text-sm-regular {
-	font-size: 14px;
-	line-height: 24px;
-}
-
-.text-sm-medium {
-	font-size: 14px;
-	line-height: 24px;
-	font-weight: 500;
-}
-
-.text-sm-semibold {
-	font-size: 14px;
-	line-height: 24px;
-	font-weight: 600;
-}
-
-.text-sm-bold {
-	font-size: 14px;
-	line-height: 24px;
-	font-weight: 700;
-}
-
-/* Text XS */
-.text-xs-regular {
-	font-size: 12px;
-	line-height: 22px;
-}
-
-.text-xs-medium {
-	font-size: 12px;
-	line-height: 22px;
-	font-weight: 500;
-}
-
-.text-xs-semibold {
-	font-size: 12px;
-	line-height: 22px;
-	font-weight: 600;
-}
-
-.text-xs-bold {
-	font-size: 12px;
-	line-height: 22px;
-	font-weight: 700;
-}
-
-/* Text XXS */
-.text-xxs-regular {
-	font-size: 10px;
-	line-height: 20px;
-}
-
-.text-xxs-medium {
-	font-size: 10px;
-	line-height: 20px;
-	font-weight: 500;
-}
-
-.text-xxs-semibold {
-	font-size: 10px;
-	line-height: 20px;
-	font-weight: 600;
-}
-
-.text-xxs-bold {
-	font-size: 10px;
-	line-height: 20px;
-	font-weight: 700;
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 0.5px;
+  --letter-spacing-wider: 1px;
 }

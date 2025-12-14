@@ -50,7 +50,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
-          Name
+          Full Name
         </label>
         <input
           {...register("name")}
