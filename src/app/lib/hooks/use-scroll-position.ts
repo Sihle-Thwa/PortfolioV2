@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { throttle } from '../utils';
+import { useEffect, useState } from "react";
+import { throttle } from "../utils";
 
 interface ScrollPosition {
   x: number;
@@ -22,13 +22,13 @@ export function useScrollPosition() {
       });
     }, 100);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     // Get initial position
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -43,13 +43,13 @@ export function useScrollPast(threshold: number = 100) {
       setHasScrolledPast(window.scrollY > threshold);
     }, 100);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     // Check initial position
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [threshold]);
 
@@ -57,7 +57,7 @@ export function useScrollPast(threshold: number = 100) {
 }
 
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     null
   );
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -67,18 +67,18 @@ export function useScrollDirection() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY) {
-        setScrollDirection('down');
+        setScrollDirection("down");
       } else if (currentScrollY < lastScrollY) {
-        setScrollDirection('up');
+        setScrollDirection("up");
       }
 
       setLastScrollY(currentScrollY);
     }, 100);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
@@ -100,13 +100,13 @@ export function useScrollProgress() {
       setScrollProgress(Math.min(Math.max(progress, 0), 100));
     }, 100);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     // Get initial progress
     handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

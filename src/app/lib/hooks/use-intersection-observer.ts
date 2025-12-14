@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface UseIntersectionObserverOptions {
   threshold?: number | number[];
@@ -15,7 +15,7 @@ export function useIntersectionObserver<T extends Element>(
   const {
     threshold = 0,
     root = null,
-    rootMargin = '0px',
+    rootMargin = "0px",
     freezeOnceVisible = false,
   } = options;
 
@@ -64,7 +64,7 @@ export function useIsVisible<T extends Element>(
 }
 
 export function useScrollAnimation<T extends Element>(
-  animationClass: string = 'animate-fade-in'
+  animationClass: string = "animate-fade-in"
 ) {
   const { isVisible, ref } = useIntersectionObserver<T>({
     threshold: 0.1,
@@ -81,6 +81,6 @@ export function useScrollAnimation<T extends Element>(
 
   return {
     ref,
-    className: shouldAnimate ? animationClass : 'opacity-0',
+    className: shouldAnimate ? animationClass : "opacity-0",
   };
 }

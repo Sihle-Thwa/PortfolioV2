@@ -9,8 +9,8 @@ export const contactSchema = z.object({
   email: z
     .string()
     .min(1, "Email is required")
-    .email("Invalid email address")
-    .toLowerCase(),
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+    .transform((s) => s.toLowerCase()),
   message: z
     .string()
     .min(10, "Message must be at least 10 characters")
@@ -39,9 +39,42 @@ export const projectSchema = z.object({
     .min(20, "Description must be at least 20 characters")
     .max(500, "Description must be less than 500 characters"),
   tags: z.array(z.string()).min(1, "At least one tag is required").max(10),
-  github: z.string().url("Invalid GitHub URL").optional(),
-  demo: z.string().url("Invalid demo URL").optional(),
-  image: z.string().url("Invalid image URL").optional(),
+  github: z
+    .string()
+    .optional()
+    .refine((val) => {
+      if (!val) return true;
+      try {
+        new URL(val);
+        return true;
+      } catch {
+        return false;
+      }
+    }, { message: "Invalid GitHub URL" }),
+  demo: z
+    .string()
+    .optional()
+    .refine((val) => {
+      if (!val) return true;
+      try {
+        new URL(val);
+        return true;
+      } catch {
+        return false;
+      }
+    }, { message: "Invalid demo URL" }),
+  image: z
+    .string()
+    .optional()
+    .refine((val) => {
+      if (!val) return true;
+      try {
+        new URL(val);
+        return true;
+      } catch {
+        return false;
+      }
+    }, { message: "Invalid image URL" }),
 });
 
 export type ProjectFormData = z.infer<typeof projectSchema>;
@@ -51,7 +84,10 @@ export const commentSchema = z.object({
     .string()
     .min(2, "Name must be at least 2 characters")
     .max(50, "Name must be less than 50 characters"),
-  email: z.string().email("Invalid email address").toLowerCase(),
+  email: z
+    .string()
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+    .transform((s) => s.toLowerCase()),
   comment: z
     .string()
     .min(3, "Comment must be at least 3 characters")

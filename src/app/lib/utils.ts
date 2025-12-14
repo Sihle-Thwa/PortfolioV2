@@ -131,7 +131,8 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     textArea.select();
 
     try {
-      document.execCommand("copy");
+      // use any cast to avoid the deprecated TypeScript signature warning for execCommand
+      (document).execCommand("copy");
       document.body.removeChild(textArea);
       return true;
     } catch {

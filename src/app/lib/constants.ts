@@ -29,7 +29,7 @@ export const RATE_LIMITS = {
 
 // SEO
 export const SEO = {
-  title: 'Your Name - Full Stack Developer',
+  title: 'Siphesihle B Mthethwa - Full Stack Developer',
   description:
     'Full-stack developer specializing in React, Next.js, and Node.js. Building modern web applications with beautiful user experiences.',
   keywords: [
@@ -40,8 +40,8 @@ export const SEO = {
     'frontend developer',
     'backend developer',
   ],
-  author: 'Your Name',
-  siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://yoursite.com',
+  author: 'Siphesihle B Mthethwa',
+  siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://portfolio-sbm-portfolio.vercel.app/',
 } as const;
 
 // Email templates metadata
@@ -52,10 +52,10 @@ export const EMAIL_TEMPLATES = {
   },
   autoReply: {
     subject: 'Thank you for contacting me!',
-    from: 'Your Name',
+    from: 'Siphesihle B Mthethwa',
   },
   newsletter: {
     subject: 'Welcome to my newsletter!',
-    from: 'Your Name',
+    from: 'Siphesihle B Mthethwa',
   },
 } as const;

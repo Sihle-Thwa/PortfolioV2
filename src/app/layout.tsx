@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     title: "Siphesihle B. Mthethwa | Portfolio",
     description:
       "Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
-    url: "https://siphesihle-b-mthethwa.vercel.app",
+    url: "https://portfolio-sbm-portfolio.vercel.app",
     siteName: "SBM Portfolio",
-    locale: "en_UK",
+    locale: "en_US",
     type: "website",
   },
 };
@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={josefin.className}>
-      <body>
+      <body suppressHydrationWarning>
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>
