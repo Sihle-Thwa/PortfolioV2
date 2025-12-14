@@ -1,3 +1,5 @@
+'use server';
+
 export type Project = {
     title: string;
     subtitle?: string;

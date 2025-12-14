@@ -1,3 +1,5 @@
+'use server';
+
 import nodemailer from "nodemailer";
 import type { ContactFormData } from "./validations";
 
@@ -31,7 +33,7 @@ export async function sendContactEmail(data: ContactFormData) {
   const mailOptions = {
     from: `"${name}" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
     to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
-    replyTo: email, // This allows you to reply directly to the user
+    replyTo: email, 
     subject: `Portfolio Contact: ${name}`,
     text: `
 Name: ${name}

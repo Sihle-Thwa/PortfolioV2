@@ -1,3 +1,5 @@
+'use server';
+
 export type skilldata = {
     skill: string;
     icon: string;

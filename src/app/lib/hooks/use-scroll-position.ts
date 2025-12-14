@@ -95,7 +95,7 @@ export function useScrollProgress() {
       const scrollTop = window.scrollY;
 
       const totalHeight = documentHeight - windowHeight;
-      const progress = (scrollTop / totalHeight) * 100;
+      const progress = totalHeight > 0 ? (scrollTop / totalHeight) * 100 : 0;
 
       setScrollProgress(Math.min(Math.max(progress, 0), 100));
     }, 100);

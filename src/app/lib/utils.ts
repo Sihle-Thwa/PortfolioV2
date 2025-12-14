@@ -1,3 +1,5 @@
+'use server';
+
 export function formatDate(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
   return new Intl.DateTimeFormat("en-US", {
@@ -7,17 +9,11 @@ export function formatDate(date: Date | string): string {
   }).format(d);
 }
 
-/**
- * Truncate text to a specified length
- */
 export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength).trim() + "...";
 }
 
-/**
- * Debounce function to limit function calls
- */
 export function debounce<T extends (...args: undefined[]) => undefined>(
   func: T,
   wait: number
@@ -35,9 +31,6 @@ export function debounce<T extends (...args: undefined[]) => undefined>(
   };
 }
 
-/**
- * Throttle function to limit function calls
- */
 export function throttle<T extends (...args: undefined[]) => undefined>(
   func: T,
   limit: number
@@ -53,9 +46,7 @@ export function throttle<T extends (...args: undefined[]) => undefined>(
   };
 }
 
-/**
- * Safely parse JSON with fallback
- */
+
 export function safeJsonParse<T>(json: string, fallback: T): T {
   try {
     return JSON.parse(json) as T;
@@ -64,34 +55,22 @@ export function safeJsonParse<T>(json: string, fallback: T): T {
   }
 }
 
-/**
- * Check if code is running on client side
- */
+
 export const isClient = typeof window !== "undefined";
 
-/**
- * Check if code is running on server side
- */
+
 export const isServer = !isClient;
 
-/**
- * Sleep/delay utility
- */
 export const sleep = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-/**
- * Generate random ID
- */
 export function generateId(length: number = 10): string {
   return Math.random()
     .toString(36)
     .substring(2, length + 2);
 }
 
-/**
- * Capitalize first letter of a string
- */
+
 export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -131,7 +110,6 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     textArea.select();
 
     try {
-      // use any cast to avoid the deprecated TypeScript signature warning for execCommand
       (document).execCommand("copy");
       document.body.removeChild(textArea);
       return true;

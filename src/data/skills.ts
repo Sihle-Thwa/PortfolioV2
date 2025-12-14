@@ -1,3 +1,5 @@
+'use server';
+
 export type SkillGroup = {
     category: string;
     skills: string[];
