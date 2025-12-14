@@ -35,20 +35,15 @@ export default function Hero() {
 		[],
 	);
 
-	function getActiveTheme(
-		theme: string | undefined,
-		systemTheme: string | undefined,
-	): string {
+	const activeTheme = useMemo(() => {
 		if (theme === "system") return systemTheme ?? "light";
 		return theme ?? "light";
-	}
-	const activeTheme = getActiveTheme(theme, systemTheme);
-	const slides = (activeTheme === "dark" ? darkSlides : lightSlides) as Slide[];
+	}, [theme, systemTheme]);
 
-	useEffect(() => {
-		setActive(0);
-		setExiting(null);
-	}, [activeTheme]);
+	const slides = useMemo(
+		() => (activeTheme === "dark" ? darkSlides : lightSlides) as Slide[],
+		[activeTheme, darkSlides, lightSlides],
+	);
 
 	// autoplay
 	useEffect(() => {
@@ -63,6 +58,12 @@ export default function Hero() {
 			if (timerRef.current) window.clearInterval(timerRef.current);
 		};
 	}, [slides.length, activeTheme, active]);
+
+	// reset slider when theme (and thus slides) changes
+	useEffect(() => {
+		setActive(0);
+		setExiting(null);
+	}, [activeTheme]);
 
 	if (!mounted) return <section id="home" className="hero-bg--slider" />;
 
