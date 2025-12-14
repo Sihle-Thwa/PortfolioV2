@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import "./contactsection.css";
 import Image from "next/image";
-import uparrow from "../../../public/icons/uparrow.svg";
+
+
 
 export default function ContactSection() {
 
@@ -143,9 +144,11 @@ export default function ContactSection() {
         >
           <div className="c-contact-backtotop animate-bounce">
             <Image
-              src={uparrow}
+			  src ="/icons/uparrow.svg"
               alt="Back to Top"
               className="c-contact-backtotop-icon"
+			  width={42}
+			  height={42}
               priority
             />
           </div>
