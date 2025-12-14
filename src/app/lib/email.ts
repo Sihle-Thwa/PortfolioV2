@@ -47,21 +47,142 @@ export async function sendContactEmail(data: ContactFormData) {
     replyTo: email,
     subject: `Portfolio Contact: ${name || 'Visitor'}`,
     text: `Name: ${name || ''}\nEmail: ${email || ''}\n\nMessage:\n${message || ''}`,
-    html: `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
-      body{font-family:Arial,Helvetica,sans-serif;color:#333;max-width:600px;margin:0 auto;padding:20px}
-      .container{background:#f9f9f9;border-radius:8px;padding:30px;margin:20px 0}
-      .header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:20px;border-radius:8px 8px 0 0;margin:-30px -30px 20px -30px}
-      .label{font-weight:700;color:#667eea;margin-bottom:5px}
-      .value,.message-box{background:#fff;padding:12px;border-radius:4px;border-left:3px solid #667eea;white-space:pre-wrap;word-wrap:break-word}
-      .footer{margin-top:30px;padding-top:20px;border-top:1px solid #ddd;font-size:12px;color:#666;text-align:center}
-      </style></head><body>
-      <div class="container">
-        <div class="header"><h1>📬 New Contact Form Submission</h1></div>
-        <div class="label">Name:</div><div class="value">${escapeHtml(name || '')}</div>
-        <div class="label">Email:</div><div class="value"><a href="mailto:${escapeHtml(email || '')}" style="color:#667eea;text-decoration:none">${escapeHtml(email || '')}</a></div>
-        <div class="label">Message:</div><div class="message-box">${escapeHtml(message || '')}</div>
-        <div class="footer"><p>This email was sent from your portfolio contact form. Reply directly to this email to respond to ${escapeHtml(name || 'the sender')}.</p></div>
-      </div></body></html>`,
+    html: `<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>New Contact Form Submission</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* Reset and base styles */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    
+    /* Main styles */
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
+      color: #333333;
+      background-color: #f6f6f6;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 30px 20px;
+    }
+    .field-group {
+      margin-bottom: 20px;
+    }
+    .field-label {
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .field-value {
+      background-color: #f8f9ff;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 4px solid #667eea;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .field-value a {
+      color: #667eea;
+      text-decoration: none;
+    }
+    .field-value a:hover {
+      text-decoration: underline;
+    }
+    .message-content {
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .footer {
+      background-color: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    /* Responsive styles */
+    @media screen and (max-width: 480px) {
+      .email-container { margin: 10px; }
+      .header, .content { padding: 20px 15px; }
+      .header h1 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body role="document" aria-label="New contact form submission email">
+  <div class="email-container" role="main">
+    <header class="header" role="banner">
+      <h1>📬 New Contact Form Submission</h1>
+    </header>
+    
+    <div class="content" role="article">
+      <div class="field-group">
+        <div class="field-label" role="term">Contact Name</div>
+        <div class="field-value" role="definition">${escapeHtml(name || 'Not provided')}</div>
+      </div>
+      
+      <div class="field-group">
+        <div class="field-label" role="term">Email Address</div>
+        <div class="field-value" role="definition">
+          <a href="mailto:${escapeHtml(email || '')}" aria-label="Reply to ${escapeHtml(name || 'sender')} at ${escapeHtml(email || '')}"
+            >${escapeHtml(email || 'Not provided')}</a>
+        </div>
+      </div>
+      
+      <div class="field-group">
+        <div class="field-label" role="term">Message Content</div>
+        <div class="field-value message-content" role="definition">${escapeHtml(message || 'No message provided')}</div>
+      </div>
+    </div>
+    
+    <footer class="footer" role="contentinfo">
+      <p><strong>Portfolio Contact Form</strong></p>
+      <p>This email was sent from your portfolio contact form on ${new Date().toLocaleDateString()}.</p>
+      <p>Reply directly to this email to respond to ${escapeHtml(name || 'the sender')}.</p>
+    </footer>
+  </div>
+</body>
+</html>`,
   };
 
   try {
@@ -81,18 +202,114 @@ export async function sendAutoReplyEmail(userEmail: string, userName = '') {
     from: `"${SENDER_NAME}" <${SMTP_FROM}>`,
     to: userEmail,
     subject: 'Thank you for contacting me!',
-    html: `<!doctype html><html><head><meta charset="utf-8"><style>
-      body{font-family:Arial,Helvetica,sans-serif;color:#333;max-width:600px;margin:0 auto;padding:20px}
-      .container{background:#f9f9f9;border-radius:8px;padding:30px}
-      .header{text-align:center;margin-bottom:30px}.header h1{color:#667eea;margin:0}
-      .content{background:#fff;padding:20px;border-radius:4px}.footer{margin-top:30px;padding-top:20px;border-top:1px solid #ddd;text-align:center;font-size:12px;color:#666}
-      </style></head><body>
-      <div class="container"><div class="header"><h1>✉️ Message Received!</h1></div>
-      <div class="content"><p>Hi ${escapeHtml(userName || '')},</p>
-      <p>Thank you for reaching out! I've received your message and will get back to you as soon as possible.</p>
-      <p>I typically respond within 24-48 hours. If your matter is urgent, feel free to send a follow-up email.</p>
-      <p>Best regards,<br><strong>${escapeHtml(SENDER_NAME)}</strong></p></div>
-      <div class="footer"><p>This is an automated response. Please do not reply to this email.</p></div></div></body></html>`,
+    html: `<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Thank you for your message</title>
+  <style>
+    /* Reset and base styles */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
+      color: #333333;
+      background-color: #f6f6f6;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 30px 20px;
+    }
+    .content p {
+      margin: 0 0 16px 0;
+    }
+    .highlight {
+      background-color: #f0f7ff;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 4px solid #667eea;
+      margin: 20px 0;
+    }
+    .signature {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #e9ecef;
+    }
+    .footer {
+      background-color: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    @media screen and (max-width: 480px) {
+      .email-container { margin: 10px; }
+      .header, .content { padding: 20px 15px; }
+    }
+  </style>
+</head>
+<body role="document" aria-label="Auto-reply confirmation email">
+  <div class="email-container" role="main">
+    <header class="header" role="banner">
+      <h1>✉️ Message Received!</h1>
+    </header>
+    
+    <div class="content" role="article">
+      <p><strong>Hi ${escapeHtml(userName || 'there')},</strong></p>
+      
+      <p>Thank you for reaching out through my portfolio contact form! I've successfully received your message and wanted to confirm that it's in my inbox.</p>
+      
+      <div class="highlight" role="note">
+        <p><strong>What happens next?</strong></p>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>I typically respond to all messages within 24-48 hours during business days</li>
+          <li>For urgent matters, feel free to send a follow-up email</li>
+          <li>I'll reach out to you directly at the email address you provided</li>
+        </ul>
+      </div>
+      
+      <p>I look forward to connecting with you and discussing your project or inquiry in more detail.</p>
+      
+      <div class="signature">
+        <p>Best regards,</p>
+        <p><strong>${escapeHtml(SENDER_NAME)}</strong></p>
+        <p style="font-size: 14px; color: #6c757d;">Full-Stack Developer & Software Engineer</p>
+      </div>
+    </div>
+    
+    <footer class="footer" role="contentinfo">
+      <p><strong>Automated Response</strong></p>
+      <p>This is an automated confirmation email. Please do not reply to this message.</p>
+      <p>If you need immediate assistance, please send a new email to your original recipient.</p>
+    </footer>
+  </div>
+</body>
+</html>`,
   };
 
   try {

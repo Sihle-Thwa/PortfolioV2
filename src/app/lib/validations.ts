@@ -2,82 +2,34 @@ import { z } from "zod";
 
 export const contactSchema = z.object({
   name: z
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .max(50, "Name must be less than 50 characters")
-    .regex(/^[a-zA-Z\s]+$/, "Name can only contain letters and spaces"),
+    .string({ error: "Name is required" })
+    .min(2, "Name must be at least 2 characters long")
+    .max(50, "Name must be 50 characters or fewer")
+    .regex(
+      /^[a-zA-Z\s\u00C0-\u017F\u0100-\u024F\u1E00-\u1EFF'-]+$/,
+      "Name can only contain letters, spaces, hyphens, and apostrophes"
+    )
+    .transform((s) => s.trim())
+    .refine((s) => s.length >= 2, "Name must be at least 2 characters after trimming"),
   email: z
-    .string()
-    .min(1, "Email is required")
-    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-    .transform((s) => s.toLowerCase()),
+    .string({ error: "Email address is required" })
+    .min(1, "Email address is required")
+    .max(254, "Email address is too long")
+    .regex(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      "Please enter a valid email address"
+    )
+    .transform((s) => s.toLowerCase().trim()),
   message: z
-    .string()
-    .min(10, "Message must be at least 10 characters")
-    .max(1000, "Message must be less than 1000 characters"),
+    .string({ error: "Message is required" })
+    .min(10, "Message must be at least 10 characters long")
+    .max(1000, "Message must be 1000 characters or fewer")
+    .transform((s) => s.trim())
+    .refine((s) => s.length >= 10, "Message must be at least 10 characters after trimming")
+    .refine((s) => !/^\s*$/.test(s), "Message cannot be only whitespace"),
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
-
-export const newsletterSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Invalid email address")
-    .toLowerCase(),
-});
-
-export type NewsletterFormData = z.infer<typeof newsletterSchema>;
-
-export const projectSchema = z.object({
-  title: z
-    .string()
-    .min(3, "Title must be at least 3 characters")
-    .max(100, "Title must be less than 100 characters"),
-  description: z
-    .string()
-    .min(20, "Description must be at least 20 characters")
-    .max(500, "Description must be less than 500 characters"),
-  tags: z.array(z.string()).min(1, "At least one tag is required").max(10),
-  github: z
-    .string()
-    .optional()
-    .refine((val) => {
-      if (!val) return true;
-      try {
-        new URL(val);
-        return true;
-      } catch {
-        return false;
-      }
-    }, { message: "Invalid GitHub URL" }),
-  demo: z
-    .string()
-    .optional()
-    .refine((val) => {
-      if (!val) return true;
-      try {
-        new URL(val);
-        return true;
-      } catch {
-        return false;
-      }
-    }, { message: "Invalid demo URL" }),
-  image: z
-    .string()
-    .optional()
-    .refine((val) => {
-      if (!val) return true;
-      try {
-        new URL(val);
-        return true;
-      } catch {
-        return false;
-      }
-    }, { message: "Invalid image URL" }),
-});
-
-export type ProjectFormData = z.infer<typeof projectSchema>;
 
 export const commentSchema = z.object({
   name: z
@@ -97,75 +49,48 @@ export const commentSchema = z.object({
 
 export type CommentFormData = z.infer<typeof commentSchema>;
 
-export const searchSchema = z.object({
-  query: z
-    .string()
-    .min(1, "Search query is required")
-    .max(100, "Search query is too long"),
-  category: z.enum(["all", "projects", "blog", "skills"]).optional(),
-});
-
-export type SearchFormData = z.infer<typeof searchSchema>;
-
-export const fileUploadSchema = z.object({
-  file: z
-    .instanceof(File)
-    .refine(
-      (file) => file.size <= 5 * 1024 * 1024,
-      "File size must be less than 5MB"
-    )
-    .refine(
-      (file) =>
-        ["image/jpeg", "image/png", "image/webp", "image/gif"].includes(
-          file.type
-        ),
-      "File must be an image (JPEG, PNG, WebP, or GIF)"
-    ),
-});
-
-export type FileUploadData = z.infer<typeof fileUploadSchema>;
 
 export const validationHelpers = {
   isValidUrl: (url: string): boolean => {
     try {
-      new URL(url);
-      return true;
+      const parsedUrl = new URL(url);
+      return ['http:', 'https:'].includes(parsedUrl.protocol);
     } catch {
       return false;
     }
   },
 
-  isValidPhone: (phone: string): boolean => {
-    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-    return phoneRegex.test(phone) && phone.replace(/\D/g, "").length >= 10;
+  isValidEmail: (email: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return emailRegex.test(email) && email.length <= 254;
   },
 
+
   sanitizeHtml: (html: string): string => {
+    if (typeof document === 'undefined') {
+      // Server-side fallback
+      return html.replace(/[&<>"']/g, (match) => {
+        const htmlEntities: Record<string, string> = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        };
+        return htmlEntities[match] || match;
+      });
+    }
     const div = document.createElement("div");
     div.textContent = html;
     return div.innerHTML;
   },
 
-  isValidFileType: (file: File, allowedTypes: string[]): boolean => {
-    return allowedTypes.includes(file.type);
+  normalizeText: (text: string): string => {
+    return text.trim().replace(/\s+/g, ' ');
   },
 
-  isValidFileSize: (file: File, maxSizeInMB: number): boolean => {
-    return file.size <= maxSizeInMB * 1024 * 1024;
+  isValidName: (name: string): boolean => {
+    const nameRegex = /^[a-zA-Z\s\u00C0-\u017F\u0100-\u024F\u1E00-\u1EFF'-]{2,50}$/;
+    return nameRegex.test(name.trim());
   },
 };
-
-export const apiErrorSchema = z.object({
-  error: z.string(),
-  message: z.string().optional(),
-  statusCode: z.number().optional(),
-});
-
-export type ApiError = z.infer<typeof apiErrorSchema>;
-
-export const apiSuccessSchema = z.object({
-  message: z.string(),
-  data: z.any().optional(),
-});
-
-export type ApiSuccess = z.infer<typeof apiSuccessSchema>;
