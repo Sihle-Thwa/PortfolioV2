@@ -1,15 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { ZodError } from 'zod';
-import { contactSchema } from '../../lib/validations';
+import { NextRequest, NextResponse } from "next/server";
+import { ZodError } from "zod";
+import { contactSchema } from "../../lib/validations";
 import {
   sendContactEmail,
   sendAutoReplyEmail,
   checkEmailRateLimit,
-} from '../../lib/email';
+} from "../../lib/email";
 
 // Runtime configuration
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 // ============================================================================
 // Type Definitions
@@ -31,7 +31,7 @@ interface ApiErrorResponse {
 }
 
 interface ApiStatusResponse {
-  status: 'operational' | 'degraded' | 'error';
+  status: "operational" | "degraded" | "error";
   service: string;
   timestamp: string;
   message?: string;
@@ -52,12 +52,12 @@ interface ValidationErrorResponse extends ApiErrorResponse {
  * Validate required environment variables
  */
 function validateEnvironment(): void {
-  const required = ['SMTP_USER', 'SMTP_PASSWORD', 'CONTACT_EMAIL'];
+  const required = ["SMTP_USER", "SMTP_PASSWORD", "CONTACT_EMAIL"];
   const missing = required.filter((key) => !process.env[key]);
 
   if (missing.length > 0) {
     throw new Error(
-      `Missing required environment variables: ${missing.join(', ')}`
+      `Missing required environment variables: ${missing.join(", ")}`
     );
   }
 }
@@ -68,20 +68,20 @@ function validateEnvironment(): void {
 function getClientIp(request: NextRequest): string {
   // Check various headers in order of preference
   const headers = [
-    'cf-connecting-ip', // Cloudflare
-    'x-real-ip', // Nginx
-    'x-forwarded-for', // Standard
+    "cf-connecting-ip", // Cloudflare
+    "x-real-ip", // Nginx
+    "x-forwarded-for", // Standard
   ];
 
   for (const header of headers) {
     const value = request.headers.get(header);
     if (value) {
       // x-forwarded-for can be a comma-separated list
-      return value.split(',')[0].trim();
+      return value.split(",")[0].trim();
     }
   }
 
-  return 'unknown';
+  return "unknown";
 }
 
 /**
@@ -104,8 +104,8 @@ function createErrorResponse(
   return NextResponse.json(response, { 
     status,
     headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-store',
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store",
     },
   });
 }
@@ -122,24 +122,24 @@ function createRateLimitResponse(
   
   return NextResponse.json(
     {
-      error: 'Rate limit exceeded',
+      error: "Rate limit exceeded",
       message,
       success: false,
       timestamp: new Date().toISOString(),
       details: {
-        retryAfter: retryAfterSeconds > 3600 ? '24 hours' : '1 hour',
+        retryAfter: retryAfterSeconds > 3600 ? "24 hours" : "1 hour",
         limit,
       },
     },
     {
       status: 429,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
-        'Retry-After': String(retryAfterSeconds),
-        'X-RateLimit-Limit': limit.split(' ')[0],
-        'X-RateLimit-Remaining': '0',
-        'X-RateLimit-Reset': String(resetTimestamp),
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+        "Retry-After": String(retryAfterSeconds),
+        "X-RateLimit-Limit": limit.split(" ")[0],
+        "X-RateLimit-Remaining": "0",
+        "X-RateLimit-Reset": String(resetTimestamp),
       },
     }
   );
@@ -166,8 +166,8 @@ export async function POST(
       body = await request.json();
     } catch {
       return createErrorResponse(
-        'Invalid request',
-        'Request body must be valid JSON',
+        "Invalid request",
+        "Request body must be valid JSON",
         400
       );
     }
@@ -183,9 +183,9 @@ export async function POST(
     if (!withinIpRateLimit) {
       console.warn(`IP rate limit exceeded: ${clientIp}`);
       return createRateLimitResponse(
-        'Too many requests from your IP address. Please wait before sending another message.',
+        "Too many requests from your IP address. Please wait before sending another message.",
         3600, // 1 hour
-        '3 requests per hour'
+        "3 requests per hour"
       );
     }
 
@@ -196,14 +196,14 @@ export async function POST(
     if (!withinEmailRateLimit) {
       console.warn(`Email rate limit exceeded: ${validatedData.email}`);
       return createRateLimitResponse(
-        'You have reached the maximum number of messages for today. Please try again tomorrow.',
+        "You have reached the maximum number of messages for today. Please try again tomorrow.",
         86400, // 24 hours
-        '36 requests per day'
+        "36 requests per day"
       );
     }
 
     // Step 7: Log submission (for monitoring)
-    console.log('📧 Contact form submission:', {
+    console.log("📧 Contact form submission:", {
       name: validatedData.name,
       email: validatedData.email,
       messageLength: validatedData.message.length,
@@ -217,40 +217,40 @@ export async function POST(
     // Step 9: Send auto-reply (non-blocking, failure is non-critical)
     sendAutoReplyEmail(validatedData.email, validatedData.name).catch(
       (error) => {
-        console.error('⚠️ Auto-reply failed (non-critical):', error);
+        console.error("⚠️ Auto-reply failed (non-critical):", error);
       }
     );
 
     // Step 10: Return success response
     const successResponse: ApiSuccessResponse = {
-      message: 'Message sent successfully! Thank you for reaching out.',
+      message: "Message sent successfully! Thank you for reaching out.",
       success: true,
       messageId: emailResult.messageId,
       timestamp: new Date().toISOString(),
     };
 
-    console.log('✅ Contact form submission successful');
+    console.log("✅ Contact form submission successful");
 
     return NextResponse.json(successResponse, {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
       },
     });
   } catch (error) {
     // Handle Zod validation errors
     if (error instanceof ZodError) {
       const issues = error.issues.map((err) => ({
-         field: err.path.join('.'),
+         field: err.path.join("."),
         message: err.message,
       }));
 
-      console.warn('❌ Validation error:', issues);
+      console.warn("❌ Validation error:", issues);
 
       const validationResponse: ValidationErrorResponse = {
-        error: 'Validation failed',
-        message: 'Please check your input and try again.',
+        error: "Validation failed",
+        message: "Please check your input and try again.",
         success: false,
         timestamp: new Date().toISOString(),
         issues,
@@ -261,7 +261,7 @@ export async function POST(
 
     // Handle email service errors
     if (error instanceof Error) {
-      console.error('❌ Contact form error:', {
+      console.error("❌ Contact form error:", {
         message: error.message,
         stack: error.stack,
         timestamp: new Date().toISOString(),
@@ -269,38 +269,38 @@ export async function POST(
 
       // Specific handling for email service errors
       if (
-        error.message.includes('SMTP') ||
-        error.message.includes('email') ||
-        error.message.includes('ECONNREFUSED') ||
-        error.message.includes('ETIMEDOUT')
+        error.message.includes("SMTP") ||
+        error.message.includes("email") ||
+        error.message.includes("ECONNREFUSED") ||
+        error.message.includes("ETIMEDOUT")
       ) {
         return createErrorResponse(
-          'Email service unavailable',
-          'Unable to send your message at this time. Please try again later or contact me directly via email.',
+          "Email service unavailable",
+          "Unable to send your message at this time. Please try again later or contact me directly via email.",
           503
         );
       }
 
       // Specific handling for authentication errors
       if (
-        error.message.includes('auth') ||
-        error.message.includes('authentication')
+        error.message.includes("auth") ||
+        error.message.includes("authentication")
       ) {
-        console.error('🔐 Email authentication failed - check SMTP credentials');
+        console.error("🔐 Email authentication failed - check SMTP credentials");
         return createErrorResponse(
-          'Email service configuration error',
-          'There is a configuration issue with the email service. Please contact the site administrator.',
+          "Email service configuration error",
+          "There is a configuration issue with the email service. Please contact the site administrator.",
           503
         );
       }
     }
 
     // Generic error handling
-    console.error('❌ Unexpected error in contact route:', error);
+    console.error("❌ Unexpected error in contact route:", error);
 
     return createErrorResponse(
-      'Internal server error',
-      'An unexpected error occurred. Please try again later.',
+      "Internal server error",
+      "An unexpected error occurred. Please try again later.",
       500
     );
   }
@@ -314,10 +314,10 @@ export async function OPTIONS(): Promise<NextResponse> {
   return new NextResponse(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Max-Age': '86400', // 24 hours
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      "Access-Control-Max-Age": "86400", // 24 hours
     },
   });
 }
@@ -332,33 +332,33 @@ export async function GET(): Promise<NextResponse<ApiStatusResponse>> {
     validateEnvironment();
 
     const response: ApiStatusResponse = {
-      status: 'operational',
-      service: 'contact-api',
+      status: "operational",
+      service: "contact-api",
       timestamp: new Date().toISOString(),
     };
 
     return NextResponse.json(response, {
       status: 200,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store, no-cache, must-revalidate',
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache, must-revalidate",
       },
     });
   } catch (error) {
     const errorResponse: ApiStatusResponse = {
-      status: 'error',
-      service: 'contact-api',
-      message: error instanceof Error ? error.message : 'Configuration error',
+      status: "error",
+      service: "contact-api",
+      message: error instanceof Error ? error.message : "Configuration error",
       timestamp: new Date().toISOString(),
     };
 
-    console.error('❌ Health check failed:', errorResponse);
+    console.error("❌ Health check failed:", errorResponse);
 
     return NextResponse.json(errorResponse, {
       status: 503,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
       },
     });
   }

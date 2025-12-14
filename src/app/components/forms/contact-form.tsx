@@ -8,7 +8,7 @@ import { contactSchema, type ContactFormData } from "../../lib/validations";
 import { Loader2, Send } from "lucide-react";
 
 async function submitContactForm(data: ContactFormData) {
-  const response = await fetch("../../api/contact/route.ts", {
+  const response = await fetch("api/contact/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
