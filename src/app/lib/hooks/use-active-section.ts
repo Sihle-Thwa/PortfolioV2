@@ -1,5 +1,3 @@
-'use server';
-
 import { useEffect, useState } from 'react';
 
 export function useActiveSection() {

@@ -1,5 +1,3 @@
-'use server';
-
 import { useEffect, useRef, useState } from "react";
 
 interface UseIntersectionObserverOptions {

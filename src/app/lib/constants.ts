@@ -1,4 +1,3 @@
-'use server';
 // Form validation limits
 export const VALIDATION_LIMITS = {
   name: { min: 2, max: 50 },
