@@ -1,91 +1,100 @@
 "use client";
-import {  useState } from "react";
-import "./contactsection.css";
+
+import { toast } from "react-hot-toast";
 import Image from "next/image";
+import "./contactsection.css";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+
+import { contactSchema, type ContactFormData } from "../../../lib/validations";
+
+async function submitContactForm(data: ContactFormData) {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || "Failed to send message");
+  }
+
+  return response.json();
+}
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
   });
-  const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setStatus("sending");
+  const mutation = useMutation({
+    mutationFn: submitContactForm,
+    onSuccess: () => {
+      toast.success("Message sent successfully!");
+      reset();
+    },
+    onError: (error: Error) => {
+      toast.error(error.message);
+    },
+  });
 
-    try {
-      const res = await fetch("/api/contact/route.ts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus("error");
-    }
+  const onSubmit = (data: ContactFormData) => {
+    mutation.mutate(data);
   };
 
   return (
     <section id="contact" className="c-contact">
-      <div className="c-contact-title">Let’s Make It Happen</div>
-      <div className="c-contact-subtitle">
-        Feel free to reach out via the form below or connect with me on social
-        media.
-      </div>
+      <h2 className="c-contact-title">Let’s Make It Happen</h2>
 
-      <form onSubmit={handleSubmit}>
+      <p className="c-contact-subtitle">
+        Have a project in mind or want to collaborate? Feel free to reach out!
+      </p>
+
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <input
           type="text"
-          name="name"
-          autoComplete="name"
+          {...register("name")}
           placeholder="Your Full Name"
           className="c-contact-input"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
+          aria-invalid={!!errors.name}
+          disabled={mutation.isPending}
         />
+
         <input
           type="email"
-          name="email"
-          autoComplete="email"
+          {...register("email")}
           placeholder="Your Email"
           className="c-contact-input"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
+          aria-invalid={!!errors.email}
+          disabled={mutation.isPending}
         />
+
         <textarea
-          name="message"
-          autoComplete="message"
+          {...register("message")}
           placeholder="Your Message"
           className="c-contact-textarea"
-          value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
-          required
+          aria-invalid={!!errors.message}
+          disabled={mutation.isPending}
         />
+
         <button
           type="submit"
           className="c-contact-submit"
-          disabled={status === "sending"}
+          disabled={mutation.isPending}
         >
-          {status === "sending" ? "Sending..." : "Send Message"}{" "}
+          {mutation.isPending ? "Sending..." : "Send Message"}
         </button>
-
-        {status === "success" && <p>Message sent successfully!</p>}
-        {status === "error" && <p>Failed to send. Please try again.</p>}
       </form>
 
+      {/* SOCIAL LINKS */}
       <div className="c-contact-links" suppressHydrationWarning>
         <a
           href="https://linkedin.com/in/siphesihle-mthethwa"
@@ -95,6 +104,7 @@ export default function ContactSection() {
         >
           LinkedIn
         </a>
+
         <a
           href="https://github.com/Sihle-Thwa"
           target="_blank"
@@ -103,6 +113,7 @@ export default function ContactSection() {
         >
           GitHub
         </a>
+
         <a
           href="https://instagram.com/username"
           target="_blank"
@@ -112,26 +123,25 @@ export default function ContactSection() {
           Instagram
         </a>
       </div>
+
+      {/* BACK TO TOP */}
       <div className="c-contact-nav-cta">
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="c-contact-link"
+        <button
+          type="button"
+          onClick={() =>
+            window.scrollTo({ top: 0, behavior: "smooth" })
+          }
+          className="c-contact-backtotop animate-bounce"
+          aria-label="Back to top"
         >
-          <div className="c-contact-backtotop animate-bounce">
-            <Image
-              src="/icons/uparrow.svg"
-              alt="Back to Top"
-              className="c-contact-backtotop-icon"
-              width={42}
-              height={42}
-              priority
-            />
-          </div>
-        </a>
+          <Image
+            src="/icons/uparrow.svg"
+            alt="Back to Top"
+            width={42}
+            height={42}
+            priority
+          />
+        </button>
       </div>
     </section>
   );
