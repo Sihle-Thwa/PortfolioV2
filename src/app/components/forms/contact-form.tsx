@@ -1,265 +1,136 @@
-"use client";
+'use client';
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
-import { useState, useRef, useId } from "react";
-import { contactSchema, type ContactFormData } from "../../lib/validations";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
+import { contactSchema, type ContactFormData } from '../../lib/validations';
+import { Loader2, Send } from 'lucide-react';
 
 async function submitContactForm(data: ContactFormData) {
-  const response = await fetch("/api/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.message || errorData.error || "Failed to send message");
-  }
-
-  return response.json();
+  // Since the API doesn't have POST endpoint implemented yet, use mailto as fallback
+  const subject = `Portfolio Contact: Message from ${data.name}`;
+  const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+  const mailtoUrl = `mailto:contact@portfolio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+  // Open user's email client
+  window.location.href = mailtoUrl;
+  
+  // Return success to trigger form reset
+  return { success: true, message: 'Email client opened successfully' };
 }
 
 export default function ContactForm() {
-  const formId = useId();
-  const [submitAttempted, setSubmitAttempted] = useState(false);
-  const successAnnouncementRef = useRef<HTMLDivElement>(null);
-  
   const {
     register,
     handleSubmit,
     reset,
-    watch,
-    formState: { errors, isValid, touchedFields },
+    formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    mode: "onChange",
   });
-
-  const watchedFields = watch();
 
   const mutation = useMutation({
     mutationFn: submitContactForm,
     onSuccess: () => {
-      toast.success("Message sent successfully!");
+      toast.success("Email client opened! Please send the email to complete your message.");
       reset();
-      setSubmitAttempted(false);
-      // Focus and announce success for screen readers
-      if (successAnnouncementRef.current) {
-        successAnnouncementRef.current.focus();
-      }
     },
     onError: (error: Error) => {
-      toast.error(error.message);
-      setSubmitAttempted(true);
+      toast.error(error.message || 'Failed to open email client');
     },
   });
 
   const onSubmit = (data: ContactFormData) => {
-    setSubmitAttempted(true);
     mutation.mutate(data);
   };
 
-  const getFieldClassName = (fieldName: keyof ContactFormData, baseClasses: string) => {
-    const hasError = errors[fieldName];
-    const isTouched = touchedFields[fieldName];
-    const hasValue = watchedFields[fieldName];
-    
-    let classes = baseClasses;
-    
-    if (hasError && (isTouched || submitAttempted)) {
-      classes += " border-red-500 focus:ring-red-500 focus:border-red-500";
-    } else if (isTouched && hasValue && !hasError) {
-      classes += " border-green-500 focus:ring-green-500 focus:border-green-500";
-    }
-    
-    return classes;
-  };
-
   return (
-    <div>
-      {/* Success announcement for screen readers */}
-      <div
-        ref={successAnnouncementRef}
-        className="sr-only"
-        tabIndex={-1}
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {mutation.isSuccess && "Your message has been sent successfully!"}
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Name Field */}
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium mb-2">
+          Name
+        </label>
+        <input
+          {...register('name')}
+          type="text"
+          id="name"
+          placeholder="John Doe"
+          disabled={mutation.isPending}
+          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        />
+        {errors.name && (
+          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+            {errors.name.message}
+          </p>
+        )}
       </div>
-      
-      <form 
-        onSubmit={handleSubmit(onSubmit)} 
-        className="space-y-6"
-        aria-labelledby={`${formId}-title`}
-        noValidate
+
+      {/* Email Field */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-2">
+          Email
+        </label>
+        <input
+          {...register('email')}
+          type="email"
+          id="email"
+          placeholder="john@example.com"
+          disabled={mutation.isPending}
+          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        />
+        {errors.email && (
+          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+            {errors.email.message}
+          </p>
+        )}
+      </div>
+
+      {/* Message Field */}
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium mb-2">
+          Message
+        </label>
+        <textarea
+          {...register('message')}
+          id="message"
+          rows={5}
+          placeholder="Tell me about your project or how we can work together..."
+          disabled={mutation.isPending}
+          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        />
+        {errors.message && (
+          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+            {errors.message.message}
+          </p>
+        )}
+      </div>
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        disabled={mutation.isPending}
+        className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
       >
-        <fieldset className="space-y-4">
-          <legend className="sr-only" id={`${formId}-title`}>
-            Contact Form - Send me a message
-          </legend>
-          
-          <div>
-            <label 
-              htmlFor={`${formId}-name`} 
-              className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
-            >
-              Full Name <span className="text-red-500" aria-label="required">*</span>
-            </label>
-            <input
-              {...register("name")}
-              type="text"
-              id={`${formId}-name`}
-              autoComplete="name"
-              className={getFieldClassName(
-                "name",
-                "w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              )}
-              placeholder="Enter your full name"
-              aria-describedby={errors.name ? `${formId}-name-error` : undefined}
-              aria-invalid={errors.name ? "true" : "false"}
-              disabled={mutation.isPending}
-            />
-            {errors.name && (
-              <p 
-                id={`${formId}-name-error`}
-                className="mt-2 text-sm text-red-600 dark:text-red-400"
-                role="alert"
-                aria-live="polite"
-              >
-                <span className="font-medium">Error:</span> {errors.name.message}
-              </p>
-            )}
-          </div>
+        {mutation.isPending ? (
+          <>
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span>Sending...</span>
+          </>
+        ) : (
+          <>
+            <Send className="w-5 h-5" />
+            <span>Send Message</span>
+          </>
+        )}
+      </button>
 
-          <div>
-            <label 
-              htmlFor={`${formId}-email`} 
-              className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
-            >
-              Email Address <span className="text-red-500" aria-label="required">*</span>
-            </label>
-            <input
-              {...register("email")}
-              type="email"
-              id={`${formId}-email`}
-              autoComplete="email"
-              className={getFieldClassName(
-                "email",
-                "w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              )}
-              placeholder="Enter your email address"
-              aria-describedby={errors.email ? `${formId}-email-error` : `${formId}-email-help`}
-              aria-invalid={errors.email ? "true" : "false"}
-              disabled={mutation.isPending}
-            />
-            {!errors.email && (
-              <p 
-                id={`${formId}-email-help`}
-                className="mt-1 text-xs text-gray-600 dark:text-gray-400"
-              >
-                I will use this to respond to your message
-              </p>
-            )}
-            {errors.email && (
-              <p 
-                id={`${formId}-email-error`}
-                className="mt-2 text-sm text-red-600 dark:text-red-400"
-                role="alert"
-                aria-live="polite"
-              >
-                <span className="font-medium">Error:</span> {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label 
-              htmlFor={`${formId}-message`} 
-              className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
-            >
-              Message <span className="text-red-500" aria-label="required">*</span>
-            </label>
-            <textarea
-              {...register("message")}
-              id={`${formId}-message`}
-              rows={5}
-              className={getFieldClassName(
-                "message",
-                "w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors"
-              )}
-              placeholder="Tell me about your project, question, or how we can collaborate..."
-              aria-describedby={errors.message ? `${formId}-message-error` : `${formId}-message-help`}
-              aria-invalid={errors.message ? "true" : "false"}
-              disabled={mutation.isPending}
-            />
-            {!errors.message && (
-              <p 
-                id={`${formId}-message-help`}
-                className="mt-1 text-xs text-gray-600 dark:text-gray-400"
-              >
-                Minimum 10 characters, maximum 1000 characters ({watchedFields.message?.length || 0}/1000)
-              </p>
-            )}
-            {errors.message && (
-              <p 
-                id={`${formId}-message-error`}
-                className="mt-2 text-sm text-red-600 dark:text-red-400"
-                role="alert"
-                aria-live="polite"
-              >
-                <span className="font-medium">Error:</span> {errors.message.message}
-              </p>
-            )}
-          </div>
-        </fieldset>
-
-        <button
-          type="submit"
-          disabled={mutation.isPending || (!isValid && submitAttempted)}
-          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
-          aria-describedby={`${formId}-submit-help`}
-        >
-          {mutation.isPending ? (
-            <>
-              <svg 
-                className="animate-spin h-5 w-5" 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <circle 
-                  className="opacity-25" 
-                  cx="12" 
-                  cy="12" 
-                  r="10" 
-                  stroke="currentColor" 
-                  strokeWidth="4"
-                />
-                <path 
-                  className="opacity-75" 
-                  fill="currentColor" 
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span>Sending Message...</span>
-            </>
-          ) : (
-            "Send Message"
-          )}
-        </button>
-        
-        <p 
-          id={`${formId}-submit-help`}
-          className="text-xs text-gray-600 dark:text-gray-400 text-center"
-        >
-          I typically respond within 24-48 hours
-        </p>
-      </form>
-    </div>
+      {/* Helper Text */}
+      <div className="text-xs text-center text-gray-600 dark:text-gray-400 space-y-1">
+        <p>This will open your default email client</p>
+        <p>I typically respond within 24-48 hours</p>
+      </div>
+    </form>
   );
 }
