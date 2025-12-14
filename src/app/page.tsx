@@ -1,24 +1,24 @@
 "use client";
-import Hero from "./components/hero/Hero";
-import AboutSection from "./components/about/AboutSection";
-import SkillSection from "./components/skills/SkillSection";
-import ProjectsSection from "./components/projects/ProjectsSection";
-import ContactSection from "./components/contact/ContactSection";
+import Hero from "./components/sections/hero/Hero";
+import AboutSection from "./components/sections/about/AboutSection";
+import SkillSection from "./components/sections/skills/SkillSection";
+import ProjectsSection from "./components/sections/projects/ProjectsSection";
+import ContactSection from "./components/sections/contact/ContactSection";
+import Navigation from "./components/sections/header/Navigation";
+import Footer from "./components/sections/footer/Footer";
 
 export default function HomePage() {
   return (
-		<>
-			{[
-				<Hero key="hero" />,
-				<ProjectsSection key="projects" />,
-				<AboutSection key="about" />,
-				<SkillSection key="skills" />,
-				<ContactSection key="contact" />,
-			].map((Component, idx) => (
-				<section className="container" key={idx}>
-					{Component}
-				</section>
-			))}
-		</>
-	);
+    <>
+      <Navigation />
+      <main className="scroll-smooth">
+        <Hero key="hero" />
+        <ProjectsSection key="projects" />
+        <AboutSection key="about" />
+        <SkillSection key="skills" />
+        <ContactSection key="contact" />
+      </main>
+      <Footer />
+    </>
+  );
 }

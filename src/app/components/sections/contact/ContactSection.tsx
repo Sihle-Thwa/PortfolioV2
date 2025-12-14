@@ -1,26 +1,9 @@
-'use client';
-import { useEffect, useState } from "react";
+"use client";
+import {  useState } from "react";
 import "./contactsection.css";
 import Image from "next/image";
 
-
-
 export default function ContactSection() {
-
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const timeString = currentTime.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +11,7 @@ export default function ContactSection() {
   });
   const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setStatus("sending");
 
@@ -103,10 +86,6 @@ export default function ContactSection() {
         {status === "error" && <p>Failed to send. Please try again.</p>}
       </form>
 
-      <div className="c-contact-meta">
-        <div className="mr-4">📍 Local Time: {timeString}</div>
-      </div>
-
       <div className="c-contact-links" suppressHydrationWarning>
         <a
           href="https://linkedin.com/in/siphesihle-mthethwa"
@@ -144,11 +123,11 @@ export default function ContactSection() {
         >
           <div className="c-contact-backtotop animate-bounce">
             <Image
-			  src ="/icons/uparrow.svg"
+              src="/icons/uparrow.svg"
               alt="Back to Top"
               className="c-contact-backtotop-icon"
-			  width={42}
-			  height={42}
+              width={42}
+              height={42}
               priority
             />
           </div>
