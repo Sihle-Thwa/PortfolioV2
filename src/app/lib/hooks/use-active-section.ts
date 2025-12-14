@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>('hero');
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -15,13 +15,13 @@ export function useActiveSection() {
       },
       {
         // Trigger when section is 50% visible
-        rootMargin: '-50% 0px -50% 0px',
+        rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
       }
     );
 
     // Observe all sections with an id attribute
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     // Cleanup
@@ -43,9 +43,9 @@ export function useActiveSectionWithOptions(
   options: UseActiveSectionOptions = {}
 ) {
   const {
-    rootMargin = '-50% 0px -50% 0px',
+    rootMargin = "-50% 0px -50% 0px",
     threshold = 0,
-    defaultSection = 'hero',
+    defaultSection = "hero",
   } = options;
 
   const [activeSection, setActiveSection] = useState<string>(defaultSection);
@@ -74,7 +74,7 @@ export function useActiveSectionWithOptions(
       }
     );
 
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     return () => {

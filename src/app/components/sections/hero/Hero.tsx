@@ -1,5 +1,4 @@
 "use client";
-
 import "./hero.css";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -39,8 +38,9 @@ export default function Hero() {
 	function getActiveTheme(
 		theme: string | undefined,
 		systemTheme: string | undefined,
-	) {
-		return theme === "system" ? systemTheme : theme;
+	): string {
+		if (theme === "system") return systemTheme ?? "light";
+		return theme ?? "light";
 	}
 	const activeTheme = getActiveTheme(theme, systemTheme);
 	const slides = (activeTheme === "dark" ? darkSlides : lightSlides) as Slide[];

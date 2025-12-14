@@ -21,7 +21,7 @@ export function useScrollPosition() {
     }, 100);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Get initial position
     handleScroll();
 
@@ -42,7 +42,7 @@ export function useScrollPast(threshold: number = 100) {
     }, 100);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Check initial position
     handleScroll();
 
@@ -74,7 +74,7 @@ export function useScrollDirection() {
     }, 100);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -99,7 +99,7 @@ export function useScrollProgress() {
     }, 100);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Get initial progress
     handleScroll();
 
