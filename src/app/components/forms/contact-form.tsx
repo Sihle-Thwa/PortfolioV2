@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
-import { contactSchema, type ContactFormData } from '../../lib/validations';
-import { Loader2, Send } from 'lucide-react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+import { contactSchema, type ContactFormData } from "../../lib/validations";
+import { Loader2, Send } from "lucide-react";
 
 /**
  * Submit contact form data to API
  * Server-side validation and email sending
  */
 async function submitContactForm(data: ContactFormData) {
-  const response = await fetch('/api/contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
   // Handle successful response
   if (response.ok) {
-    const contentType = response.headers.get('content-type') || '';
+    const contentType = response.headers.get("content-type") || "";
     
     // Parse JSON response
-    if (contentType.includes('application/json')) {
+    if (contentType.includes("application/json")) {
       return response.json();
     }
     
@@ -37,7 +37,7 @@ async function submitContactForm(data: ContactFormData) {
   }
 
   // Handle error responses
-  let errorMessage = 'Failed to send message. Please try again.';
+  let errorMessage = "Failed to send message. Please try again.";
   
   try {
     const errorData = await response.json();
@@ -65,7 +65,7 @@ export default function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    mode: 'onBlur', // Validate on blur for better UX
+    mode: "onBlur", // Validate on blur for better UX
   });
 
   const mutation = useMutation({
@@ -76,7 +76,7 @@ export default function ContactForm() {
       reset();
     },
     onError: (error: Error) => {
-      toast.error(error.message || 'Failed to send message. Please try again.');
+      toast.error(error.message || "Failed to send message. Please try again.");
     },
   });
 
@@ -84,7 +84,7 @@ export default function ContactForm() {
     mutation.mutate(data);
   };
 
-  const isLoading = mutation.isPending || isSubmitting;
+  const isLoading = mutation || isSubmitting;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
@@ -97,14 +97,13 @@ export default function ContactForm() {
           Full Name
         </label>
         <input
-          {...register('name')}
+          {...register("name")}
           type="text"
           id="name"
           placeholder="John Doe"
           autoComplete="name"
-          disabled={isLoading}
-          aria-invalid={errors.name ? 'true' : 'false'}
-          aria-describedby={errors.name ? 'name-error' : undefined}
+          aria-invalid={errors.name ? "true" : "false"}
+          aria-describedby={errors.name ? "name-error" : undefined}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
         {errors.name && (
@@ -127,14 +126,13 @@ export default function ContactForm() {
           Email Address
         </label>
         <input
-          {...register('email')}
+          {...register("email")}
           type="email"
           id="email"
           placeholder="john@example.com"
           autoComplete="email"
-          disabled={isLoading}
-          aria-invalid={errors.email ? 'true' : 'false'}
-          aria-describedby={errors.email ? 'email-error' : undefined}
+          aria-invalid={errors.email ? "true" : "false"}
+          aria-describedby={errors.email ? "email-error" : undefined}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
         {errors.email && (
@@ -157,13 +155,12 @@ export default function ContactForm() {
           Message
         </label>
         <textarea
-          {...register('message')}
+          {...register("message")}
           id="message"
           rows={5}
           placeholder="Tell me about your project or how we can work together..."
-          disabled={isLoading}
-          aria-invalid={errors.message ? 'true' : 'false'}
-          aria-describedby={errors.message ? 'message-error' : undefined}
+          aria-invalid={errors.message ? "true" : "false"}
+          aria-describedby={errors.message ? "message-error" : undefined}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
         {errors.message && (
@@ -180,7 +177,6 @@ export default function ContactForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        disabled={isLoading}
         className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
       >
         {isLoading ? (
