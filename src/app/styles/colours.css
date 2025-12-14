@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --beige-500: #f4deb7; /* Warm Beige */
+  --espresso-700: #3b2c24; /* Rich Espresso */
+  --sand-200: #fbf8f5; /* Soft Sand */
+  --sun-500: #f9c949; /* Sunlight Yellow */
+  --charcoal-900: #1c1c1c; /* Charcoal Black */
+  --olive-500: #a5a682; /* Muted Olive */
+
+  /* Primary Colour Tokens */
+  --colour-primary-light: var(--charcoal-900);
+  --colour-primary-dark: var(--beige-500);
+  --colour-accent: var(--sun-500);
+  --colour-secondary-light: var(--olive-500);
+  --colour-secondary-dark: colour-mix(in oklab, var(--olive-500) 85%, white);
+
+  /* Secondary Colour Tokens */
+  --colour-background-light: var(--sand-200);
+  --colour-background-dark: var(--espresso-700);
+  --colour-text-light: var(--charcoal-900);
+  --colour-text-dark: var(--sand-200);
+
+  /* Tertiary Colour Tokens */
+  --colour-border-light: var(--beige-500);
+  --colour-border-dark: var(--espresso-700);
+
+  /*Accent Colours */
+  --colour-accent-light: var(--sun-500);
+  --colour-accent-dark: colour-mix(
+    in oklab,
+    var(--sun-500) 70%,
+    var(--espresso-700)
+  );
+}

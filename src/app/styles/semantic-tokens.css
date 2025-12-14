@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "./colours.css";
+
+/* Light Theme (default) */
+:root {
+
+  /*Text Colours*/
+  --text-primary: var(--colour-text-light);
+  --text-secondary: colour-mix(in oklab, var(--colour-text-light) 70%, var(--colour-text-dark));
+  --text-accent: var(--colour-accent-light);
+  --text-link: var(--colour-accent-light);
+  --text-border: var(--colour-border-light);
+  --text-placeholder: colour-mix(in oklab, var(--colour-text-light) 50%, var(--colour-background-light)); 
+
+  /*Background Colours*/
+  --background-primary: var(--colour-background-light);
+  --background-secondary: colour-mix(in oklab, var(--colour-background-light) 80%, var(--colour-background-dark));
+  --background-accent: var(--colour-accent-light);  
+  --background-border: var(--colour-border-light);
+  --background-hover: colour-mix(in oklab, var(--colour-accent-light) 90%, var(--colour-background-light)); 
+
+  /*Top Navigation Colours Light*/
+  --topnav-background: var(--colour-background-light);
+  --topnav-text: var(--text-primary);
+  
+  /*Top Navigation Colours Dark*/
+  --topnav-background-dark: var(--colour-background-dark);
+  --topnav-text-dark: var(--text-primary);
+
+  /*Card Components */
+  --card-background: var(--colour-background-light);
+  --card-border: var(--colour-border-light);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+
+  /*Input Components */
+  --input-background: var(--colour-background-light);
+  --input-border: var(--colour-border-light);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-placeholder);
+
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /*Text Colours*/
+    --text-primary: var(--colour-text-dark);
+    --text-secondary: colour-mix(in oklab, var(--colour-text-dark) 70%, var(--colour-text-light));
+    --text-accent: var(--colour-accent-dark);
+    --text-link: var(--colour-accent-dark);
+    --text-border: var(--colour-border-dark);
+    --text-placeholder: colour-mix(in oklab, var(--colour-text-dark) 50%, var(--colour-background-dark)); 
+
+    /*Background Colours*/
+    --background-primary: var(--colour-background-dark);
+    --background-secondary: colour-mix(in oklab, var(--colour-background-dark) 80%, var(--colour-background-light));
+    --background-accent: var(--colour-accent-dark);  
+    --background-border: var(--colour-border-dark);
+    --background-hover: colour-mix(in oklab, var(--colour-accent-dark) 90%, var(--colour-background-dark)); 
+
+    /*Top Navigation Colours Dark*/
+    --topnav-background: var(--colour-background-dark);
+    --topnav-text: var(--text-primary);
+    
+    /*Top Navigation Colours Light*/
+    --topnav-background-dark: var(--colour-background-light);
+    --topnav-text-dark: var(--text-primary);
+
+    /*Card Components */
+    --card-background: var(--colour-background-dark);
+    --card-border: var(--colour-border-dark);
+    --card-shadow: rgba(0, 0, 0, 0.5);
+
+    /*Input Components */
+    --input-background: var(--colour-background-dark);
+    --input-border: var(--colour-border-dark);
+    --input-text: var(--text-primary);
+    --input-placeholder: var(--text-placeholder);
+  }
+}  

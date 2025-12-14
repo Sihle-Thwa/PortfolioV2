@@ -1,7 +1,8 @@
+"use client";
 import ContactForm from '../../forms/contact-form';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
-export default function Contact() {
+export default function ContactSection() {
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">

@@ -368,21 +368,3 @@ html.dark .hero-slide::before {
 		color: var(--colour-fg);
 	}
 }
-
-/* ==========================================================================
-   Reduced Motion
-   ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-	.hero-slide,
-	.slide-heading,
-	.slide-subheading,
-	.hero-buttons--wrap,
-	.hero-status {
-		animation: none !important;
-		transition: none !important;
-		opacity: 1 !important;
-		filter: none !important;
-		transform: none !important;
-	}
-}
