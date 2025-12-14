@@ -1,23 +1,25 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { toast } from 'react-hot-toast';
-import { contactSchema, type ContactFormData } from '../../lib/validations';
-import { Loader2, Send } from 'lucide-react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+import { contactSchema, type ContactFormData } from "../../lib/validations";
+import { Loader2, Send } from "lucide-react";
 
 async function submitContactForm(data: ContactFormData) {
-  // Since the API doesn't have POST endpoint implemented yet, use mailto as fallback
-  const subject = `Portfolio Contact: Message from ${data.name}`;
-  const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-  const mailtoUrl = `mailto:contact@portfolio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  
-  // Open user's email client
-  window.location.href = mailtoUrl;
-  
-  // Return success to trigger form reset
-  return { success: true, message: 'Email client opened successfully' };
+  const response = await fetch("../../api/contact/route.ts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || error.error || "Failed to send message");
+  }
+
+  return response.json();
 }
 
 export default function ContactForm() {
@@ -33,11 +35,11 @@ export default function ContactForm() {
   const mutation = useMutation({
     mutationFn: submitContactForm,
     onSuccess: () => {
-      toast.success("Email client opened! Please send the email to complete your message.");
+      toast.success("Message sent successfully! I'll get back to you soon.");
       reset();
     },
     onError: (error: Error) => {
-      toast.error(error.message || 'Failed to open email client');
+      toast.error(error.message);
     },
   });
 
@@ -50,13 +52,14 @@ export default function ContactForm() {
       {/* Name Field */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
-          Name
+          Full Name
         </label>
         <input
-          {...register('name')}
+          {...register("name")}
           type="text"
           id="name"
-          placeholder="John Doe"
+          placeholder="First and Last Name"
+          autoComplete="false"
           disabled={mutation.isPending}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
@@ -73,10 +76,11 @@ export default function ContactForm() {
           Email
         </label>
         <input
-          {...register('email')}
+          {...register("email")}
           type="email"
           id="email"
-          placeholder="john@example.com"
+          placeholder="youremail@address.com"
+          autoComplete="false"
           disabled={mutation.isPending}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
@@ -93,10 +97,10 @@ export default function ContactForm() {
           Message
         </label>
         <textarea
-          {...register('message')}
+          {...register("message")}
           id="message"
           rows={5}
-          placeholder="Tell me about your project or how we can work together..."
+          placeholder="Your message here..."
           disabled={mutation.isPending}
           className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         />
