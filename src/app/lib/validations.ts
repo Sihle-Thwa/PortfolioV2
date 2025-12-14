@@ -39,8 +39,8 @@ export const commentSchema = z.object({
   email: z
     .string()
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-    .transform((s) => s.toLowerCase()),
-  comment: z
+    .transform((s) => s.toLowerCase().trim()),
+  message: z
     .string()
     .min(3, "Comment must be at least 3 characters")
     .max(500, "Comment must be less than 500 characters"),
