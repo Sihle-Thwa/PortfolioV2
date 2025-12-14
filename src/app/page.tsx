@@ -12,11 +12,11 @@ export default function HomePage() {
     <>
       <Navigation />
       <main className="scroll-smooth">
-        <Hero key="hero" />
-        <ProjectsSection key="projects" />
-        <AboutSection key="about" />
-        <SkillSection key="skills" />
-        <ContactSection key="contact" />
+        <Hero />
+        <ProjectsSection />
+        <AboutSection />
+        <SkillSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

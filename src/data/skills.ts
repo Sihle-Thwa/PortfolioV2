@@ -1,11 +1,9 @@
-'use server';
-
-export type SkillGroup = {
+export type Skills = {
     category: string;
     skills: string[];
 };
 
-export const skills: SkillGroup[] = [
+export const skillList: Skills[] = [
     {
         category: "APIs and Data Integration",
         skills: ["Express", "GraphQL", "Postman", "REST API", "Swagger.io"],

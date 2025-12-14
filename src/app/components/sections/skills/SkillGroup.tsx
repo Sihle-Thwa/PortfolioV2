@@ -2,7 +2,7 @@ import SkillItem from "./SkillItem";
 import "./skillgroup.css";
 import Image from "next/image";
 import { useMemo } from "react";
-import { skillsData } from "@/data/skillsdata";
+import { skillsdata as skillsData } from "@/data/skillsdata";
 interface SkillGroupProps {
     category: string;
     skills: string[];

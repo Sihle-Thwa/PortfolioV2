@@ -1,5 +1,3 @@
-'use server';
-
 export type Project = {
     title: string;
     subtitle?: string;
@@ -35,7 +33,7 @@ export const projects: Project[] = [
         year: 2024,
         href: "",
         codebase: "https://github.com/Sihle-Thwa/OpenShop",
-        tags: ["React.js", "React Router DOM", "Vite.js", "Bootstrap", "Bootstrap", "Bootstrap Icons"],
+        tags: ["React.js", "React Router DOM", "Vite.js", "Bootstrap", "Bootstrap Icons"],
         image: "/OpenshopMain.png",
     },
     // ...additional projects

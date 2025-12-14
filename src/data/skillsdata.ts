@@ -1,11 +1,9 @@
-'use server';
-
-export type skilldata = {
+export type SkillData = {
     skill: string;
     icon: string;
 }
 
-export const skillsData: skilldata[] = [
+export const skillsdata: SkillData[] = [
 
     {
         skill: "Express",
