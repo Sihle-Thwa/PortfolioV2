@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .c-header {
 	--hdr-bg: color-mix(in oklab, var(--colour-bg) 85%, white);
 	--hdr-border: var(--colour-border);

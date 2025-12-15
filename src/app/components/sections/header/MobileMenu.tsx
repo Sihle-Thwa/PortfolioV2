@@ -3,40 +3,42 @@ import Link from "next/link";
 import "./mobilemenu.css";
 
 interface MobileMenuProps {
-	onClose: () => void;
+  onClose: () => void;
 }
 
 export default function MobileMenu({ onClose }: MobileMenuProps) {
-	return (
-		<div className="c-mm-backdrop" onClick={onClose}>
-			<aside className="c-mm-panel" onClick={(e) => e.stopPropagation()}>
-				<button
-					onClick={onClose}
-					className="c-mm-close"
-					aria-label="Close Menu"
-				>
-					&times;
-				</button>
-				<nav className="c-mm-nav">
-					<Link href="#services" onClick={onClose} className="c-mm-link">
-						Services
-					</Link>
-					<Link href="#projects" onClick={onClose} className="c-mm-link">
-						Projects
-					</Link>
-					<Link href="#about" onClick={onClose} className="c-mm-link">
-						About
-					</Link>
-					<Link
-						href="#contact"
-						onClick={onClose}
-						className="c-mm-link c-mm-link--cta"
-					>
-						Contact
-					</Link>
-				</nav>
-			</aside>
-		</div>
-	);
+  return (
+    <div className="mobile-menu-container" onClick={onClose}>
+      <aside
+        className="mobile-menu-content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="mobile-menu-menu-close"
+          aria-label="Close Menu"
+        >
+          &times;
+        </button>
+        <nav className=" mobile-menu-nav">
+          <Link
+            href="#services"
+            onClick={onClose}
+            className=" mobile-menu-link"
+          >
+            Services
+          </Link>
+          <Link href="#projects" onClick={onClose} className="mobile-menu-link">
+            Projects
+          </Link>
+          <Link href="#about" onClick={onClose} className="mobile-menu-link">
+            About
+          </Link>
+          <Link href="#contact" onClick={onClose} className="mobile-menu-link">
+            Contact
+          </Link>
+        </nav>
+      </aside>
+    </div>
+  );
 }
-

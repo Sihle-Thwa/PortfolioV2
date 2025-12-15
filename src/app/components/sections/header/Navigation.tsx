@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
 
@@ -17,133 +16,123 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection();
 
-  // Handle scroll event for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    handleScroll(); 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on escape key
   useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
+      if (e.key === "Escape") {
         setIsMobileMenuOpen(false);
       }
     };
 
     document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [isMobileMenuOpen]);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (href: string) => {
+  /* ---------------- Scroll helper ---------------- */
+  const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
-  };
+    if (!element) return;
+
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMobileMenuOpen(false);
+  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand/Logo */}
-          <button
-            onClick={() => scrollToSection("#hero")}
-            className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            aria-label="Go to homepage"
-          >
-            Your Name
-          </button>
+    <div className="navigation-container">
+      <nav className={`navigation-content ${isScrolled ? "navigation-scrolled" : ""}`}>
+        <div className="navigation-inner">
+          <div className="navigation-flex-container">
+            {/* Brand/Logo */}
+            <button
+              onClick={() => scrollToSection("#hero")}
+              className="navigation-logo"
+              aria-label="Go to homepage"
+            >
+              Your Name
+            </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
-              
-              return (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`text-sm font-medium transition-colors relative group ${
-                    isActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                  }`}
-                >
-                  {item.name}
-                  {/* Active indicator */}
-                  <span
-                    className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-transform origin-left ${
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+            <div className="desktopNavigation">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.slice(1);
+
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`${"navButton"} ${
+                      isActive ? "navButtonActive" : "navButtonInactive"
                     }`}
-                  />
-                </button>
-              );
-            })}
+                  >
+                    {item.name}
+                    {/* Active indicator */}
+                    <span
+                      className={`${"navIndicator"} ${
+                        isActive ? "navIndicatorActive" : "navIndicatorInactive"
+                      }`}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="navigation-mobile-menu-button"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMobileMenuOpen}
+          {/* Mobile Navigation */}
+          <div
+            className={`"navigation-mobile-menu" ${
+              isMobileMenuOpen ? "" : "hidden"
+            }`}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+            <div className="navigation-mobile-menu-items">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.slice(1);
 
-        {/* Mobile Navigation */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? "max-h-96" : "max-h-0"
-          }`}
-        >
-          <div className="py-4 space-y-1 border-t border-gray-200 dark:border-gray-700">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
-              
-              return (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    isActive
-                      ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  {item.name}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`"navigation-mobile-toggle" ${
+                      isActive
+                        ? "navigation-mobile-active"
+                        : "navigation-mobile-inactive"
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }
