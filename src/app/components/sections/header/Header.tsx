@@ -1,11 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useTheme } from "next-themes";
 import Navigation from "./Navigation";
 import dynamic from "next/dynamic";
 import "./header.css";
-import Image from "next/image";
 const MobileMenu = dynamic(() => import("./MobileMenu"));
 
 export default function Header() {
@@ -18,14 +16,6 @@ export default function Header() {
   return (
     <div className="header-container">
       <div className="header-content">
-        <Link href="#home" className="header-logo">
-          <Image src="/icons/SBMLogo.png" 
-		  alt="Logo" 
-		  width={38} height={38} 
-		  className="header-logo-image"
-		  />
-        </Link>
-
         <nav className="header-navigation">
           <Navigation />
         </nav>

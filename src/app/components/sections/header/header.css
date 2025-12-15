@@ -1,72 +1,61 @@
 @import "tailwindcss";
 
-.c-header {
-	--hdr-bg: color-mix(in oklab, var(--colour-bg) 85%, white);
-	--hdr-border: var(--colour-border);
-	--hdr-fg: var(--colour-fg);
-	position: sticky;
-	top: 0;
-	z-index: 1000;
-	backdrop-filter: blur(6px);
-	background: color-mix(in oklab, var(--hdr-bg) 80%, transparent);
-	border-bottom: 1px solid var(--hdr-border);
-	color: var(--hdr-fg);
-	
+.header-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.c-header-inner {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.75rem 1rem;
-}
+.header-content {}
 
-.c-header-brand {
-	color: var(--colour-primary);
-	font-weight: 700;
-}
+.header-navigation{}
 
-.c-header-nav {
-	align-items: center;
-	gap: 1rem;
-}
+.header-theme-toggle {}
 
-.c-header-cta {
-	background: var(--colour-accent);
-	color: #1c1c1c;
-	border-radius: var(--radius-md);
-	padding: 0.5rem 0.875rem;
-	font-weight: 600;
-}
+.header-mobile-menu-button {}
 
-.c-header-toggle,
-.c-header-hamburger {
-	border: 1px solid var(--colour-border);
-	border-radius: var(--radius-sm);
-	padding: 0.5rem;
-}
-.c-header-hamburger {
-	display: grid;
-	gap: 0.25rem;
-}
+.navigation-container {}
 
-@media (min-width: 768px) {
-	
-	.c-header-hamburger {
-		display: none;
-	}
+.navigation-content {}
 
-	
-}
+.navigation-scrolled {}
 
-.c-header-hamburger span {
-	width: 24px;
-	height: 2px;
-	background: var(--colour-fg);
-	display: block;
-}
+.navigation-inner{}
 
-html.dark .c-header {
-	--hdr-bg: color-mix(in oklab, var(--colour-surface) 70%, black);
-}
+.navigation-flex-container{}
+
+.navigation-logo {}
+
+.navigation-logo-image {}
+
+.desktopNavigation {}
+
+.navButton {}
+
+.navButtonActive {}
+
+.navButtonInactive {}
+
+.navigation-mobile-menu-button {}
+
+.navigation-mobile-menu {}
+
+.navigation-mobile-menu-items {}
+
+.navigation-mobile-toggle {}
+
+.navigation-mobile-active {}
+
+.navigation-mobile-inactive {}
+
+.mobile-menu-container {}
+
+.mobile-menu-content {}
+
+.mobile-menu-menu-close {}
+
+.mobile-menu-nav {}
+
+.mobile-menu-link {}

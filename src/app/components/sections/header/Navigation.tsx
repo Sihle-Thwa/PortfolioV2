@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -67,7 +68,12 @@ export default function Navigation() {
               className="navigation-logo"
               aria-label="Go to homepage"
             >
-              Your Name
+              <Image src="../../../../../public/SBMPortfolio.png"
+              alt="Logo"
+              width={42}
+              height={42}
+              className="navigation-logo-image"
+              />
             </button>
 
             <div className="desktopNavigation">
