@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
 import Image from "next/image";
+import brandLogo from "../../../../../public/icons/SBMLogo.png";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -13,7 +14,7 @@ const navItems = [
 ] as const;
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection();
 
@@ -59,7 +60,7 @@ export default function Navigation() {
 
   return (
     <div className="navigation-container">
-      <nav className={`navigation-content ${isScrolled ? "navigation-scrolled" : ""}`}>
+      <div className="navigation-content">
         <div className="navigation-inner">
           <div className="navigation-flex-container">
             {/* Brand/Logo */}
@@ -68,7 +69,7 @@ export default function Navigation() {
               className="navigation-logo"
               aria-label="Go to homepage"
             >
-              <Image src="../../../../../public/SBMPortfolio.png"
+              <Image src={brandLogo}
               alt="Logo"
               width={42}
               height={42}
@@ -113,9 +114,7 @@ export default function Navigation() {
 
           {/* Mobile Navigation */}
           <div
-            className={`"navigation-mobile-menu" ${
-              isMobileMenuOpen ? "" : "hidden"
-            }`}
+            className={`navigation-mobile-menu ${isMobileMenuOpen ? "" : "hidden"}`}
           >
             <div className="navigation-mobile-menu-items">
               {navItems.map((item) => {
@@ -125,7 +124,7 @@ export default function Navigation() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`"navigation-mobile-toggle" ${
+                    className={`navigation-mobile-toggle ${
                       isActive
                         ? "navigation-mobile-active"
                         : "navigation-mobile-inactive"
@@ -138,7 +137,7 @@ export default function Navigation() {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
   );
 }

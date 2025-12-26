@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import Navigation from "./Navigation";
 import dynamic from "next/dynamic";
 import "./header.css";
+
 const MobileMenu = dynamic(() => import("./MobileMenu"));
 
 export default function Header() {
@@ -16,9 +17,9 @@ export default function Header() {
   return (
     <div className="header-container">
       <div className="header-content">
-        <nav className="header-navigation">
+        <div className="header-navigation">
           <Navigation />
-        </nav>
+        </div>
         <button
           aria-label="Toggle theme"
           onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
