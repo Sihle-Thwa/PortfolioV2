@@ -4,14 +4,8 @@ import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
 import Image from "next/image";
 import brandLogo from "../../../../../public/icons/SBMLogo.png";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
-] as const;
+import { navItems } from "./navItems";
+import "./navigation.css";
 
 export default function Navigation() {
   const [, setIsScrolled] = useState(false);
@@ -90,7 +84,6 @@ export default function Navigation() {
                     }`}
                   >
                     {item.name}
-                    {/* Active indicator */}
                     <span
                       className={`${"navIndicator"} ${
                         isActive ? "navIndicatorActive" : "navIndicatorInactive"

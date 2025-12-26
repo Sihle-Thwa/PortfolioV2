@@ -1,13 +1,14 @@
-/* Component: MobileMenu */
-.c-mm-backdrop {
+/* Mobile menu styles matching component classNames */
+.mobile-menu-container {
 	position: fixed;
 	inset: 0;
 	background: rgba(0, 0, 0, 0.4);
 	z-index: 50;
+	display: flex;
+	justify-content: flex-end;
 }
 
-.c-mm-panel {
-	margin-left: auto;
+.mobile-menu-content {
 	height: 100%;
 	width: min(80vw, 320px);
 	background: var(--colour-surface);
@@ -16,23 +17,31 @@
 	padding: 1.5rem;
 	border-left: 1px solid var(--colour-border);
 }
-.c-mm-close {
+
+.mobile-menu-menu-close {
 	font-size: 1.75rem;
 	background: none;
 	border: none;
-	color: var(--color-fg);
+	color: var(--colour-fg);
+	display: flex;
+	justify-content: flex-end;
 	margin-bottom: 1rem;
 }
-.c-mm-nav {
-	display:flex; flex-direction:column; gap:.75rem;
+
+.mobile-menu-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
 }
-.c-mm-link {
+
+.mobile-menu-link {
 	display: block;
 	padding: 0.5rem 0;
 	color: var(--colour-fg);
+	text-decoration: none;
 }
 
-.c-mm-link--cta {
+.mobile-menu-link--cta {
 	background: var(--colour-accent);
 	color: #1c1c1c;
 	border-radius: var(--radius-md);

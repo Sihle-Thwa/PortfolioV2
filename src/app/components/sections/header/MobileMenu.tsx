@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import "./mobilemenu.css";
+import { navItems } from "./navItems";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -20,23 +21,17 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
         >
           &times;
         </button>
-        <nav className=" mobile-menu-nav">
-          <Link
-            href="#services"
-            onClick={onClose}
-            className=" mobile-menu-link"
-          >
-            Services
-          </Link>
-          <Link href="#projects" onClick={onClose} className="mobile-menu-link">
-            Projects
-          </Link>
-          <Link href="#about" onClick={onClose} className="mobile-menu-link">
-            About
-          </Link>
-          <Link href="#contact" onClick={onClose} className="mobile-menu-link">
-            Contact
-          </Link>
+        <nav className="mobile-menu-nav">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={onClose}
+              className="mobile-menu-link"
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
       </aside>
     </div>
