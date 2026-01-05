@@ -11,8 +11,12 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
   useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return null;
+  }
+  
   const activeTheme = theme === "system" ? systemTheme : theme;
   return (
     <div className="header-container">
@@ -25,16 +29,16 @@ export default function Header() {
           onClick={() => setTheme(activeTheme === "dark" ? "light" : "dark")}
           className="header-theme-toggle"
         >
-          {mounted && activeTheme === "dark" ? "🌞" : "🌙"}
+          {activeTheme === "dark" ? "🌞" : "🌙"}
         </button>
         <button
           className="header-mobile-menu-button"
           onClick={() => setMobileOpen(true)}
           aria-label="Open Menu"
         >
-          <span />
-          <span />
-          <span />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </button>
       </div>
 

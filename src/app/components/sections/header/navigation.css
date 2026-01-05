@@ -3,19 +3,24 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: var(--background-colour);
+	background-color: var(--topnav-background);
 	z-index: 1000;
-	transition: background-color 0.3s, box-shadow 0.3s;
+	border-bottom: 1px solid var(--background-border);
+	box-shadow: var(--card-shadow);
 }
 
 .navigation-content {
 	max-width: 1200px;
-	width: 100%;
 	margin: 0 auto;
-	padding: 1rem 1.5rem;
+	padding: 0 1rem;
+	height: 64px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .navigation-inner {
+	flex: 1;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -23,23 +28,25 @@
 
 .navigation-flex-container {
 	display: flex;
-	gap: 2rem;
+	align-items: center;
+	gap: 1.5rem;
 }
 
 .navigation-logo {
 	display: flex;
 	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
 }
 
 .navigation-logo-image {
-	height: 42px;
-	width: 42px;
-	border-radius: 0.375rem;
-	object-fit: cover;
+	height: 32px;
+	width: auto;
 }
 
 .desktopNavigation {
 	display: flex;
+	align-items: center;
 	gap: 1.5rem;
 }
 
@@ -53,25 +60,23 @@
 }
 
 .navButtonActive {
-	background-color: var(--text-primary);
-	color: var(--button-text-colour);
+	color: var(--text-primary);
 }
 
 .navButtonInactive {
-	color: var(--text-accent);
-	background-color: transparent;
+	color: var(--text-secondary);
 }
 
 .navIndicator {
-	display: inline-block;
-	width: 6px;
-	height: 6px;
-	border-radius: 999px;
-	margin-left: 0.5rem;
+	display: block;
+	width: 100%;
+	height: 3px;
+	margin-top: 4px;
+	border-radius: 2px;
 }
 
 .navIndicatorActive {
-	background: var(--colour-primary);
+	background: var(--text-primary);
 }
 
 .navIndicatorInactive {
@@ -87,9 +92,11 @@
 }
 
 .navigation-mobile-menu-items {
-	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	padding: 1rem;
+	background-color: var(--topnav-background);
+	border-top: 1px solid var(--background-border);
 }
 
 .navigation-mobile-toggle {

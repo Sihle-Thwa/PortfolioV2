@@ -1,5 +1,4 @@
 import "./headlinebanner.css";
-
 import React from "react";
 
 const HeadlineBanner: React.FC = () => {
@@ -18,8 +17,9 @@ const HeadlineBanner: React.FC = () => {
 	return (
 		<div className="headline-banner">
 			<div className="headline-banner-content">
-				{headlines.map((headline) => (
-					<div className="headline-pill" key={headline}>
+				{/* Duplicate the content for seamless marquee effect */}
+				{[...headlines, ...headlines].map((headline, index) => (
+					<div className="headline-pill" key={`${headline}-${index}`}>
 						{headline}
 					</div>
 				))}

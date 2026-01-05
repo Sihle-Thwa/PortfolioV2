@@ -14,12 +14,20 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
 
-    handleScroll(); 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    // initialize state based on current scroll
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -45,11 +53,14 @@ export default function Navigation() {
 
   /* ---------------- Scroll helper ---------------- */
   const scrollToSection = useCallback((href: string) => {
-    const element = document.querySelector(href);
-    if (!element) return;
-
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-    setIsMobileMenuOpen(false);
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80; 
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setIsMobileMenuOpen(false); 
+    }
   }, []);
 
   return (
