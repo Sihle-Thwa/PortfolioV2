@@ -5,7 +5,7 @@ import { Josefin_Sans } from "next/font/google";
 import ClientProviders from "./ClientProviders";
 
 const josefin = Josefin_Sans({
-  subsets: ["latin"], variable: "--font-josefin", weight: ["300","400", "500", "600", "700"],
+  subsets: ["latin"], variable: "--font-josefin", weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     icon: "/icons/SBMLogo.png",
     shortcut: "/icons/SBMLogo.png",
     apple: "/icons/SBMLogo.png",
+    
   },
   openGraph: {
     title: "Siphesihle B. Mthethwa | Portfolio",
@@ -33,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={josefin.className}>
-      <body suppressHydrationWarning>
+    <html lang="en" className={josefin.variable}>
+      <body>
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>

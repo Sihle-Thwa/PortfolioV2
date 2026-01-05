@@ -1,4 +1,3 @@
-"use client";
 import Hero from "./components/sections/hero/Hero";
 import AboutSection from "./components/sections/about/AboutSection";
 import SkillSection from "./components/sections/skills/SkillSection";
@@ -11,13 +10,13 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="scroll-smooth">
+      <body>
         <Hero />
         <ProjectsSection />
         <AboutSection />
         <SkillSection />
         <ContactSection />
-      </main>
+      </body>
       <Footer />
     </>
   );

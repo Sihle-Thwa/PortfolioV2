@@ -1,18 +1,11 @@
-@import "../../../styles/semantic-tokens.css";
-@import "../../../styles/typography.css";
-
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
   height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--topnav-background);
-  border-bottom: 1px solid var(--background-border);
-  position: relative;
-  z-index: 100;
 }
 
 .header-content {
@@ -25,23 +18,13 @@
 .header-navigation {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 32px;
 }
 
-.header-theme-toggle {
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 0.375rem;
-  transition: all 0.3s ease;
-  background: var(--card-background);
-  border: 1px solid var(--card-border);
-  color: var(--text-primary);
-  font-size: var(--body-size-lg);
+.header-navigation--desktop {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
+  gap: 32px;
 }
 
 .header-mobile-menu-button {
@@ -53,21 +36,15 @@
   background: var(--card-background);
   border: 1px solid var(--card-border);
   color: var(--text-primary);
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  gap: 4px;
 }
 
-.header-mobile-menu-button span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: var(--text-primary);
+.header-mobile-menu-button svg {
+  color: var(--text-primary);
   transition: all 0.3s ease;
-  border-radius: 1px;
 }
 .header-mobile-menu {
   display: none;
@@ -93,16 +70,6 @@
 }
 
 /* Theme-specific styling */
-html.dark .header-theme-toggle:hover {
-  background-color: var(--background-hover);
-  transform: translateY(-1px);
-}
-
-html.light .header-theme-toggle:hover {
-  background-color: var(--background-hover);
-  transform: translateY(-1px);
-}
-
 html.dark .header-mobile-menu-button:hover {
   background-color: var(--background-hover);
 }
@@ -112,17 +79,17 @@ html.light .header-mobile-menu-button:hover {
 }
 
 /* Media queries */
-@media (max-width: 460px) {
+@media (max-width: 768px) {
   .header-mobile-menu-button {
     display: flex;
   }
   
-  .header-content {
-    padding: 0 0.5rem;
+  .header-navigation--desktop {
+    display: none;
   }
   
-  .header-navigation {
-    gap: 1rem;
+  .header-content {
+    padding: 0 0.75rem;
   }
 }
 

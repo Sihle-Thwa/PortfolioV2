@@ -8,27 +8,10 @@ import { navItems } from "./navItems";
 import "./navigation.css";
 
 export default function Navigation() {
-  const [, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    // initialize state based on current scroll
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // Scroll detection effect removed because associated state (isScrolled) was unused.
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -56,12 +39,54 @@ export default function Navigation() {
     const id = href.replace("#", "");
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80; 
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const yOffset = -80;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
-      setIsMobileMenuOpen(false); 
+      setIsMobileMenuOpen(false);
     }
   }, []);
+
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  function cycleTheme(): void {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  }
+
+  useEffect(() => {
+    // Determine initial theme on mount
+    const storedTheme =
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("theme")
+        : null;
+    if (storedTheme === "light" || storedTheme === "dark") {
+      setTheme(storedTheme);
+      return;
+    }
+
+    if (typeof window !== "undefined") {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Persist theme choice
+    window.localStorage.setItem("theme", theme);
+
+    // Apply theme to document root (commonly used by global styles)
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <div className="navigation-container">
@@ -70,19 +95,13 @@ export default function Navigation() {
           <div className="navigation-flex-container">
             {/* Brand/Logo */}
             <button
-              onClick={() => scrollToSection("#hero")}
+              onClick={() => scrollToSection("#home")}
               className="navigation-logo"
-              aria-label="Go to homepage"
             >
-              <Image src={brandLogo}
-              alt="Logo"
-              width={42}
-              height={42}
-              className="navigation-logo-image"
-              />
+              <Image src={brandLogo} alt="Logo" width={48} height={48} />
             </button>
 
-            <div className="desktopNavigation">
+            <div className="navigation-nav-items">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.slice(1);
 
@@ -90,13 +109,13 @@ export default function Navigation() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`${"navButton"} ${
+                    className={`navButton ${
                       isActive ? "navButtonActive" : "navButtonInactive"
                     }`}
                   >
                     {item.name}
                     <span
-                      className={`${"navIndicator"} ${
+                      className={`navIndicator ${
                         isActive ? "navIndicatorActive" : "navIndicatorInactive"
                       }`}
                     />
@@ -105,9 +124,23 @@ export default function Navigation() {
               })}
             </div>
 
+            {/* Theme toggle moved from Header */}
+            <button
+              onClick={cycleTheme}
+              aria-label={`${
+                theme === "light"
+                  ? "Switch to dark mode"
+                  : "Switch to light mode"
+              } (current: ${theme})`}
+            >
+              {theme === "light" ? "☀️" : "🌙"}
+            </button>
+
             {/* Mobile Menu Toggle */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={function () {
+                return setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
               className="navigation-mobile-menu-button"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
@@ -118,7 +151,9 @@ export default function Navigation() {
 
           {/* Mobile Navigation */}
           <div
-            className={`navigation-mobile-menu ${isMobileMenuOpen ? "" : "hidden"}`}
+            className={`navigation-mobile-menu ${
+              isMobileMenuOpen ? "" : "hidden"
+            }`}
           >
             <div className="navigation-mobile-menu-items">
               {navItems.map((item) => {
@@ -127,7 +162,9 @@ export default function Navigation() {
                 return (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={function () {
+                      return scrollToSection(item.href);
+                    }}
                     className={`navigation-mobile-toggle ${
                       isActive
                         ? "navigation-mobile-active"

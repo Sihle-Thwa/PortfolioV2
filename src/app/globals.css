@@ -4,11 +4,15 @@
 @import "./styles/semantic-tokens.css";
 @import "./styles/typewriter.css";
 
+html {
+  scroll-behavior: smooth;
+  
+}
+
 body {
-  font-size: var(--body-size-default);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 100vh;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family-body);
 }
