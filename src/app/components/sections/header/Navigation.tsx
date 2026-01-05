@@ -13,27 +13,6 @@ export default function Navigation() {
 
   // Scroll detection effect removed because associated state (isScrolled) was unused.
 
-  useEffect(() => {
-    if (!isMobileMenuOpen) {
-      document.body.style.overflow = "";
-      return;
-    }
-
-    document.body.style.overflow = "hidden";
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [isMobileMenuOpen]);
-
   /* ---------------- Scroll helper ---------------- */
   const scrollToSection = useCallback((href: string) => {
     const id = href.replace("#", "");

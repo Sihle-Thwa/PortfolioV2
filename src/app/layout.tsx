@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={josefin.variable}>
+    <html lang="en" className={josefin.className}>
       <body>
         <ClientProviders>{children}</ClientProviders>
       </body>
