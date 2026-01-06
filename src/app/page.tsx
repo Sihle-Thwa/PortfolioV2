@@ -8,16 +8,17 @@ import Header from "./components/sections/header/Header";
 
 export default function HomePage() {
   return (
-    <>
+       <>
       <Header />
-      <body>
+      <main>
         <Hero />
         <ProjectsSection />
         <AboutSection />
         <SkillSection />
         <ContactSection />
-      </body>
+      </main>
       <Footer />
     </>
+
   );
 }

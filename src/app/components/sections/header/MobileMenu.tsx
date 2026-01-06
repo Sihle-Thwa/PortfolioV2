@@ -1,50 +1,79 @@
 "use client";
-import Link from "next/link";
-import { X } from "lucide-react";
+import { X, Sun, Moon } from "lucide-react";
 import "./mobilemenu.css";
 import { navItems } from "./navItems";
 
 interface MobileMenuProps {
   onClose: () => void;
   theme: string;
+  onThemeToggle: () => void;
+  scrollToSection: (href: string) => void;
+  activeSection: string;
 }
 
-export default function MobileMenu({ onClose, theme }: MobileMenuProps) {
-  const themeIcon = theme === "dark" ? "🌙" : "🌞";
-  const themeLabel = theme === "dark" ? "Dark" : "Light";
+export default function MobileMenu({ 
+  onClose, 
+  theme, 
+  onThemeToggle, 
+  scrollToSection, 
+  activeSection 
+}: MobileMenuProps) {
+  const handleNavClick = (href: string) => {
+    scrollToSection(href);
+    onClose();
+  };
 
   return (
-    <div className="mobile-menu-container" onClick={onClose}>
+    <div className="mobile-menu-overlay" onClick={onClose}>
       <aside
         className="mobile-menu-content"
         onClick={(event): void => event.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          className="mobile-menu-menu-close"
-          aria-label="Close Menu"
-        >
-          <X size={20} />
-        </button>
+        <div className="mobile-menu-header">
+          <button
+            onClick={onClose}
+            className="mobile-menu-close"
+            aria-label="Close Menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
         <nav className="mobile-menu-nav">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={onClose}
-              className="mobile-menu-link"
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href.slice(1);
+            return (
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.href)}
+                className={`mobile-menu-link ${
+                  isActive ? "mobile-menu-link--active" : ""
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.name}
+              </button>
+            );
+          })}
         </nav>
         
-        {/* Theme info footer */}
         <div className="mobile-menu-footer">
-          <div className="mobile-menu-theme-display">
-            <span className="mobile-menu-theme-icon">{themeIcon}</span>
-            <span className="mobile-menu-theme-label">Theme: {themeLabel}</span>
-          </div>
+          <button
+            onClick={onThemeToggle}
+            className="mobile-menu-theme-toggle"
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            <span className="mobile-menu-theme-icon">
+              {theme === "light" ? (
+                <Sun size={20} aria-hidden="true" />
+              ) : (
+                <Moon size={20} aria-hidden="true" />
+              )}
+            </span>
+            <span className="mobile-menu-theme-label">
+              {theme === "light" ? "Light Mode" : "Dark Mode"}
+            </span>
+          </button>
         </div>
       </aside>
     </div>
