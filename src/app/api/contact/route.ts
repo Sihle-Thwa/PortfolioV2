@@ -1,20 +1,15 @@
-'use server';
+"use server";
 import { NextRequest, NextResponse } from "next/server";
-import { ZodError } from "zod";
 import { contactSchema } from "../../lib/validations";
 import {
   sendContactEmail,
   sendAutoReplyEmail,
   checkEmailRateLimit,
 } from "../../lib/email";
-
+import { ZodError } from "zod";
 // Runtime configuration
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-// ============================================================================
-// Type Definitions
-// ============================================================================
 
 interface ApiSuccessResponse {
   message: string;
@@ -45,13 +40,6 @@ interface ValidationErrorResponse extends ApiErrorResponse {
   }>;
 }
 
-// ============================================================================
-// Helper Functions
-// ============================================================================
-
-/**
- * Validate required environment variables
- */
 function validateEnvironment(): void {
   const required = ["SMTP_USER", "SMTP_PASSWORD", "CONTACT_EMAIL"];
   const missing = required.filter((key) => !process.env[key]);
@@ -63,9 +51,6 @@ function validateEnvironment(): void {
   }
 }
 
-/**
- * Extract client IP address from request headers
- */
 function getClientIp(request: NextRequest): string {
   // Check various headers in order of preference
   const headers = [
@@ -85,9 +70,6 @@ function getClientIp(request: NextRequest): string {
   return "unknown";
 }
 
-/**
- * Create standardized error response
- */
 function createErrorResponse(
   error: string,
   message: string,
@@ -102,7 +84,7 @@ function createErrorResponse(
     ...(details && { details }),
   };
 
-  return NextResponse.json(response, { 
+  return NextResponse.json(response, {
     status,
     headers: {
       "Content-Type": "application/json",
@@ -111,16 +93,13 @@ function createErrorResponse(
   });
 }
 
-/**
- * Create rate limit exceeded response
- */
 function createRateLimitResponse(
   message: string,
   retryAfterSeconds: number,
   limit: string
 ): NextResponse<ApiErrorResponse> {
   const resetTimestamp = Math.floor(Date.now() / 1000) + retryAfterSeconds;
-  
+
   return NextResponse.json(
     {
       error: "Rate limit exceeded",
@@ -146,22 +125,14 @@ function createRateLimitResponse(
   );
 }
 
-// ============================================================================
-// API Route Handlers
-// ============================================================================
-
-/**
- * POST /api/contact
- * Handle contact form submissions
- */
 export async function POST(
   request: NextRequest
-): Promise<NextResponse<ApiSuccessResponse | ApiErrorResponse | ValidationErrorResponse>> {
+): Promise<
+  NextResponse<ApiSuccessResponse | ApiErrorResponse | ValidationErrorResponse>
+> {
   try {
-    // Step 1: Validate environment configuration
     validateEnvironment();
 
-    // Step 2: Parse and validate request body
     let body;
     try {
       body = await request.json();
@@ -173,13 +144,10 @@ export async function POST(
       );
     }
 
-    // Step 3: Validate data with Zod schema
     const validatedData = contactSchema.parse(body);
 
-    // Step 4: Get client information
     const clientIp = getClientIp(request);
 
-    // Step 5: Check IP-based rate limiting (3 requests per hour)
     const withinIpRateLimit = checkEmailRateLimit(clientIp, 3);
     if (!withinIpRateLimit) {
       console.warn(`IP rate limit exceeded: ${clientIp}`);
@@ -190,10 +158,7 @@ export async function POST(
       );
     }
 
-    // Step 6: Check email-based rate limiting (36 requests per day)
-    const withinEmailRateLimit = checkEmailRateLimit(
-      validatedData.email, 36
-    );
+    const withinEmailRateLimit = checkEmailRateLimit(validatedData.email, 36);
     if (!withinEmailRateLimit) {
       console.warn(`Email rate limit exceeded: ${validatedData.email}`);
       return createRateLimitResponse(
@@ -203,26 +168,14 @@ export async function POST(
       );
     }
 
-    // Step 7: Log submission (for monitoring)
-    console.log("📧 Contact form submission:", {
-      name: validatedData.name,
-      email: validatedData.email,
-      messageLength: validatedData.message.length,
-      timestamp: new Date().toISOString(),
-      ip: clientIp,
-    });
-
-    // Step 8: Send contact email
     const emailResult = await sendContactEmail(validatedData);
 
-    // Step 9: Send auto-reply (non-blocking, failure is non-critical)
     sendAutoReplyEmail(validatedData.email, validatedData.name).catch(
       (error) => {
         console.error("⚠️ Auto-reply failed (non-critical):", error);
       }
     );
 
-    // Step 10: Return success response
     const successResponse: ApiSuccessResponse = {
       message: "Message sent successfully! Thank you for reaching out.",
       success: true,
@@ -243,7 +196,7 @@ export async function POST(
     // Handle Zod validation errors
     if (error instanceof ZodError) {
       const issues = error.issues.map((err) => ({
-         field: err.path.join("."),
+        field: err.path.join("."),
         message: err.message,
       }));
 
@@ -287,7 +240,9 @@ export async function POST(
         error.message.includes("auth") ||
         error.message.includes("authentication")
       ) {
-        console.error("🔐 Email authentication failed - check SMTP credentials");
+        console.error(
+          "🔐 Email authentication failed - check SMTP credentials"
+        );
         return createErrorResponse(
           "Email service configuration error",
           "There is a configuration issue with the email service. Please contact the site administrator.",
