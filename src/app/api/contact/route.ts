@@ -8,8 +8,7 @@ import {
 } from "../../lib/email";
 import { ZodError } from "zod";
 // Runtime configuration
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+// Runtime configuration moved out of server directive scope
 
 interface ApiSuccessResponse {
   message: string;
@@ -160,7 +159,7 @@ export async function POST(
 
     const withinEmailRateLimit = checkEmailRateLimit(validatedData.email, 36);
     if (!withinEmailRateLimit) {
-      console.warn(`Email rate limit exceeded: ${validatedData.email}`);
+      console.warn("Email rate limit exceeded for a user email address");
       return createRateLimitResponse(
         "You have reached the maximum number of messages for today. Please try again tomorrow.",
         86400, // 24 hours

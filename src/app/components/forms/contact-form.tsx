@@ -84,15 +84,15 @@ export default function ContactForm() {
     mutation.mutate(data);
   };
 
-  const isLoading = mutation || isSubmitting;
+  const isLoading = mutation.isPending || isSubmitting;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="contact-form" noValidate>
       {/* Name Field */}
-      <div>
+      <div className="form-field">
         <label 
           htmlFor="name" 
-          className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
+          className="form-label"
         >
           Full Name
         </label>
@@ -100,16 +100,16 @@ export default function ContactForm() {
           {...register("name")}
           type="text"
           id="name"
-          placeholder="John Doe"
+          placeholder="Full Name"
           autoComplete="name"
           aria-invalid={errors.name ? "true" : "false"}
           aria-describedby={errors.name ? "name-error" : undefined}
-          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`form-input ${errors.name ? "form-input--error" : ""}`}
         />
         {errors.name && (
           <p 
             id="name-error"
-            className="mt-2 text-sm text-red-600 dark:text-red-400"
+            className="form-error"
             role="alert"
           >
             {errors.name.message}
@@ -118,10 +118,10 @@ export default function ContactForm() {
       </div>
 
       {/* Email Field */}
-      <div>
+      <div className="form-field">
         <label 
           htmlFor="email" 
-          className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
+          className="form-label"
         >
           Email Address
         </label>
@@ -129,16 +129,16 @@ export default function ContactForm() {
           {...register("email")}
           type="email"
           id="email"
-          placeholder="john@example.com"
+          placeholder="email@domain.com"
           autoComplete="email"
           aria-invalid={errors.email ? "true" : "false"}
           aria-describedby={errors.email ? "email-error" : undefined}
-          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`form-input ${errors.email ? "form-input--error" : ""}`}
         />
         {errors.email && (
           <p 
             id="email-error"
-            className="mt-2 text-sm text-red-600 dark:text-red-400"
+            className="form-error"
             role="alert"
           >
             {errors.email.message}
@@ -147,10 +147,10 @@ export default function ContactForm() {
       </div>
 
       {/* Message Field */}
-      <div>
+      <div className="form-field">
         <label 
           htmlFor="message" 
-          className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100"
+          className="form-label"
         >
           Message
         </label>
@@ -161,12 +161,12 @@ export default function ContactForm() {
           placeholder="Tell me about your project or how we can work together..."
           aria-invalid={errors.message ? "true" : "false"}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`form-textarea ${errors.message ? "form-textarea--error" : ""}`}
         />
         {errors.message && (
           <p 
             id="message-error"
-            className="mt-2 text-sm text-red-600 dark:text-red-400"
+            className="form-error"
             role="alert"
           >
             {errors.message.message}
@@ -177,23 +177,24 @@ export default function ContactForm() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
+        disabled={isLoading}
+        className="form-submit"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+            <Loader2 className="form-submit-icon form-submit-icon--loading" aria-hidden="true" />
             <span>Sending...</span>
           </>
         ) : (
           <>
-            <Send className="w-5 h-5" aria-hidden="true" />
+            <Send className="form-submit-icon" aria-hidden="true" />
             <span>Send Message</span>
           </>
         )}
       </button>
 
       {/* Helper Text */}
-      <p className="text-xs text-center text-gray-600 dark:text-gray-400">
+      <p className="form-helper">
         Your message will be sent securely. I typically respond within 24-48 hours.
       </p>
     </form>

@@ -1,52 +1,53 @@
 "use client";
 import ContactForm from "../../forms/contact-form";
 import { Mail, MapPin } from "lucide-react";
+import "./contactsection.css";
 
 export default function ContactSection() {
   return (
     <section 
       id="contact" 
-      className="py-20"
+      className="contact-section"
       aria-labelledby="contact-heading"
     >
-      <div className="container mx-auto px-4">
-        <header className="text-center mb-12">
-          <h2 id="contact-heading" className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+      <div className="contact-container">
+        <header className="contact-header">
+          <h2 id="contact-heading" className="contact-title">
             Get In Touch
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="contact-subtitle">
             Have a project in mind or want to collaborate? Feel free to reach out!
           </p>
         </header>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="contact-content">
           {/* Contact Information */}
           <aside 
-            className="space-y-8"
+            className="contact-info"
             aria-labelledby="contact-info-heading"
           >
-            <div>
+            <div className="contact-info-wrapper">
               <h3 
                 id="contact-info-heading" 
-                className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100"
+                className="contact-info-title"
               >
                 Contact Information
               </h3>
-              <address className="space-y-6 not-italic">
-                <div className="flex items-start gap-4">
+              <address className="contact-address">
+                <div className="contact-item">
                   <div 
-                    className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="contact-icon-wrapper contact-icon-wrapper--email"
                     aria-hidden="true"
                   >
-                    <Mail className="text-blue-600" size={24} />
+                    <Mail className="contact-icon" size={24} />
                   </div>
-                  <div className="min-w-0">
-                    <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <div className="contact-details">
+                    <h4 className="contact-label">
                       Email
                     </h4>
                     <a
                       href="mailto:infosbmconcepts@gmail.com"
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm"
+                      className="contact-link"
                       aria-label="Send email to infosbmconcepts@gmail.com"
                     >
                       infosbmconcepts@gmail.com
@@ -54,26 +55,26 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="contact-item">
                   <div 
-                    className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="contact-icon-wrapper contact-icon-wrapper--location"
                     aria-hidden="true"
                   >
-                    <MapPin className="text-blue-600" size={24} />
+                    <MapPin className="contact-icon" size={24} />
                   </div>
-                  <div className="min-w-0">
-                    <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                  <div className="contact-details">
+                    <h4 className="contact-label">
                       Location
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="contact-text">
                       Johannesburg, South Africa
                     </p>
                   </div>
                 </div>
               </address>
               
-              <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                <p className="text-sm text-blue-800 dark:text-blue-200">
+              <div className="contact-response-info">
+                <p className="contact-response-text">
                   <strong>Response Time:</strong> I typically respond to messages within 24-48 hours during business days.
                 </p>
               </div>
@@ -82,12 +83,12 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <main 
-            className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+            className="contact-form-section"
             aria-labelledby="contact-form-heading"
           >
             <h3 
               id="contact-form-heading" 
-              className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100"
+              className="contact-form-title"
             >
               Send me a message
             </h3>
