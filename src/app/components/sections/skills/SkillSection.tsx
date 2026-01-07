@@ -32,7 +32,7 @@ const skillList: { category: string; skills: string[] }[] = [ {
 import SkillGroup from "./SkillGroup";
 import SkillsCarousel from "./SkillsCarousel";
 import "./skillsection.css";
-import { Skills } from "@/data/skills";
+import { Skills } from "../../../../data/Skills";
 
 type ViewMode = "groups" | "carousel";
 

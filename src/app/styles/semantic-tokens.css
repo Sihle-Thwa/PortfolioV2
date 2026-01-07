@@ -30,7 +30,7 @@
   /*Card Components */
   --card-background: var(--colour-background-light);
   --card-border: var(--colour-border-light);
-  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-shadow: var(--shadow-base);
 
   /*Input Components */
   --input-background: var(--colour-background-light);
