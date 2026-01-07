@@ -1,4 +1,5 @@
 "use client";
+
 import "./hero.css";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -105,7 +106,12 @@ export default function Hero() {
               Comp Sci.
             </div>
             <div className="hero-buttons--wrap">
-              <a href="#projects" className="hero-button">
+            <button>
+              <a
+                href="#projects"
+                aria-label="View my projects"
+                className="hero-button"
+              >
                 <div className="button-animate-y">
                   <div className="button-animate-y-1">View Work</div>
                   <div className="button-animate-y-2" aria-hidden="true">
@@ -113,7 +119,13 @@ export default function Hero() {
                   </div>
                 </div>
               </a>
-              <a href="#contact" className="hero-button button-fill">
+              </button>
+
+              <a
+                href="#contact"
+                aria-label="Get in touch with me"
+                className="hero-button button-fill"
+              >
                 <div className="button-animate-y">
                   <div className="button-animate-y-1">Get in Touch</div>
                   <div className="button-animate-y-2" aria-hidden="true">

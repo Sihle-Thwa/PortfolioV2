@@ -188,13 +188,11 @@ Foreground Content (headings, copy, buttons)
 }
 
 .slide-subheading-token {
+  font-size: var(--subtitle-size-lg);
+  line-height: var(--line-height-normal);
   font-weight: var(--font-weight-bold);
-  color: var(--text-accent);
-  text-decoration: underline;
   margin-left: 0px;
   white-space: nowrap;
-  text-decoration-style: solid;
-  text-underline-offset: 4px;
 
 }
 
@@ -210,37 +208,57 @@ Foreground Content (headings, copy, buttons)
   animation-delay: 0.7s;
 }
 
-.hero-button,
-.hero-button.button-fill {
+/* Base button styles */
+.hero-button {
   padding: 12px 16px;
   font-size: var(--button-size-default);
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-semibold);
   border-radius: 8px;
-  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  
+  /* Default outline button style */
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--background-border);
+  
+  /* Smooth transitions */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   box-shadow: var(--shadow-sm, 0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
+/* Filled button variant */
 .hero-button.button-fill {
   background: var(--background-accent);
   color: var(--text-primary);
-  border-color: var(--background-border);
+  border: none;
 }
 
+/* Hover state */
 .hero-button:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md, 0 6px 12px rgba(0, 0, 0, 0.08));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 8px 16px rgba(0, 0, 0, 0.15));
 }
 
-/* Label slide-up effect */
+/* Active/pressed state */
+.hero-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm, 0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Focus state for keyboard navigation */
+.hero-button:focus-visible {
+  outline: 2px solid var(--background-accent, #0066cc);
+  outline-offset: 2px;
+}
+
+/* Animation container */
 .button-animate-y {
   display: flex;
   flex-direction: column;
@@ -248,31 +266,70 @@ Foreground Content (headings, copy, buttons)
   align-items: center;
   position: relative;
   overflow: hidden;
-  height: auto;
-}
-.button-animate-y-1 {
-  inset: 0;
+  height: 1.5em; /* Fixed height to prevent jumping */
   width: 100%;
-  opacity: 1;
-  transform: translateY(0%);
-  transition: all 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), opacity 0.37s linear;
 }
+
+/* Default visible text */
+.button-animate-y-1 {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), 
+              opacity 0.37s cubic-bezier(0.15, 0.7, 0.78, 1);
+}
+
+/* Hidden animated text */
 .button-animate-y-2 {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  inset: 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  height: 100%;
   opacity: 0;
   transform: translateY(100%);
-  transition: all 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), opacity 0.37s linear;
+  transition: transform 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), 
+              opacity 0.37s cubic-bezier(0.15, 0.7, 0.78, 1);
 }
+
+/* Hover animation - slide up original text */
 .hero-button:hover .button-animate-y-1 {
   opacity: 0;
   transform: translateY(-100%);
 }
+
+/* Hover animation - slide in new text */
 .hero-button:hover .button-animate-y-2 {
   opacity: 1;
-  transform: translateY(0%);
+  transform: translateY(0);
+}
+
+/* Optional: Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-button,
+  .button-animate-y-1,
+  .button-animate-y-2 {
+    transition: none;
+  }
+  
+  .hero-button:hover {
+    transform: none;
+  }
+  
+  .hero-button:hover .button-animate-y-1 {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .hero-button:hover .button-animate-y-2 {
+    display: none;
+  }
 }
 
 /* ==========================================================================
