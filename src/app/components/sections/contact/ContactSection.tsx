@@ -1,39 +1,38 @@
-"use client";
 import ContactForm from "../../forms/contact-form";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react"; 
 import "./contactsection.css";
 
 export default function ContactSection() {
   return (
-    <section 
+    <div 
       id="contact" 
       className="contact-section"
       aria-labelledby="contact-heading"
     >
       <div className="contact-container">
-        <header className="contact-header">
-          <h2 id="contact-heading" className="contact-title">
+        <div className="contact-header">
+          <div id="contact-heading" className="contact-title">
             Get In Touch
-          </h2>
-          <p className="contact-subtitle">
+          </div>
+          <div className="contact-subtitle">
             Have a project in mind or want to collaborate? Feel free to reach out!
-          </p>
-        </header>
+          </div>
+        </div>
 
         <div className="contact-content">
           {/* Contact Information */}
-          <aside 
+          <div 
             className="contact-info"
             aria-labelledby="contact-info-heading"
           >
             <div className="contact-info-wrapper">
-              <h3 
+              <div 
                 id="contact-info-heading" 
                 className="contact-info-title"
               >
                 Contact Information
-              </h3>
-              <address className="contact-address">
+              </div>
+              <div className="contact-address">
                 <div className="contact-item">
                   <div 
                     className="contact-icon-wrapper contact-icon-wrapper--email"
@@ -42,9 +41,9 @@ export default function ContactSection() {
                     <Mail className="contact-icon" size={24} />
                   </div>
                   <div className="contact-details">
-                    <h4 className="contact-label">
+                    <div className="contact-label">
                       Email
-                    </h4>
+                    </div>
                     <a
                       href="mailto:infosbmconcepts@gmail.com"
                       className="contact-link"
@@ -63,39 +62,39 @@ export default function ContactSection() {
                     <MapPin className="contact-icon" size={24} />
                   </div>
                   <div className="contact-details">
-                    <h4 className="contact-label">
+                    <div className="contact-label">
                       Location
-                    </h4>
-                    <p className="contact-text">
+                    </div>
+                    <div className="contact-text">
                       Johannesburg, South Africa
-                    </p>
+                    </div>
                   </div>
                 </div>
-              </address>
+              </div>
               
               <div className="contact-response-info">
-                <p className="contact-response-text">
+                <div className="contact-response-text">
                   <strong>Response Time:</strong> I typically respond to messages within 24-48 hours during business days.
-                </p>
+                </div>
               </div>
             </div>
-          </aside>
+          </div>
 
           {/* Contact Form */}
           <main 
             className="contact-form-section"
             aria-labelledby="contact-form-heading"
           >
-            <h3 
+            <div 
               id="contact-form-heading" 
               className="contact-form-title"
             >
               Send me a message
-            </h3>
+            </div>
             <ContactForm />
           </main>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
