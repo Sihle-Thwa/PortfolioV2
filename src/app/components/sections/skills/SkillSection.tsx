@@ -1,5 +1,9 @@
 "use client";
 import { useState } from "react";
+import SkillGroup from "./SkillGroup";
+import SkillsCarousel from "./SkillsCarousel";
+import "./skillsection.css";
+import { Skills } from "../../../../data/Skills";
 const skillList: { category: string; skills: string[] }[] = [ {
         category: "APIs and Data Integration",
         skills: ["Express", "GraphQL", "Postman", "REST API", "Swagger.io"],
@@ -29,10 +33,7 @@ const skillList: { category: string; skills: string[] }[] = [ {
         skills: ["Azure DevOps", "Figma", "Git", "Github", "Github Actions", "Notion", "Trello"],
     },
 ];
-import SkillGroup from "./SkillGroup";
-import SkillsCarousel from "./SkillsCarousel";
-import "./skillsection.css";
-import { Skills } from "../../../../data/Skills";
+
 
 type ViewMode = "groups" | "carousel";
 
