@@ -75,7 +75,7 @@ export default function ContactSection() {
                     GitHub
                 </a>
                 <a
-                    href="https://instagram.com/username"
+                    href="https://instagram.com/sbmconcepts.dev"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="c-contact-link"
@@ -97,8 +97,8 @@ export default function ContactSection() {
                         <Image
                             src="/icons/uparrow.svg"
                             alt="Back to top"
-                            width={48}
-                            height={48}
+                            width={32}
+                            height={32}
                         />
                     </div>
                 </a>
