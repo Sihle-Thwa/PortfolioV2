@@ -1,20 +1,16 @@
 "use client";
-import { X, Sun, Moon } from "lucide-react";
+import { X} from "lucide-react";
 import "./mobilemenu.css";
 import { navItems } from "./navItems";
 
 interface MobileMenuProps {
   onClose: () => void;
-  theme: string;
-  onThemeToggle: () => void;
   scrollToSection: (href: string) => void;
   activeSection: string;
 }
 
 export default function MobileMenu({ 
   onClose, 
-  theme, 
-  onThemeToggle, 
   scrollToSection, 
   activeSection 
 }: MobileMenuProps) {
@@ -58,22 +54,7 @@ export default function MobileMenu({
         </nav>
         
         <div className="mobile-menu-footer">
-          <button
-            onClick={onThemeToggle}
-            className="mobile-menu-theme-toggle"
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-          >
-            <span className="mobile-menu-theme-icon">
-              {theme === "light" ? (
-                <Sun size={20} aria-hidden="true" />
-              ) : (
-                <Moon size={20} aria-hidden="true" />
-              )}
-            </span>
-            <span className="mobile-menu-theme-label">
-              {theme === "light" ? "Light Mode" : "Dark Mode"}
-            </span>
-          </button>
+          
         </div>
       </aside>
     </div>

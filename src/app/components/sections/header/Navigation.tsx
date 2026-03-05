@@ -1,9 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { Menu, Sun, Moon } from "lucide-react";
+import { Menu} from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
 import Image from "next/image";
-import brandLogo from "../../../../../public/icons/SBMLogo.png";
+import brandLogo from "../../../assets/brand-logo.png";
 import { navItems } from "./navItems";
 import MobileMenu from "./MobileMenu";
 import "./navigation.css";
@@ -11,7 +11,6 @@ import "./navigation.css";
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   const activeSection = useActiveSection();
 
   useEffect(() => setMounted(true), []);
@@ -27,43 +26,14 @@ export default function Navigation() {
     }
   }, []);
 
-  const cycleTheme = useCallback((): void => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }, []);
+
 
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
 
-  // Theme initialization and persistence
-  useEffect(() => {
-    const storedTheme = typeof window !== "undefined" 
-      ? window.localStorage.getItem("theme") 
-      : null;
-    if (storedTheme === "light" || storedTheme === "dark") {
-      setTheme(storedTheme);
-      return;
-    }
 
-    if (typeof window !== "undefined") {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(prefersDark ? "dark" : "light");
-    }
-  }, []);
 
-  // Theme application
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem("theme", theme);
-
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
 
   // Keyboard handler for mobile menu
   useEffect(() => {
@@ -135,23 +105,7 @@ export default function Navigation() {
                 })}
               </nav>
 
-              {/* Theme Toggle */}
-              <button
-                onClick={cycleTheme}
-                className="navigation-theme-toggle"
-                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-                aria-pressed={theme === "dark"}
-              >
-                {theme === "light" ? (
-                  <Sun size={20} aria-hidden="true" />
-                ) : (
-                  <Moon size={20} aria-hidden="true" />
-                )}
-                <span className="sr-only">
-                  Current theme: {theme}
-                </span>
-              </button>
-
+             
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -170,8 +124,7 @@ export default function Navigation() {
       {isMobileMenuOpen && (
         <MobileMenu 
           onClose={closeMobileMenu} 
-          theme={theme}
-          onThemeToggle={cycleTheme}
+      
           scrollToSection={scrollToSection}
           activeSection={activeSection}
         />
