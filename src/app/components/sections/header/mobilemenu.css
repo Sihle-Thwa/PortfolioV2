@@ -133,25 +133,6 @@
 	to { transform: translateX(0); }
 }
 
-/* Theme-specific styling */
-html.dark .mobile-menu-content {
-	background: rgba(0, 0, 0, 0.95);
-	border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-html.light .mobile-menu-content {
-	background: rgba(255, 255, 255, 0.95);
-	border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-html.dark .mobile-menu-overlay {
-	background: rgba(0, 0, 0, 0.6);
-}
-
-html.light .mobile-menu-overlay {
-	background: rgba(0, 0, 0, 0.4);
-}
-
 /* Mobile responsiveness */
 @media (max-width: 425px) {
 	.mobile-menu-content {

@@ -117,6 +117,3 @@
 	}
 }
 
-html.dark .c-item {
-	--pill-bg: color-mix(in oklab, var(--colour-surface) 92%, black);
-}

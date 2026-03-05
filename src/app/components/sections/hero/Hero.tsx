@@ -1,7 +1,6 @@
 "use client";
 
 import "./hero.css";
-import { useTheme } from "next-themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Typewriter from "@/app/styles/Typewriter";
 import HeadlineBanner from "./HeadlineBanner";
@@ -9,7 +8,6 @@ import HeadlineBanner from "./HeadlineBanner";
 type Slide = { src: string; alt: string; effect?: "fade" | "slide" | "zoom" };
 
 export default function Hero() {
-  const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const [active, setActive] = useState(0);
@@ -26,22 +24,12 @@ export default function Hero() {
     []
   );
 
-  const darkSlides: Slide[] = useMemo(
-    () => [
-      { src: "/charcoal-bg-1.png", alt: "Background 1", effect: "fade" },
-      { src: "/charcoal-bg-2.png", alt: "Background 2", effect: "zoom" },
-      { src: "/offwhite-bg-1.jpg", alt: "Background 3", effect: "slide" },
-    ],
-    []
-  );
 
-  const activeTheme = useMemo(() => {
-    return theme === "system" ? systemTheme : theme;
-  }, [theme, systemTheme]);
+
 
   const slides = useMemo<Slide[]>(() => {
-    return activeTheme === "dark" ? darkSlides : lightSlides;
-  }, [activeTheme, darkSlides, lightSlides]);
+    return lightSlides ;
+  }, [ lightSlides]);
 
   // autoplay
   useEffect(() => {
@@ -55,13 +43,13 @@ export default function Hero() {
     return () => {
       if (timerRef.current) window.clearInterval(timerRef.current);
     };
-  }, [slides.length, activeTheme, active]);
+  }, [slides.length, active]);
 
   // reset slider when theme changes
   useEffect(() => {
     setActive(0);
     setExiting(null);
-  }, [activeTheme]);
+  }, [slides]);
 
   if (!mounted) return <section id="home" className="hero-bg--slider" />;
 
@@ -138,7 +126,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-banner-container">
-        <div className="hero-location">📍 Based in Durban, South Africa</div>
+        <div className="hero-location">📍 Based in Johannesburg, South Africa</div>
         <div className="hero-banner">
           <HeadlineBanner />
         </div>

@@ -11,7 +11,7 @@ A minimal, modern, and responsive **Personal Portfolio Website**
 built with **Next.js (App Router)**, **TailwindCSS v4.1**, and
 **Vanilla CSS**. This portfolio showcases my professional
 profile, projects, skills, and contact information with a
-focus on design tokens, dark/light theming, and performance.
+focus on design tokens, and performance.
 
 ---
 
@@ -21,14 +21,14 @@ focus on design tokens, dark/light theming, and performance.
    - Works seamlessly on mobile, tablet, and desktop.
    - Breakpoints aligned with Tailwind v4.1 defaults.
 
-2. **Dark & Light Theme Support**
+2. **Light Theme Support**
    - Managed with `next-themes`.
-   - Separate background image slides for light/dark.
+   - Separate background image slides for light.
 
 3. **Hero Section**
    - Full-screen animated background slider using Swiper.js.
    - Animated text and call-to-action buttons.
-   - Theming-aware: lightSlides vs darkSlides.
+   - Theming-aware: lightSlides .
 
 4. **About Section**
    - Short professional bio with profile image.
@@ -66,7 +66,7 @@ focus on design tokens, dark/light theming, and performance.
 
 - **Framework**: Next.js (App Router)
 - **Styling**: TailwindCSS v4.1 + Vanilla CSS
-- **Theming**: next-themes (light/dark toggle)
+- **Theming**: next-themes
 - **Animations**: Swiper.js (hero background), CSS keyframes
 - **Icons**: Local SVG/PNG icons (skills & social)
 - **TypeScript**: Strong typing for skills, services, projects

@@ -1,9 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { Menu} from "lucide-react";
+import { Menu } from "lucide-react";
 import { useActiveSection } from "../../../lib/hooks/use-active-section";
 import Image from "next/image";
-import brandLogo from "../../../assets/brand-logo.png";
+import brandLogo from "../../../../../public/icons/SBMLogo.png";
 import { navItems } from "./navItems";
 import MobileMenu from "./MobileMenu";
 import "./navigation.css";
@@ -20,20 +20,16 @@ export default function Navigation() {
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   }, []);
 
-
-
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
   }, []);
-
-
-
 
   // Keyboard handler for mobile menu
   useEffect(() => {
@@ -63,21 +59,18 @@ export default function Navigation() {
                 className="navigation-logo"
                 aria-label="Navigate to home section"
               >
-                <Image 
-                  src={brandLogo} 
-                  alt="" 
-                  width={48} 
-                  height={48} 
+                <Image
+                  src={brandLogo}
+                  alt=""
+                  width={32}
+                  height={32}
                   priority
                   className="navigation-logo-image"
                 />
               </button>
 
               {/* Desktop Navigation */}
-              <nav 
-                className="navigation-desktop" 
-                aria-label="Main navigation"
-              >
+              <nav className="navigation-desktop" aria-label="Main navigation">
                 {navItems.map((item) => {
                   const isActive = activeSection === item.href.slice(1);
                   return (
@@ -89,14 +82,18 @@ export default function Navigation() {
                         scrollToSection(item.href);
                       }}
                       className={`navigation-link ${
-                        isActive ? "navigation-link--active" : "navigation-link--inactive"
+                        isActive
+                          ? "navigation-link--active"
+                          : "navigation-link--inactive"
                       }`}
                       aria-current={isActive ? "page" : undefined}
                     >
                       {item.name}
                       <span
                         className={`navigation-indicator ${
-                          isActive ? "navigation-indicator--active" : "navigation-indicator--inactive"
+                          isActive
+                            ? "navigation-indicator--active"
+                            : "navigation-indicator--inactive"
                         }`}
                         aria-hidden="true"
                       />
@@ -105,7 +102,6 @@ export default function Navigation() {
                 })}
               </nav>
 
-             
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -122,9 +118,8 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <MobileMenu 
-          onClose={closeMobileMenu} 
-      
+        <MobileMenu
+          onClose={closeMobileMenu}
           scrollToSection={scrollToSection}
           activeSection={activeSection}
         />

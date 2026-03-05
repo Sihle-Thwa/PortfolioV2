@@ -59,22 +59,6 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-
-/* Dark theme specific styling for better visibility */
-html.dark .headline-pill {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--text-primary);
-  backdrop-filter: blur(8px);
-}
-
-html.light .headline-pill {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: var(--text-primary);
-  backdrop-filter: blur(8px);
-}
-
 /* Animations */
 @keyframes fadeInUp {
   0% {

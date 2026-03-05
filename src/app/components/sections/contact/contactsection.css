@@ -356,28 +356,6 @@
 	outline-offset: 2px;
 }
 
-/* Dark theme adjustments */
-html.dark .form-input,
-html.dark .form-textarea {
-	border-color: var(--card-border);
-}
-
-html.dark .form-input:focus,
-html.dark .form-textarea:focus {
-	background: var(--background-primary);
-	border-color: var(--text-accent);
-}
-
-html.dark .form-input--error,
-html.dark .form-textarea--error {
-	border-color: #f87171;
-	box-shadow: 0 0 0 3px color-mix(in oklab, #f87171 20%, transparent);
-}
-
-html.dark .form-error {
-	color: #f87171;
-}
-
 /* Responsive form styles */
 @media (max-width: 768px) {
 	.contact-form {

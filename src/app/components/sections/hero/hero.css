@@ -38,9 +38,6 @@
   inset: 0;
   background: rgba(255, 255, 255, 0.25);
 }
-html.dark .hero-slide::before {
-  background: rgba(0, 0, 0, 0.4);
-}
 
 /* Active / exiting states applied from React */
 .hero-slide.is-active {
@@ -368,19 +365,6 @@ Bottom strip (status + banner area)
   color: var(--text-primary);
   flex: 1;
   min-width: 0;
-}
-
-/* Dark/Light theme specific styling for better visibility */
-html.dark .hero-location,
-html.dark .hero-banner {
-  color: var(--text-primary);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-html.light .hero-location,
-html.light .hero-banner {
-  color: var(--text-primary);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
 }
 
 /* ==========================================================================

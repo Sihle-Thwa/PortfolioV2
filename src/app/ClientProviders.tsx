@@ -26,7 +26,7 @@ export default function ClientProviders({
         attribute="class" 
         defaultTheme="light" 
         enableSystem={false}
-        themes={["light"]}
+    
       >
       
         {children}

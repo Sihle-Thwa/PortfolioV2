@@ -6,7 +6,7 @@
 
   /*Text Colours*/
   --text-primary: var(--colour-text-light);
-  --text-secondary: color-mix(in oklab, var(--colour-text-light) 70%, var(--colour-text-dark));
+  --text-secondary: color-mix(in oklab, var(--colour-text-light) 70%);
   --text-accent: var(--colour-accent-light);
   --text-link: var(--colour-accent-light);
   --text-border: var(--colour-border-light);
@@ -14,7 +14,7 @@
 
   /*Background Colours*/
   --background-primary: var(--colour-background-light);
-  --background-secondary: color-mix(in oklab, var(--colour-background-light) 80%, var(--colour-background-dark));
+  --background-secondary: color-mix(in oklab, var(--colour-background-light) 80%);
   --background-accent: var(--colour-accent-light);  
   --background-border: var(--colour-border-light);
   --background-hover: color-mix(in oklab, var(--colour-accent-light) 90%, var(--colour-background-light)); 
@@ -22,10 +22,6 @@
   /*Top Navigation Colours Light*/
   --topnav-background: var(--colour-background-light);
   --topnav-text: var(--text-primary);
-  
-  /*Top Navigation Colours Dark*/
-  --topnav-background-dark: var(--colour-background-dark);
-  --topnav-text-dark: var(--text-primary);
 
   /*Card Components */
   --card-background: var(--colour-background-light);
@@ -44,7 +40,7 @@
 html.light {
   /*Text Colours*/
   --text-primary: var(--colour-text-light);
-  --text-secondary: color-mix(in oklab, var(--colour-text-light) 70%, var(--colour-text-dark));
+  --text-secondary: color-mix(in oklab, var(--colour-text-light) 70%);
   --text-accent: var(--colour-accent-light);
   --text-link: var(--colour-accent-light);
   --text-border: var(--colour-border-light);
@@ -52,7 +48,7 @@ html.light {
 
   /*Background Colours*/
   --background-primary: var(--colour-background-light);
-  --background-secondary: color-mix(in oklab, var(--colour-background-light) 80%, var(--colour-background-dark));
+  --background-secondary: color-mix(in oklab, var(--colour-background-light) 80%);
   --background-accent: var(--colour-accent-light);  
   --background-border: var(--colour-border-light);
   --background-hover: color-mix(in oklab, var(--colour-accent-light) 90%, var(--colour-background-light)); 
@@ -61,9 +57,6 @@ html.light {
   --topnav-background: var(--colour-background-light);
   --topnav-text: var(--text-primary);
   
-  /*Top Navigation Colours Dark*/
-  --topnav-background-dark: var(--colour-background-dark);
-  --topnav-text-dark: var(--text-primary);
 
   /*Card Components */
   --card-background: var(--colour-background-light);

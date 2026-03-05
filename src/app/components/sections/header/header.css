@@ -69,15 +69,6 @@
   filter: drop-shadow(0 2px 4px var(--card-shadow));
 }
 
-/* Theme-specific styling */
-html.dark .header-mobile-menu-button:hover {
-  background-color: var(--background-hover);
-}
-
-html.light .header-mobile-menu-button:hover {
-  background-color: var(--background-hover);
-}
-
 /* Media queries */
 @media (max-width: 768px) {
   .header-mobile-menu-button {

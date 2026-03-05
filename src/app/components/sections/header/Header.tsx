@@ -41,7 +41,7 @@ export default function Header() {
             onClick={(): void => setIsMobile(true)}
             aria-label="Open Menu"
           >
-            <Menu size={20} />
+            <Menu size={28} />
           </button>
         )}
       </div>
