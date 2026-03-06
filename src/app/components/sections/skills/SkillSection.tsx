@@ -10,7 +10,7 @@ const skillList: { category: string; skills: string[] }[] = [ {
     },
     {
         category: "Authentication",
-        skills: ["AuthO", "Firebase Auth", "NextAuth", "Supabase Auth"],
+        skills: ["Auth0", "Firebase Auth", "NextAuth", "Supabase Auth"],
     },
     {
         category: "Database Management",

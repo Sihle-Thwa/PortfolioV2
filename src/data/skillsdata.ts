@@ -1,47 +1,13 @@
-export type SkillData = {
+type SkillData = {
     skill: string;
     icon: string;
 }
+export default SkillData;
 
 export const skillsdata: SkillData[] = [
 
     {
-        skill: "Express",
-        icon: "/icons/express.svg",
-    },
-    {
-        skill: "GraphQL",
-        icon: "/icons/graphsql.svg",
-    },
-    {
-        skill: "Postman",
-        icon: "/icons/postman.svg",
-    },
-    {
-        skill: "REST API",
-        icon: "",
-    },
-    {
-        skill: "Swagger.io",
-        icon: "/icons/swagger.svg",
-    },
-    {
-        skill: "AuthO",
-        icon: "/icons/auth0.svg",
-    },
-    {
-        skill: "Firebase Auth",
-        icon: "/icons/firebase.svg",
-    },
-    {
-        skill: "NextAuth",
-        icon: "/icons/nextjs.svg",
-    },
-    {
-        skill: "Supabase Auth",
-        icon: "/icons/supabase.svg",
-    },
-    {
+
         skill: "Next.js",
         icon: "/icons/nextjs.svg",
     },
@@ -114,7 +80,7 @@ export const skillsdata: SkillData[] = [
         icon: "/icons/express.svg",
     },
     {
-        skill: "AuthO",
+        skill: "Auth0",
         icon: "/icons/auth0.svg",
     },
     {
