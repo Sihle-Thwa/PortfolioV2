@@ -11,11 +11,11 @@
 
 .c-projects-title {
 	text-align: center;
-	color: var(--colour-primary);
+	color: var(--colour-accent);
 	font-size: 36px;
 	line-height: 44px;
 	letter-spacing: -0.02em;
-	font-weight: 600;
+	font-weight: 500;
 }
 
 .c-projects-grid {

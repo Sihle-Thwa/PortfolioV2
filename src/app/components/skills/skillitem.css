@@ -6,9 +6,9 @@
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: var(--colour-muted);
-  border: 1px solid var(--colour-border);
-  color: var(--colour-fg-muted);
+  background: var(--colour-secondary);
+  border: 1px solid var(--colour-secondary);
+  color: var(--colour-bg);
   white-space: nowrap;
   transition: background 0.15s ease, border-color 0.15s ease;
 }

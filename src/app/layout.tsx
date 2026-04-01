@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 			"Minimal modern full-stack portfolio by Siphesihle B. Mthethwa",
 		url: "https://siphesihle-b-mthethwa.vercel.app",
 		siteName: "SBM Portfolio",
-		locale: "en_US",
+		locale: "en_UK",
 		type: "website",
 	},
 };
@@ -32,7 +32,7 @@ export default function RootLayout({
 }) {
 	return createElement(
 		"html",
-		{ lang: "en" },
+		{ lang: "en-UK" },
 		createElement("head", null),
 		createElement(
 			"body",

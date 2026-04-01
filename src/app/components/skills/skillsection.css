@@ -2,15 +2,14 @@
   padding: 4rem 1.5rem;
   background: var(--colour-surface);
   color: var(--colour-fg);
-  max-width: 1200px;
   margin: 0 auto;
 }
 
 /* Title */
 .c-skill-title {
   text-align: center;
-  color: var(--colour-primary);
-  font-size: 2.25rem;
+  color: var(--colour-accent);
+  font-size: 3.25rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   margin-bottom: 1.5rem;
@@ -18,7 +17,8 @@
 
 @media (min-width: 768px) {
   .c-skill-title {
-    font-size: 1.875rem;
+    font-size: 2.25rem;
+    font-weight: 500;
   }
 }
 
@@ -26,7 +26,7 @@
 .c-skill-toggle {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   border: none;
   padding: 0;
   margin: 0 0 2rem 0;
@@ -44,14 +44,14 @@
   font-weight: 500;
   border: 1px solid var(--colour-border);
   background: var(--colour-bg);
-  color: var(--colour-fg-muted);
+  color: var(--colour-fg);
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .c-skill-toggle-option:has(input:checked) {
   background: var(--colour-accent);
-  color: var(--colour-fg);
-  border-color: var(--colour-border);
+  color: var(--colour-bg);
+  border-color: var(--colour-accent);
 }
 
 .c-skill-toggle-option:hover {

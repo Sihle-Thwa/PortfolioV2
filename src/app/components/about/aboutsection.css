@@ -1,8 +1,8 @@
-
-/* Wrapper */
+  /* Wrapper */
 .about {
   padding: 5rem 0;
   background: var(--colour-bg);
+  font-family: "Space Grotesk", sans-serif;
 }
 
 /* Container */
@@ -34,7 +34,7 @@
 .about__heading {
   font-size: 1.875rem;
   font-weight: 700;
-  color: var(--colour-primary);
+  color: var(--colour-accent);
   letter-spacing: -0.025em;
 }
 

@@ -1,3 +1,7 @@
+.* {
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+}
 .navbar {
   position: fixed;
   width: 100%;
@@ -5,10 +9,10 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: var(--colour-bg) ;
+  background-color: var(--colour-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--colour-nav-border) ;
+  border-bottom: 1px solid var(--colour-border);
 }
 
 /* Container */
@@ -29,7 +33,7 @@
   color: var(--colour-primary);
   letter-spacing: -0.025em;
   text-decoration: none;
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 /* Desktop Nav List */
@@ -58,7 +62,7 @@
 }
 
 .navbar__desktop-link:hover {
-  color: hsl(var(--foreground));
+  color: var(--colour-accent);
 }
 
 /* Mobile Toggle Button */
@@ -82,7 +86,7 @@
 /* Mobile Menu */
 .navbar__mobile-menu {
   background: var(--colour-bg);
-  border-bottom: 1px solid var(--colour-nav-border);
+  border-bottom: 1px solid var(--colour-border);
 }
 
 @media (min-width: 768px) {
@@ -112,5 +116,5 @@
 }
 
 .navbar__mobile-link:hover {
-  color: var(--colour-fg);
+  color: var(--colour-accent);
 }

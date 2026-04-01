@@ -21,10 +21,13 @@
   /* ===== Brand Colors ===== */
   --beige-500: #F4DEB7;   /* Warm Beige */
   --espresso-700: #3B2C24;/* Rich Espresso */
-  --sand-200: #FBF8F5;    /* Soft Sand */
-  --sun-500: #F9C949;     /* Sunlight Yellow */
+  --sand-200: #FFFBEB;    /* Soft Sand */
+  --sun-500: #f59B0A;     /* Sunlight Yellow */
   --charcoal-900: #1C1C1C;/* Charcoal Black */
   --olive-500: #A5A682;   /* Muted Olive */
+  --steel-400: #7B8D93;   /* Cool Steel */
+  --off-white: #F8F8F8;   /* Off White */
+  --light-gray: #d3d1cf;      /* Light Gray */
 
 
   /* ===== Radii & Shadows ===== */
@@ -36,7 +39,7 @@
   --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
 
   /* ===== THEME ===== */
-  --colour-bg: var(--sand-200);            
+  --colour-bg: var(--off-white);            
   --colour-surface: var(--sand-200);                 
   --colour-muted: var(--beige-500);        
   --colour-fg: var(--charcoal-900);        
@@ -45,7 +48,7 @@
   --colour-accent: var(--sun-500);         
   --colour-secondary: var(--olive-500);      
   --colour-link: var(--espresso-700);
-  --colour-border: var(--olive-500);
+  --colour-border: var(--light-gray);
   --colour-nav-border: var(--espresso-700);
   --colour-ring: var(--sun-500);
 

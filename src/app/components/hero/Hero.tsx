@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import heroBg from "../../../../public/sand-bg-1.png";
+import heroBg from "../../../../public/PortfolioHeroImage.jpg";
 import HeadlineBanner from "./HeadlineBanner";
+import  Typewriter  from "../../styles/Typewriter";
 import "./hero.css";
 
 export default function HeroSection() {
@@ -20,7 +21,9 @@ export default function HeroSection() {
       </div>
 
       <div className="hero__content">
-        <h1 className="hero__title">Siphesihle B. Mthethwa</h1>
+        <h1 className="hero__title">
+          <Typewriter text="Siphesihle B. Mthethwa" />
+        </h1>
 
         <div className="hero__subtitle">
           <p>
@@ -45,7 +48,7 @@ export default function HeroSection() {
       </div>
 
       <div className="hero__bottom-strip">
-        <span className="hero__location">📍 Based in Durban, South Africa</span>
+        <span className="hero__location">📍 Based in Johannesburg, South Africa</span>
         <div className="hero__banner-wrap">
           <HeadlineBanner />
         </div>

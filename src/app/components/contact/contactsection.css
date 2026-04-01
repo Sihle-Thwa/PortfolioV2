@@ -3,7 +3,7 @@
 .contact {
   width: 100%;
   padding: 4rem 0;
-  background: var(--colour-muted);
+  background: var(--colour-surface);
 }
 
 /* Container */
@@ -75,7 +75,7 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 0.75rem;
-  background: var(--colour-surface);
+  background: var(--colour-bg);
   border: 1px solid var(--colour-border);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease;
@@ -95,7 +95,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--colour-primary);
+  color: var(--colour-bg);
 }
 
 /* Info Text */
@@ -146,9 +146,9 @@
   gap: 1.25rem;
   padding: 1.5rem;
   border-radius: 0.75rem;
-  background: var(--colour-surface);
+  background: var(--colour-bg);
   border: 1px solid var(--colour-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .contact__form-title {
@@ -176,7 +176,7 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: var(--colour-bg);
+  background: rgba(1, 1, 1, 0.05);
   border: 1px solid var(--colour-border);
   color: var(--colour-fg-muted);
   font-size: 0.875rem;
@@ -205,7 +205,7 @@
   padding: 0.75rem;
   border-radius: 0.5rem;
   background: var(--colour-accent);
-  color: var(--colour-fg);
+  color: var(--colour-bg);
   font-weight: 600;
   font-size: 0.875rem;
   border: none;
