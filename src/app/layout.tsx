@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
+import { createElement, type ReactNode } from "react";
 import "./styles/tokens.css";
 import "./globals.css";
 
 
 import { ClientProviders } from "./ClientProviders";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 
 export const metadata: Metadata = {
 	title: "Siphesihle B. Mthethwa | Portfolio",
@@ -29,18 +28,20 @@ export const metadata: Metadata = {
 export default function RootLayout({
 	children,
 }: {
-	children: React.ReactNode;
+	children: ReactNode;
 }) {
-	return (
-		<html lang="en">
-			<head />
-			<body>
-				<ClientProviders>
-					<Header />
-					<main>{children}</main>
-					<Footer />
-				</ClientProviders>
-			</body>
-		</html>
+	return createElement(
+		"html",
+		{ lang: "en" },
+		createElement("head", null),
+		createElement(
+			"body",
+			null,
+			createElement(
+				ClientProviders,
+				null,
+				createElement("main", null, children),
+			),
+		),
 	);
 }

@@ -5,7 +5,7 @@
 /* Wrapper */
 .about {
   padding: 5rem 0;
-  background: hsl(var(--background));
+  background: var(--colour-bg);
 }
 
 /* Container */
@@ -37,7 +37,7 @@
 .about__heading {
   font-size: 1.875rem;
   font-weight: 700;
-  color: hsl(var(--primary));
+  color: var(--colour-primary);
   letter-spacing: -0.025em;
 }
 
@@ -51,11 +51,11 @@
 .about__paragraph {
   font-size: 1rem;
   line-height: 1.625;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg);
 }
 
 .about__paragraph--muted {
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
 }
 
 /* Image Block */
@@ -72,9 +72,9 @@
   height: 18rem;
   object-fit: cover;
   border-radius: 9999px;
-  border: 1px solid hsl(var(--border));
-  box-shadow: var(--shadow-xl);
-  background: hsl(var(--surface));
+  border: 1px solid var(--colour-border);
+  box-shadow: var(--shadow-lg);
+  background: var(--colour-surface);
 }
 
 @media (min-width: 640px) {

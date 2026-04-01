@@ -45,7 +45,7 @@ const icon_overrides: Record<string, string> = {
     "Trello": "/icons/trello.svg",
 };
 
-function slugify(name: string) {
+function slugify(name: string): string {
     return name
         .toLowerCase()
         .replace(/(\.js|\sui|\sio)$/g, "")
@@ -55,11 +55,20 @@ function slugify(name: string) {
 }
 
 function resolveIcon(skill: string): { src: string; alt: string } {
-    if (icon_overrides[skill]) {
+    if (icon_overrides[skill] !== undefined) {
         return { src: icon_overrides[skill], alt: `${skill} icon` };
     }
     const slug = slugify(skill);
     return { src: `/icons/${slug}.svg`, alt: `${skill} icon` };
+}
+
+function cryptoRandom(): string {
+    if (typeof crypto !== "undefined" && "getRandomValues" in crypto) {
+        const a = new Uint32Array(1);
+        crypto.getRandomValues(a);
+        return a[0].toString(16);
+    }
+    return Math.random().toString(16).slice(2);
 }
 
 export default function SkillsCarousel() {
@@ -76,7 +85,11 @@ export default function SkillsCarousel() {
                 <div key={row.key} className="c-row" aria-label="skills">
                     <div className="c-track" role="list">
                         {row.items.concat(row.items).map(({ skill, icon }, idx) => (
-                            <div className="c-item" role="listitem" key={`${row.key}-${idx}-${skill}`}>
+                            <div
+                                className="c-item"
+                                role="listitem"
+                                key={`${row.key}-${idx}-${skill}`}
+                            >
                                 <span className="c-item-icon" aria-hidden="true">
                                     <Image
                                         src={icon.src}
@@ -95,13 +108,4 @@ export default function SkillsCarousel() {
             ))}
         </section>
     );
-}
-
-function cryptoRandom() {
-    if (typeof crypto !== "undefined" && "getRandomValues" in crypto) {
-        const a = new Uint32Array(1);
-        crypto.getRandomValues(a);
-        return a[0].toString(16);
-    }
-    return Math.random().toString(16).slice(2);
 }

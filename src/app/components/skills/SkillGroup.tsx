@@ -3,6 +3,7 @@ import "./skillgroup.css";
 import Image from "next/image";
 import { useMemo } from "react";
 import { skillsData } from "@/data/skillsdata";
+
 interface SkillGroupProps {
     category: string;
     skills: string[];
@@ -50,7 +51,7 @@ export default function SkillGroup({ category, skills }: SkillGroupProps) {
                                     unoptimized
                                 />
                             ) : (
-                                    <span aria-hidden className="c-skill-item" />
+                                <span aria-hidden className="c-skill-item" />
                             )}
                         </SkillItem>
                     );

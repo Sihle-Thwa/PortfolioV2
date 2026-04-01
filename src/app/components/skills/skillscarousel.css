@@ -1,122 +1,84 @@
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
 .c-skillscarousel {
-	display: grid;
-	gap: 0.75rem;
-	padding-block: 1rem;
-	background: var(--colour-bg);
-	overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  overflow: hidden;
 }
 
+/* Row */
 .c-row {
-	--row-height: 40px;
-	position: relative;
-	height: var(--row-height);
-	overflow: hidden;
-	mask-image: linear-gradient(
-		to right,
-		transparent 0,
-		#000 32px,
-		#000 calc(100% - 32px),
-		transparent 100%
-	);
+  overflow: hidden;
+  width: 100%;
 }
 
+/* Alternate even rows scroll in reverse */
+.c-row:nth-child(even) .c-track {
+  animation-name: marquee-reverse;
+}
+
+/* Scrolling Track */
 .c-track {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding-inline: 0.5rem;
-	min-width: max-content;
-	animation: kc-marquee 24s linear infinite;
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
 }
 
-.c-row:hover .c-track {
-	animation-play-state: paused;
+/* Pause on hover */
+.c-skillscarousel:hover .c-track {
+  animation-play-state: paused;
 }
 
-@media (prefers-reduced-motion: reduce) {
-	.c-track {
-		animation: none;
-		gap: 0.75rem;
-	}
-}
-
+/* Individual Item */
 .c-item {
-	--pill-bg: var(--colour-surface);
-	--pill-fg: var(--colour-fg);
-	--pill-bd: var(--colour-border);
-
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-
-	height: calc(var(--row-height) - 8px);
-	padding-inline: 0.75rem;
-	border-radius: 999px;
-
-	background: var(--pill-bg);
-	color: var(--pill-fg);
-	border: 1px solid var(--pill-bd);
-	box-shadow: var(--shadow-sm);
-	white-space: nowrap;
-
-	transform: translateZ(0);
-	transition: transform 0.2s ease, box-shadow 0.2s ease,
-		background-color 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  color: var(--colour-fg);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
+
 .c-item:hover {
-	transform: translateY(-1px);
-	box-shadow: var(--shadow-md);
-	border-color: color-mix(
-		in oklab,
-		var(--colour-border) 40%,
-		var(--colour-primary)
-	);
+  background: var(--colour-muted);
+  border-color: var(--colour-primary);
 }
 
+/* Icon Wrapper */
 .c-item-icon {
-	display: inline-grid;
-	place-items: center;
-	width: 20px;
-	height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
+
+/* Icon Image */
 .c-item-iconimg {
-	width: 20px;
-	height: 20px;
-	object-fit: contain;
-	filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
 }
 
 /* Label */
 .c-item-label {
-	font-size: 16px;
-	line-height: 1;
-	letter-spacing: 0.01em;
-}
-
-/* Seamless looping: translate one full set width to the left.
-   Because we duplicate the list in TSX, this appears continuous. */
-@keyframes kc-marquee {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-50%);
-	}
-}
-
-/* Density adjustments on larger screens */
-@media (min-width: 768px) {
-	.c-skillscarousel {
-		gap: 1rem;
-	}
-	.c-row {
-		--row-height: 44px;
-	}
-	.c-item-label {
-		font-size: 1rem;
-	}
-}
-
-html.dark .c-item {
-	--pill-bg: color-mix(in oklab, var(--colour-surface) 92%, black);
+  line-height: 1;
 }

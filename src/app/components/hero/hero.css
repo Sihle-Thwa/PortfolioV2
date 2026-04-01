@@ -35,7 +35,7 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: hsl(var(--hero-overlay) / 0.55);
+  background: var(--overlay-bg);
 }
 
 /* Content */
@@ -55,7 +55,7 @@
 .hero__title {
   font-size: 2.25rem;
   font-weight: 700;
-  color: var(--colour-primary) !important;
+  color: var(--colour-primary);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fade-in-up 0.8s ease forwards;
@@ -76,7 +76,7 @@
 /* Subtitle */
 .hero__subtitle {
   font-size: 1rem;
-  color: hsl(var(--primary-foreground) / 0.85);
+  color: var(--colour-fg-muted);
   font-family: var(--font-sans);
   max-width: 36rem;
   line-height: 1.625;
@@ -129,14 +129,14 @@
 }
 
 .hero__btn--primary {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background: var(--colour-primary);
+  color: var(--sand-200);
   box-shadow: var(--shadow-lg);
 }
 
 .hero__btn--secondary {
-  border: 1px solid hsl(var(--primary-foreground) / 0.3);
-  color: hsl(var(--primary-foreground));
+  border: 1px solid var(--colour-primary);
+  color: var(--colour-primary);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -166,7 +166,7 @@
 .hero__location {
   font-size: 0.875rem;
   font-weight: 500;
-  color: hsl(var(--primary-foreground));
+  color: var(--colour-fg);
   white-space: nowrap;
 }
 

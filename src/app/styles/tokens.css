@@ -40,7 +40,7 @@
   --colour-surface: var(--sand-200);                 
   --colour-muted: var(--beige-500);        
   --colour-fg: var(--charcoal-900);        
-  --colour-fg-muted: rgba(42,39,36,0.72);  
+  --colour-fg-muted: rgba(42,39,36,0.85);  
   --colour-primary: var(--charcoal-900);   
   --colour-accent: var(--sun-500);         
   --colour-secondary: var(--olive-500);      
@@ -48,4 +48,8 @@
   --colour-border: var(--olive-500);
   --colour-nav-border: var(--espresso-700);
   --colour-ring: colour-mix(in oklab, var(--sun-500) 55%, white);
+
+/* ===== Overlay ===== */
+  --overlay-bg: rgba(0, 0, 0, 0.15); /* Semi-transparent black */
+
 }

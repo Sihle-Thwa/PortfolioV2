@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { skills } from "@/data/skills";
 import SkillGroup from "./SkillGroup";

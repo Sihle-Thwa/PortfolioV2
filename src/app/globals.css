@@ -4,19 +4,17 @@
 
 @import "../../src/app/styles/tokens.css";
 
-:root {
-  color-scheme: light;
+#root {
     max-width: 1440px;
     width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
-.html {
- max-width: 1440px;
-    width: 100%;
-}
 
 body {
-    color: var(--colour-fg);
+  background-color: var(--colour-bg);
+  color: var(--colour-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -28,8 +26,12 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin: 0;
-  padding: 0;
+}
+
+.PageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .card {
