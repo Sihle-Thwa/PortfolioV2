@@ -75,7 +75,7 @@ export default function ContactSection() {
 
             <div className="contact__response-note">
               <p>
-                <strong>Response Time:</strong> I typically respond within 24–48 hours during business days.
+                <strong>Response Time:</strong> I typically respond within 24-48 hours during business days.
               </p>
             </div>
           </div>

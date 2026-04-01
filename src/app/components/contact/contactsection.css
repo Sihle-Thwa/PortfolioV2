@@ -126,8 +126,9 @@
   margin-top: 1.5rem;
   padding: 1rem;
   border-radius: 0.75rem;
-  background: var(--colour-secondary);
+  background: var(--colour-accent);
   border: 1px solid var(--colour-border);
+  box-shadow: var(--drop-shadow-md);
 }
 
 .contact__response-note p {
