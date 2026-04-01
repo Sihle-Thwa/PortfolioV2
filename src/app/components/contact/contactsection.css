@@ -1,15 +1,15 @@
 
 /* Wrapper */
 .contact {
-  max-width: 1440px;
   width: 100%;
-  background-color: var(--beige-500);
+  padding: 4rem 0;
+  background: var(--colour-muted);
 }
 
 /* Container */
 .contact__container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -23,7 +23,7 @@
 .contact__title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg);
   letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
 }
@@ -35,7 +35,7 @@
 }
 
 .contact__subtitle {
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
   font-size: 1rem;
   max-width: 28rem;
   margin: 0 auto;
@@ -65,7 +65,7 @@
 .contact__info-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg);
 }
 
 /* Info Card */
@@ -75,8 +75,8 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 0.75rem;
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease;
 }
@@ -90,35 +90,35 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0.75rem;
-  background: hsl(var(--primary) / 0.1);
+  background: var(--colour-accent) ;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: hsl(var(--primary));
+  color: var(--colour-primary);
 }
 
 /* Info Text */
 .contact__info-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg-muted);
 }
 
 .contact__info-value {
   font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
 }
 
 .contact__info-link {
   font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .contact__info-link:hover {
-  color: hsl(var(--primary));
+  color: var(--colour-primary);
 }
 
 /* Response Note */
@@ -126,17 +126,17 @@
   margin-top: 1.5rem;
   padding: 1rem;
   border-radius: 0.75rem;
-  background: hsl(var(--muted));
-  border: 1px solid hsl(var(--border));
+  background: var(--colour-secondary);
+  border: 1px solid var(--colour-border);
 }
 
 .contact__response-note p {
   font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
 }
 
 .contact__response-note strong {
-  color: hsl(var(--foreground));
+  color: var(--colour-fg);
 }
 
 /* Form */
@@ -146,15 +146,15 @@
   gap: 1.25rem;
   padding: 1.5rem;
   border-radius: 0.75rem;
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
   box-shadow: var(--shadow-sm);
 }
 
 .contact__form-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg);
 }
 
 /* Field Group */
@@ -167,7 +167,7 @@
 .contact__label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--colour-fg-muted);
 }
 
 /* Input & Textarea shared styles */
@@ -176,9 +176,9 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  background: hsl(var(--background));
-  border: 1px solid hsl(var(--input));
-  color: hsl(var(--foreground));
+  background: var(--colour-bg);
+  border: 1px solid var(--colour-border);
+  color: var(--colour-fg-muted);
   font-size: 0.875rem;
   outline: none;
   transition: box-shadow 0.2s ease;
@@ -187,12 +187,12 @@
 
 .contact__input::placeholder,
 .contact__textarea::placeholder {
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
 }
 
 .contact__input:focus,
 .contact__textarea:focus {
-  box-shadow: 0 0 0 2px hsl(var(--ring));
+  box-shadow: 0 0 0 2px var(--colour-ring);
 }
 
 .contact__textarea {
@@ -204,8 +204,8 @@
   width: 100%;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background: var(--colour-accent);
+  color: var(--colour-fg);
   font-weight: 600;
   font-size: 0.875rem;
   border: none;
@@ -229,6 +229,6 @@
 /* Disclaimer */
 .contact__disclaimer {
   font-size: 0.75rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--colour-fg-muted);
   text-align: center;
 }

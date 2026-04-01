@@ -47,7 +47,7 @@
   --colour-link: var(--espresso-700);
   --colour-border: var(--olive-500);
   --colour-nav-border: var(--espresso-700);
-  --colour-ring: colour-mix(in oklab, var(--sun-500) 55%, white);
+  --colour-ring: var(--sun-500);
 
 /* ===== Overlay ===== */
   --overlay-bg: rgba(0, 0, 0, 0.15); /* Semi-transparent black */
