@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { useToast } from "../../../hooks/use-toast";
@@ -8,13 +9,31 @@ export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    toast({ title: "Message sent!", description: "I'll get back to you soon." });
-    setForm({ name: "", email: "", message: "" });
+ 
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+ 
+      const data = await res.json();
+ 
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+ 
+      toast({ title: "Message sent!", description: "I'll get back to you soon." });
+      setForm({ name: "", email: "", message: "" });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Failed to send message.";
+      toast({ title: "Error", description: message, variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
