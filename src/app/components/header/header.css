@@ -1,4 +1,5 @@
 .c-header {
+	width: 100%;
 	--hdr-bg: color-mix(in oklab, var(--colour-bg) 85%, white);
 	--hdr-border: var(--colour-border);
 	--hdr-fg: var(--colour-fg);

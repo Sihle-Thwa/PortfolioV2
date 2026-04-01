@@ -1,0 +1,43 @@
+/* =========================================
+   HeadlineBanner Styles
+   ========================================= */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Wrapper */
+.banner {
+  width: 100%;
+  overflow: hidden;
+  height: 2.25rem;
+}
+
+/* Scrolling Track */
+.banner__track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* Individual Chip */
+.banner__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.875rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  white-space: nowrap;
+  flex-shrink: 0;
+}

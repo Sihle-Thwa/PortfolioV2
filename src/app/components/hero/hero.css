@@ -1,390 +1,177 @@
-.hero-bg--slider {
-	position: relative;
-	max-width: 100vw;
-	width: 100%;
-	height: 70vh;
-	display: flex;
-	overflow: hidden;
-	border-radius: 16px;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ====== Custom background deck (no swiper classes) ====== */
-.hero-slider--wrap {
-	position: absolute;
-	inset: 0;
-	overflow: hidden;
-	border-radius: 16px; /* subtle rounding like your previous */
+/* Wrapper */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 680px;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 4.5rem;
 }
 
-/* A single slide */
-
-.hero-slide {
-	position: absolute;
-	inset: 0;
-	background-position: center;
-	background-size: cover;
-	border-radius: 16px;
-	border: 4px solid var(--colour-bg);
-	box-shadow: 0 0 24px 8px var(--colour-bg);
-	opacity: 0;
-	transform: translateZ(0);
-	will-change: opacity, transform;
+/* Background */
+.hero__bg {
+  position: absolute;
+  inset: 0;
 }
 
-/* Light overlay for readability (tunes by theme) */
-.hero-slide::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: rgba(252, 252, 252, 0.6);
-}
-html.dark .hero-slide::before {
-	background: rgba(0, 0, 0, 0.35);
+.hero__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Active / exiting states applied from React */
-.hero-slide.is-active {
-	z-index: 2;
-}
-.hero-slide.is-exiting {
-	z-index: 1;
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: hsl(var(--hero-overlay) / 0.55);
 }
 
-/* ====== Effect: FADE cross fade ====== */
-.effect-fade.is-active {
-	animation: hero-fade-in 1s ease forwards;
-}
-.effect-fade.is-exiting {
-	animation: hero-fade-out 1s ease forwards;
-}
-
-/* ====== Effect: SLIDE (from-right) ====== */
-.effect-slide.is-active {
-	animation: hero-slide-in 1s ease forwards;
-}
-.effect-slide.is-exiting {
-	animation: hero-slide-out 1s ease forwards;
+/* Content */
+.hero__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 680px;
+  padding: 0 1.25rem;
+  text-align: center;
 }
 
-/* ====== Effect: ZOOM (Ken-Burns style) ====== */
-.effect-zoom.is-active {
-	animation: hero-fade-in 600ms ease forwards, hero-kenburns 12s linear both;
-}
-.effect-zoom.is-exiting {
-	animation: hero-fade-out 600ms ease forwards;
-}
-
-/* ====== Keyframes ====== */
-@keyframes hero-fade-in {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-@keyframes hero-fade-out {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-}
-@keyframes hero-slide-in {
-	0% {
-		opacity: 0;
-		transform: translateX(6%) scale(1.02);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0) scale(1);
-	}
-}
-@keyframes hero-slide-out {
-	0% {
-		opacity: 1;
-		transform: translateX(0) scale(1);
-	}
-	100% {
-		opacity: 0;
-		transform: translateX(-6%) scale(0.98);
-	}
-}
-@keyframes hero-kenburns {
-	0% {
-		transform: scale(1.02);
-	}
-	100% {
-		transform: scale(1.08);
-	}
+/* Title */
+.hero__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--colour-primary) !important;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fade-in-up 0.8s ease forwards;
 }
 
-/* ==========================================================================
-   Foreground Content (headings, copy, buttons)
-   ========================================================================== */
-
-.slider-content {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	z-index: 10;
+@media (min-width: 640px) {
+  .hero__title {
+    font-size: 3rem;
+  }
 }
 
-.content-row {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+@media (min-width: 1024px) {
+  .hero__title {
+    font-size: 3.75rem;
+  }
 }
 
-.content-column {
-	max-width: 65%;
-	margin: 0 auto;
-	padding: 0 1rem;
+/* Subtitle */
+.hero__subtitle {
+  font-size: 1rem;
+  color: hsl(var(--primary-foreground) / 0.85);
+  font-family: var(--font-sans);
+  max-width: 36rem;
+  line-height: 1.625;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fade-in-up 0.8s ease 0.4s forwards;
 }
 
-/* Headings */
-.slide-heading {
-	font-size: clamp(2.5rem, 6vw, 4rem);
-	font-weight: 800;
-	letter-spacing: -0.02em;
-	color: var(--colour-primary);
-	margin: 0 0 1rem;
-	opacity: 0;
-	filter: blur(4px);
-	animation: fadeInUp 1s ease forwards;
-	animation-delay: 0.3s;
+@media (min-width: 640px) {
+  .hero__subtitle {
+    font-size: 1.125rem;
+  }
 }
 
-.slide-subheading {
-	font-size: 30px;
-	line-height: 38px;
-	letter-spacing: 0em;
-	font-weight: 400;
-	color: var(--colour-fg-muted);
-	margin-bottom: 2rem;
-	opacity: 0;
-	filter: blur(4px);
-	animation: fadeInUp 1s ease forwards;
-	animation-delay: 0.5s;
+@media (min-width: 1024px) {
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
 }
 
-.slide-subheading-token {
-	font-weight: 600;
-	color: var(--colour-primary);
+.hero__subtitle p span {
+  font-weight: 600;
+}
+
+/* CTAs */
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fade-in-up 0.8s ease 0.6s forwards;
 }
 
 /* Buttons */
-.hero-buttons--wrap {
-	display: inline-flex;
-	gap: 18px;
-	opacity: 0;
-	filter: blur(4px);
-	animation: fadeInUp 1s ease forwards;
-	animation-delay: 0.7s;
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
-.hero-button,
-.hero-button.button-fill {
-	padding: 12px 16px;
-	font-size: 16px;
-	line-height: 26px;
-	text-transform: uppercase;
-	font-weight: 600;
-	border-radius: 6px;
-	text-decoration: none;
-	border: 1px solid var(--colour-border);
-	border-radius: var(--radius-lg);
-	color: var(--colour-fg);
-	background: transparent;
+.hero__btn:hover {
+  transform: translateY(-2px);
 }
 
-.hero-button.button-fill {
-	background: var(--colour-primary);
-	color: #fff;
-	border-color: var(--colour-border);
+.hero__btn--primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-lg);
 }
 
-.hero-button:hover {
-	transform: translateY(-1px);
-	box-shadow: var(--shadow-md, 0 6px 12px rgba(0, 0, 0, 0.08));
+.hero__btn--secondary {
+  border: 1px solid hsl(var(--primary-foreground) / 0.3);
+  color: hsl(var(--primary-foreground));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-/* Label slide-up effect */
-.button-animate-y {
-	position: relative;
-	display: block;
-	overflow: hidden;
-}
-.button-animate-y-1 {
-	display: block;
-	transition: all 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), opacity 0.37s linear;
-}
-.button-animate-y-2 {
-	display: block;
-	position: absolute;
-	inset: 0 auto auto 0;
-	width: 100%;
-	opacity: 0;
-	transform: translateY(100%);
-	transition: all 0.37s cubic-bezier(0.15, 0.7, 0.78, 1), opacity 0.37s linear;
-}
-.hero-button:hover .button-animate-y-1 {
-	opacity: 0;
-	transform: translateY(-100%);
-}
-.hero-button:hover .button-animate-y-2 {
-	opacity: 1;
-	transform: translateY(0%);
+/* Bottom Strip */
+.hero__bottom-strip {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
-/* ==========================================================================
-   Bottom strip (status + banner area)
-   ========================================================================== */
-
-.hero-bottom-wrap {
-	position: absolute;
-	bottom: 30px;
-	left: 30px;
-	z-index: 100;
-	pointer-events: none;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: calc(100% - 40px);
-	height: 28px;
+@media (min-width: 768px) {
+  .hero__bottom-strip {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
 }
 
-.hero-status {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	font-size: 16px;
-	padding-left: 10px;
-	color: var(--colour-fg);
-	filter: blur(4px);
-	animation: fadeInRight 1s ease forwards;
-	animation-delay: 1s;
-	width: 100%;
+/* Location */
+.hero__location {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--primary-foreground));
+  white-space: nowrap;
 }
 
-.hero-banner {
-	pointer-events: auto;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	font-size: 16px;
-	color: var(--colour-fg);
-}
-
-/* ==========================================================================
-   Shared Foreground Animations
-   ========================================================================== */
-
-@keyframes fadeInUp {
-	0% {
-		opacity: 0;
-		transform: translateY(0);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-		filter: blur(0);
-	}
-}
-@keyframes fadeInRight {
-	0% {
-		opacity: 0;
-		transform: translateX(50px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-		filter: blur(0);
-	}
-}
-
-/* ==========================================================================
-   Responsiveness
-   ========================================================================== */
-
-@media (max-width: 768px) {
-	.content-column {
-		max-width: 100%;
-	}
-	.slide-heading {
-		font-size: 2rem;
-	}
-	.slide-subheading {
-		font-size: 16px;
-		line-height: 26px;
-	}
-
-	.slide-heading {
-		font-size: 24px;
-		line-height: 34px;
-		letter-spacing: 0em;
-		font-weight: 700;
-	}
-	.slide-subheading {
-		font-size: 16px;
-		line-height: 26px;
-		font-weight: 400;
-		margin-bottom: 1.5rem;
-	}
-	.slide-subheading-token {
-		font-size: 16px;
-		line-height: 26px;
-		font-weight: 700;
-	}
-
-	.hero-bottom-wrap {
-		flex-direction: column;
-		bottom: 10px;
-		left: 10px;
-		height: auto;
-		gap: 12px;
-		width: calc(100% - 20px);
-	}
-
-	.hero-status {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		font-size: 14px;
-		color: var(--colour-fg);
-		width: 100%;
-	}
-	
-	.hero-banner {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		font-size: 14px;
-		color: var(--colour-fg);
-	}
-
-}
-
-/* ==========================================================================
-   Reduced Motion
-   ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-	.hero-slide,
-	.slide-heading,
-	.slide-subheading,
-	.hero-buttons--wrap,
-	.hero-status {
-		animation: none !important;
-		transition: none !important;
-		opacity: 1 !important;
-		filter: none !important;
-		transform: none !important;
-	}
+/* Banner Wrap */
+.hero__banner-wrap {
+  flex: 1;
+  min-width: 0;
 }

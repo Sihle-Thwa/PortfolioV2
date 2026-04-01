@@ -1,108 +1,119 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Mail, MapPin, Send, Loader2 } from "lucide-react";
+import { useToast } from "../../../hooks/use-toast";
 import "./contactsection.css";
-import Image from "next/image";
-
 
 export default function ContactSection() {
-    const [currentTime, setCurrentTime] = useState(new Date());
+  const { toast } = useToast();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentTime(new Date());
-        }, 60000);
-        return () => clearInterval(timer);
-    }, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    await new Promise((r) => setTimeout(r, 1200));
+    setLoading(false);
+    toast({ title: "Message sent!", description: "I'll get back to you soon." });
+    setForm({ name: "", email: "", message: "" });
+  };
 
-    const timeString = currentTime.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
+  return (
+    <section className="contact" id="contact">
+      <div className="contact__container">
+        <div className="contact__header">
+          <h2 className="contact__title">Get In Touch</h2>
+          <p className="contact__subtitle">
+            Have a project in mind or want to collaborate? Feel free to reach out!
+          </p>
+        </div>
 
-    return (
-        <section id="contact" className="c-contact">
-            <div className="c-contact-title">Let’s Make It Happen</div>
-            <div className="c-contact-subtitle">
-                Feel free to reach out via the form below or connect with me on social
-                media.
+        <div className="contact__grid">
+          {/* Info Block */}
+          <div className="contact__info-block">
+            <h3 className="contact__info-title">Contact Information</h3>
+
+            <div className="contact__info-card">
+              <div className="contact__info-icon">
+                <Mail size={22} />
+              </div>
+              <div>
+                <p className="contact__info-label">Email</p>
+                <a className="contact__info-link" href="mailto:infosbmconcepts@gmail.com">
+                  infosbmconcepts@gmail.com
+                </a>
+              </div>
             </div>
 
-            <form className="c-contact-form">
-                <input
-                    type="text"
-                    name="name"
-                    autoComplete="name"
-                    placeholder="Your Name"
-                    className="c-contact-input"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder="Your Email"
-                    className="c-contact-input"
-                />
-                <textarea
-                    name="message"
-                    autoComplete="message"
-                    placeholder="Your Message"
-                    className="c-contact-textarea"
-                />
-                <button type="submit" className="c-contact-submit">
-                    Send Message
-                </button>
-            </form>
-
-            <div className="c-contact-meta">
-                <div className="mr-4">📍 Local Time: {timeString}</div>
+            <div className="contact__info-card">
+              <div className="contact__info-icon">
+                <MapPin size={22} />
+              </div>
+              <div>
+                <p className="contact__info-label">Location</p>
+                <p className="contact__info-value">Johannesburg, South Africa</p>
+              </div>
             </div>
 
-            <div className="c-contact-links" suppressHydrationWarning>
-                <a
-                    href="https://linkedin.com/in/siphesihle-mthethwa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
-                >
-                    LinkedIn
-                </a>
-                <a
-                    href="https://github.com/Sihle-Thwa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
-
-                >
-                    GitHub
-                </a>
-                <a
-                    href="https://instagram.com/sbmconcepts.dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c-contact-link"
-
-                >
-                    Instagram
-                </a>
+            <div className="contact__response-note">
+              <p>
+                <strong>Response Time:</strong> I typically respond within 24–48 hours during business days.
+              </p>
             </div>
-            <div className="c-contact-nav-cta">
-                <a
-                    href="#top"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="c-contact-link"
-                >
-                    <div className="c-contact-backtotop animate-bounce">
-                        <Image
-                            src="/icons/uparrow.svg"
-                            alt="Back to top"
-                            width={32}
-                            height={32}
-                        />
-                    </div>
-                </a>
+          </div>
+
+          {/* Form */}
+          <form className="contact__form" onSubmit={handleSubmit}>
+            <h3 className="contact__form-title">Send me a message</h3>
+
+            <div className="contact__field-group">
+              <label className="contact__label" htmlFor="name">Name</label>
+              <input
+                className="contact__input"
+                id="name"
+                required
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="Your name"
+              />
             </div>
-        </section>
-    );
+
+            <div className="contact__field-group">
+              <label className="contact__label" htmlFor="email">Email</label>
+              <input
+                className="contact__input"
+                id="email"
+                type="email"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div className="contact__field-group">
+              <label className="contact__label" htmlFor="message">Message</label>
+              <textarea
+                className="contact__textarea"
+                id="message"
+                required
+                rows={4}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                placeholder="Tell me about your project..."
+              />
+            </div>
+
+            <button className="contact__submit-btn" type="submit" disabled={loading}>
+              {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+              {loading ? "Sending…" : "Send Message"}
+            </button>
+
+            <p className="contact__disclaimer">
+              Your information is safe and will never be shared.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }

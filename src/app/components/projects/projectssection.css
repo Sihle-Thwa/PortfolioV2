@@ -1,4 +1,9 @@
 .c-projects {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	padding: 4rem 0;
 	background: var(--colour-bg);
 	color: var(--colour-fg);

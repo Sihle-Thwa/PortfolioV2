@@ -1,4 +1,6 @@
 .c-footer {
+	width: 100%;
+	max-width: 1440px;
 	margin-top: 2rem;
 	border-top: 1px solid var(--colour-border);
 	background: var(--colour-bg);

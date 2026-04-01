@@ -8,11 +8,22 @@ import ContactSection from "./components/contact/ContactSection";
 export default function HomePage() {
   return (
     <>
-      <section className="container"><Hero /></section>
-      <section className="container"><ProjectsSection /></section>
-      <section className="container"><AboutSection /></section>
-      <section className="container"><SkillSection /></section>
-      <section className="container"><ContactSection /></section>
+      <div className="container" id="home">
+        <Hero />
+      </div>
+      <div className="container" id="about">
+        <AboutSection />
+      </div>
+
+      <div className="container" id="skills">
+        <SkillSection />
+      </div>
+      <div className="container" id="projects">
+        <ProjectsSection />
+      </div>
+      <div className="container" id="contact">
+        <ContactSection />
+      </div>
     </>
   );
 }
