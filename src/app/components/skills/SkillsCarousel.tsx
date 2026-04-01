@@ -20,7 +20,7 @@ const icon_overrides: Record<string, string> = {
     "Vanilla CSS": "/icons/css.svg",
     "Bootstrap": "/icons/bootstrap.svg",
     "GraphQL": "/icons/graphsql.svg",
-    "REST API": "",
+    "REST API": "/icons/restapi.svg",
     "Swagger.io": "/icons/swagger.svg",
     "Postman": "/icons/postman.svg",
     "Express": "/icons/express.svg",
