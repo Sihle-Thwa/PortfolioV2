@@ -57,8 +57,8 @@ export default function ContactSection() {
               </div>
               <div>
                 <p className="contact__info-label">Email</p>
-                <a className="contact__info-link" href="mailto:infosbmconcepts@gmail.com">
-                  infosbmconcepts@gmail.com
+                <a className="contact__info-link" href="mailto:sbcmthethwa79@gmail.com">
+                  sbcmthethwa79@gmail.com
                 </a>
               </div>
             </div>
