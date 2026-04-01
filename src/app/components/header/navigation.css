@@ -30,7 +30,7 @@
 .navbar__logo {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--colour-primary);
+  color: var(--colour-accent);
   letter-spacing: -0.025em;
   text-decoration: none;
   font-family: "Space Grotesk", sans-serif;

@@ -19,7 +19,7 @@ export const skillsData: skilldata[] = [
     },
     {
         skill: "REST API",
-        icon: "",
+        icon: "/icons/restapi.svg",
     },
     {
         skill: "Swagger.io",
