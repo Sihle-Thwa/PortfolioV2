@@ -126,7 +126,6 @@ export default function ContactSection() {
               {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
               {loading ? "Sending…" : "Send Message"}
             </button>
-
             <p className="contact__disclaimer">
               Your information is safe and will never be shared.
             </p>
