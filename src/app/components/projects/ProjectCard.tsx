@@ -5,14 +5,13 @@ import { Code2, Globe } from "lucide-react";
 
 export default function ProjectCard({ project }: { project: Project }) {
 	return (
-		<article className="c-project">
+		<div className="c-project">
 			{project.image && (
 				<Image
 					src={project.image}
 					alt={project.title}
-                    
-					width={600}
-					height={400}
+                    width={400}
+					height={175}
 					className="c-project-media"
 					priority
 				/>
@@ -34,7 +33,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 				
 				</a>
                 <a
-					href={project.href}
+					href={project.codebase}
 					target="_blank"
 					rel="noopener noreferrer"
 					className="c-project-link-code">
@@ -45,6 +44,6 @@ export default function ProjectCard({ project }: { project: Project }) {
                 </div>
 				
 			</div>
-		</article>
+		</div>
 	)
 }

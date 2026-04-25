@@ -5,24 +5,39 @@ export type Project = {
 	href: string
 	tags?: string[]
 	image?: string
+	codebase?: string
 }
 
 export const projects: Project[] = [
 	{
 		title: "U-Organise",
-		subtitle: "CRM Product Marketing Website",
+		subtitle: "Enterprise Governance SaaS Marketing Website",
 		year: 2024,
 		href: "https://uorganise-product-site.vercel.app/",
-		tags: ["Next.js", "Vite", "TailwindCSS", "TypeScript", "Lucide Icons"],
+		tags: [
+			"Next.js 14",
+			"Vite 8",
+			"TailwindCSS 4",
+			"TypeScript 6",
+			"Lucide Icons",
+		],
 		image: "/UOrganiseMarketSite.png",
+		codebase: "https://github.com/Sihle-Thwa/SportsManagment",
 	},
 	{
-		title: "Siphesihle B. Mthethwa Portfolio",
-		subtitle: "Personal Portfolio Website",
+		title: "Personal Portfolio",
+		subtitle: "Siphesihle B. Mthethwa Portfolio Website",
 		year: 2025,
 		href: "https://portfolio-sbm-portfolio.vercel.app/",
-		tags: ["Next.js", "TailwindCSS", "TypeScript"],
+		tags: [
+			"Next.js 13",
+			"TailwindCSS 4.1",
+			"TypeScript 5",
+			"Vite 5",
+			"Custom CSS",
+		],
 		image: "/SBMPortfolio.png",
+		codebase: "https://github.com/Sihle-Thwa/PortfolioV2",
 	},
 	{
 		title: "OpenShop",
@@ -33,11 +48,27 @@ export const projects: Project[] = [
 			"React 19",
 			"TypeScript 6",
 			"Vite 8",
-			"Tailwind CSS v4",
+			"Tailwind CSS 4",
 			"shadcn/ui + Radix UI",
-			"Lucide Icons",
+			"TanStack Query 5",
 		],
 		image: "/OpenShop.png",
+		codebase: "https://github.com/Sihle-Thwa/open-shopv2",
 	},
-	// ...additional projects
+	{
+		title: "SBMConcepts",
+		subtitle: "B2B (Business-to-Business) Technology Service Provider",
+		year: 2026,
+		href: "https://sbmconcept.vercel.app/",
+		tags: [
+			"React 19",
+			"React Router 7",
+			"TanStack Query 5",
+			"Tailwind CSS 4",
+			"shadcn/ui",
+			"Framer Motion",
+		],
+		image: "/SBMConcepts.png",
+		codebase: "",
+	},
 ]

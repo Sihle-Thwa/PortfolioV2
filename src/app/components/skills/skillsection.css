@@ -1,8 +1,8 @@
 .c-skill {
-	padding: 4rem 1.5rem;
+	padding: 4rem 2rem;
 	background: var(--colour-surface);
 	color: var(--colour-fg);
-	margin: 0 auto;
+	width: 100%;
 }
 
 /* Title */
