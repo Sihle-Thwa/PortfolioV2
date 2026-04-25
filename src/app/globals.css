@@ -1,11 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "./styles/typography.css";
 @import "tw-animate-css";
 @import "../../src/app/styles/tokens.css";
 @import "./components/projects/projectcard.css";
 @import "./components/projects/projectssection.css";
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 #root {
 	max-width: 1440px;

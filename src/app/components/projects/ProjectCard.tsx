@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image"
 import type { Project } from "@/data/projects"
 
@@ -8,6 +9,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 				<Image
 					src={project.image}
 					alt={project.title}
+                    
 					width={600}
 					height={400}
 					className="c-project-media"

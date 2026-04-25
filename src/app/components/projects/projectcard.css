@@ -9,9 +9,8 @@
 
 .c-project-media {
 	width: 100%;
-	height: 11rem;
+	height: 200px;
 	object-fit: cover;
-	display: block;
 }
 
 .c-project-body {
@@ -31,26 +30,50 @@
 }
 
 .c-project-link {
-	margin-top: 0.5rem;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.25rem;
 	color: var(--colour-link);
 	text-decoration: none;
+	font-size: 14px;
+	line-height: 22px;
+	margin-top: 0.5rem;
 }
 .c-project-link:hover {
 	text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+	.c-project-media {
+		height: 150px;
+	}
 	.c-project-title {
 		font-size: 14px;
-		line-height: 24px;
-		font-weight: 600;
-		color: var(--colour-fg);
+		line-height: 22px;
 	}
 	.c-project-tags {
 		font-size: 12px;
+		line-height: 20px;
+	}
+
+	.c-project-link {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 767px) {
+	.c-project-media {
+		height: 120px;
+	}
+	.c-project-title {
+		font-size: 14px;
 		line-height: 22px;
+	}
+	.c-project-tags {
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	.c-project-link {
+		font-size: 12px;
 	}
 }
