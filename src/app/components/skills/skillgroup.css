@@ -1,32 +1,91 @@
+/* ============================================================
+   SKILL GROUP
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
+
+/* ── Group Card ── */
 .c-skill-group {
-  background: var(--colour-bg);
-  border: 1px solid var(--colour-border);
-  border-radius: var(--radius-md, 0.5rem);
-  padding: 1.25rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+	background: var(--colour-bg);
+	border: 1px solid var(--colour-border);
+	border-radius: var(--radius-md, 0.5rem);
+	padding: 1rem;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .c-skill-group:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
 }
 
-/* Group Title */
+/* ── Group Title ── */
 .c-skill-group--title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--colour-accent);
-  margin: 0 0 0.75rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--colour-accent);
+	margin: 0 0 0.625rem 0;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
 }
 
-/* Skill List */
+/* ── Skill List ── */
 .c-skill-group--list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+	.c-skill-group {
+		padding: 1.125rem;
+	}
+
+	.c-skill-group--title {
+		font-size: 0.8125rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.c-skill-group--list {
+		gap: 0.5rem;
+	}
+}
+
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+	.c-skill-group {
+		padding: 1.25rem;
+	}
+
+	.c-skill-group--title {
+		font-size: 0.875rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.c-skill-group--list {
+		gap: 0.5rem;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.c-skill-group {
+		padding: 1.25rem;
+	}
+
+	.c-skill-group--list {
+		gap: 0.5rem;
+	}
 }

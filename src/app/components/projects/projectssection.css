@@ -1,58 +1,113 @@
+/* ============================================================
+   PROJECTS SECTION
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
+
+/* ── Section Wrapper ── */
 .c-projects {
-	display: flex;
-	flex-direction: column;
 	width: 100%;
-	padding: 64px 32px;
+	padding: 3rem 1.25rem;
 	background: var(--colour-bg);
 	color: var(--colour-fg);
-	box-sizing: border-box;
-}
-.projects-container {
-	width: 100%;
-	margin: 0 auto;
 }
 
+/* ── Inner Container ── */
+.projects-container {
+	width: 100%;
+}
+
+/* ── Title ── */
 .c-projects-title {
 	text-align: center;
 	color: var(--colour-accent);
-	font-size: 36px;
-	letter-spacing: -0.025em;
+	font-size: 1.75rem;
 	font-weight: 600;
+	letter-spacing: -0.025em;
 }
 
+/* ── Grid ── */
 .c-projects-grid {
-	margin-top: 2rem;
+	margin-top: 1.75rem;
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 1rem;
-	width: 100%;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
 	.c-projects {
-		padding: 3rem 1rem;
+		padding: 3.5rem 2rem;
 	}
-	.c-projects-grid {
-		gap: 1.5rem;
-		width: 100%;
-	}
+
 	.c-projects-title {
-		font-size: 1.75rem;
+		font-size: 1.875rem;
 		line-height: 2.25rem;
 	}
+
+	.c-projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
 }
 
-@media (max-width: 767px) {
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
 	.c-projects {
-		width: 100%;
-		padding: 64px 32px;
+		padding: 4rem 2rem;
 	}
-	.c-projects-grid {
-		gap: 1.5rem;
+
+	.projects-container {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0 auto;
 	}
 	.c-projects-title {
-		font-size: 1.5rem;
-		line-height: 2rem;
+		font-size: 2rem;
+		line-height: 2.5rem;
+	}
+
+	.c-projects-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.c-projects {
+		max-width: 1440px;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 4rem 2rem;
+	}
+
+	.projects-container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0 auto;
+	}
+	.c-projects-title {
+		font-size: 2.25rem;
+	}
+
+	.c-projects-grid {
+		width: 100%;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
 	}
 }

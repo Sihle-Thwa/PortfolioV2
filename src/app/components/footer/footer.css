@@ -1,42 +1,93 @@
+/* ============================================================
+   FOOTER
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
+
+/* ── Footer Wrapper ── */
 .footer {
-  padding: 2rem 0;
-  border-top: 1px solid var(--colour-border);
-  background: var(--colour-bg);
+	width: 100%;
+	padding: 1.5rem 0;
+	border-top: 1px solid var(--colour-border);
+	background: var(--colour-bg);
 }
 
-/* Container */
+/* ── Container ── */
 .footer__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.875rem;
-  color: var(--colour-fg-muted);
+	margin: 0 auto;
+	padding: 0 1.25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.875rem;
+	font-size: 0.8125rem;
+	color: var(--colour-fg-muted);
 }
 
-@media (min-width: 640px) {
-  .footer__container {
-    flex-direction: row;
-  }
-}
-
-/* Nav */
+/* ── Nav ── */
 .footer__nav {
-  display: flex;
-  gap: 1.5rem;
+	display: flex;
+	gap: 1.25rem;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-/* Nav Links */
+/* ── Nav Links ── */
 .footer__nav-link {
-  color: var(--colour-fg-muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
+	color: var(--colour-fg-muted);
+	text-decoration: none;
+	transition: color 0.2s ease;
 }
 
 .footer__nav-link:hover {
-  color: var(--colour-accent);
+	color: var(--colour-accent);
+}
+
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+	.footer {
+		padding: 1.75rem 0;
+	}
+
+	.footer__container {
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0 2rem;
+		font-size: 0.875rem;
+	}
+
+	.footer__nav {
+		gap: 1.5rem;
+		justify-content: flex-end;
+	}
+}
+
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+	.footer__container {
+		max-width: 1024px;
+		padding: 0 2rem;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.footer {
+		padding: 2rem 0;
+	}
+
+	.footer__container {
+		max-width: 1200px;
+		padding: 0 1.5rem;
+	}
 }

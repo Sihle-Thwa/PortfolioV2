@@ -1,3 +1,12 @@
+/* ============================================================
+   HERO
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
+
 @keyframes fade-in-up {
 	from {
 		opacity: 0;
@@ -9,17 +18,17 @@
 	}
 }
 
-/* Wrapper */
+/* ── Wrapper ── */
 .hero {
 	position: relative;
 	width: 100%;
-	min-height: 680px;
-	border-radius: 1rem;
+	min-height: 560px;
+	border-radius: 0.75rem;
 	overflow: hidden;
 	margin: 0 auto;
 }
 
-/* Background */
+/* ── Background ── */
 .hero__bg {
 	position: absolute;
 	inset: 0;
@@ -37,7 +46,7 @@
 	background: var(--overlay-bg);
 }
 
-/* Content */
+/* ── Content ── */
 .hero__content {
 	position: relative;
 	z-index: 10;
@@ -45,55 +54,31 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-height: 680px;
+	min-height: 560px;
 	padding: 0 1.25rem;
 	text-align: center;
 }
 
-/* Title */
+/* ── Title ── */
 .hero__title {
-	font-size: 2.25rem;
+	font-size: 2rem;
 	font-weight: 700;
 	color: var(--colour-surface);
-	margin-bottom: 1.5rem;
+	margin-bottom: 1.25rem;
 	opacity: 0;
 	animation: fade-in-up 0.8s ease forwards;
 }
 
-@media (min-width: 640px) {
-	.hero__title {
-		font-size: 3rem;
-	}
-}
-
-@media (min-width: 1024px) {
-	.hero__title {
-		font-size: 3.75rem;
-	}
-}
-
-/* Subtitle */
+/* ── Subtitle ── */
 .hero__subtitle {
-	font-size: 1rem;
+	font-size: 0.9375rem;
 	color: var(--colour-surface);
 	font-family: var(--font-sans);
-	max-width: 36rem;
+	max-width: 30rem;
 	line-height: 1.625;
-	margin-bottom: 2.5rem;
+	margin-bottom: 2rem;
 	opacity: 0;
 	animation: fade-in-up 0.8s ease 0.4s forwards;
-}
-
-@media (min-width: 640px) {
-	.hero__subtitle {
-		font-size: 1.125rem;
-	}
-}
-
-@media (min-width: 1024px) {
-	.hero__subtitle {
-		font-size: 1.25rem;
-	}
 }
 
 .hero__subtitle p {
@@ -104,22 +89,22 @@
 	font-weight: 800;
 }
 
-/* CTAs */
+/* ── CTAs ── */
 .hero__ctas {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 1rem;
+	gap: 0.75rem;
 	opacity: 0;
 	animation: fade-in-up 0.8s ease 0.6s forwards;
 }
 
-/* Buttons */
+/* ── Buttons ── */
 .hero__btn {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.75rem 1.5rem;
+	padding: 0.625rem 1.25rem;
 	border-radius: 0.5rem;
 	font-weight: 600;
 	font-size: 0.875rem;
@@ -145,12 +130,12 @@
 	-webkit-backdrop-filter: blur(4px);
 }
 
-/* Bottom Strip */
+/* ── Bottom Strip ── */
 .hero__bottom-strip {
 	position: absolute;
-	bottom: 1.25rem;
-	left: 1.25rem;
-	right: 1.25rem;
+	bottom: 1rem;
+	left: 1rem;
+	right: 1rem;
 	z-index: 20;
 	display: flex;
 	flex-direction: column;
@@ -158,24 +143,107 @@
 	gap: 0.5rem;
 }
 
-@media (min-width: 768px) {
-	.hero__bottom-strip {
-		flex-direction: row;
-		align-items: center;
-		gap: 1.5rem;
-	}
-}
-
-/* Location */
+/* ── Location ── */
 .hero__location {
-	font-size: 0.875rem;
+	font-size: 0.8125rem;
 	font-weight: 500;
 	color: var(--colour-bg);
 	white-space: nowrap;
 }
 
-/* Banner Wrap */
+/* ── Banner Wrap ── */
 .hero__banner-wrap {
 	flex: 1;
 	min-width: 0;
+}
+
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+	.hero {
+		min-height: 600px;
+		border-radius: 1rem;
+	}
+
+	.hero__content {
+		min-height: 600px;
+		padding: 0 2rem;
+	}
+
+	.hero__title {
+		font-size: 2.75rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.hero__subtitle {
+		font-size: 1rem;
+		max-width: 32rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.hero__ctas {
+		gap: 1rem;
+	}
+
+	.hero__btn {
+		padding: 0.75rem 1.5rem;
+	}
+
+	.hero__bottom-strip {
+		bottom: 1.25rem;
+		left: 1.25rem;
+		right: 1.25rem;
+		flex-direction: row;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.hero__location {
+		font-size: 0.875rem;
+	}
+}
+
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+	.hero {
+		min-height: 640px;
+	}
+
+	.hero__content {
+		min-height: 640px;
+	}
+
+	.hero__title {
+		font-size: 3.25rem;
+	}
+
+	.hero__subtitle {
+		font-size: 1.125rem;
+		max-width: 34rem;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.hero {
+		min-height: 680px;
+	}
+
+	.hero__content {
+		min-height: 680px;
+	}
+
+	.hero__title {
+		font-size: 3.75rem;
+	}
+
+	.hero__subtitle {
+		font-size: 1.25rem;
+		max-width: 36rem;
+	}
 }

@@ -1,114 +1,231 @@
+/* ============================================================
+   ABOUT SECTION
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
+
+/* ── Section Wrapper ── */
 .about-section {
+	width: 100%;
+	padding: 3rem 1.25rem;
 	background: var(--colour-background);
 	color: var(--colour-fg);
-	padding: 4rem 2rem;
-	width: 100%;
-	max-width: 1440px;
 }
 
+/* ── Container ── */
 .about-container {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 2rem;
-	justify-content: space-between;
 	align-items: center;
 }
 
+/* ── Text Block ── */
 .about-text-block {
-	flex: 1;
-	max-width: 600px;
 	width: 100%;
 }
 
+/* ── Heading ── */
 .about-heading {
-	font-size: 2.5rem;
-	line-height: 1.1;
-	margin-bottom: 1.5rem;
-	color: var(--colour-accent); /* Fallback to DevOps Blue */
+	font-size: 1.75rem;
+	line-height: 1.15;
+	margin-bottom: 1.25rem;
+	color: var(--colour-accent);
 }
 
+/* ── Paragraph ── */
 .about-paragraph {
-	font-size: 1rem;
+	font-size: 0.9375rem;
 	line-height: 1.6;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1.25rem;
 }
 
+/* ── Skills Grid ── */
 .about-skills-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: 1.5rem;
-	margin: 2rem 0;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	margin: 1.5rem 0;
 }
 
+/* ── Skill Card ── */
 .about-skill-card {
-	background: rgba(255, 255, 255, 0.05); /* Subtle dark card */
-	padding: 1.5rem;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1.25rem;
 	border-radius: 8px;
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* ── Skill Card Title ── */
 .about-skill-title {
-	font-size: 0.9rem;
+	font-size: 0.8125rem;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	margin-bottom: 0.5rem;
 	color: var(--colour-accent);
 }
 
+/* ── Skill Card Description ── */
 .about-skill-desc {
-	font-size: 0.9rem;
+	font-size: 0.875rem;
 	color: var(--colour-fg);
 	margin: 0;
 }
 
+/* ── Culture Quote ── */
 .about-paragraph--culture {
 	border-left: 3px solid var(--colour-accent);
-	padding-left: 1.5rem;
+	padding-left: 1.25rem;
 	font-style: italic;
 	color: var(--colour-fg-secondary);
 }
 
+/* ── Image Block ── */
 .about-image-block {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	max-width: 400px;
 	width: 100%;
-	height: 400px;
+	max-width: 280px;
+	height: 280px;
 }
 
+/* ── Portrait ── */
 .about-portrait {
 	border-radius: 50%;
 	object-fit: cover;
 	width: 100%;
-	max-width: 400px;
-	max-height: 400px;
 	height: 100%;
 }
 
+/* ── Strong ── */
 strong {
 	color: var(--colour-primary);
 	font-weight: 600;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+	.about-section {
+		padding: 3.5rem 2rem;
+	}
+
 	.about-container {
 		flex-direction: column;
 		text-align: center;
+		gap: 2rem;
 	}
+
+	.about-text-block {
+		max-width: 680px;
+	}
+
 	.about-heading {
-		font-size: 28px;
-		line-height: 36px;
+		font-size: 1.875rem;
+		line-height: 1.15;
+	}
+
+	.about-skills-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.about-image-block {
+		max-width: 320px;
+		height: 320px;
 	}
 }
 
-@media (max-width: 767px) {
-	.about-container {
-		flex-direction: column;
-		text-align: center;
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+	.about-section {
+		padding: 4rem 2rem;
 	}
+
+	.about-container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		text-align: left;
+		gap: 2rem;
+	}
+
+	.about-text-block {
+		flex: 1;
+		max-width: 560px;
+	}
+
 	.about-heading {
-		font-size: 24px;
-		line-height: 32px;
+		font-size: 2.25rem;
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+	}
+
+	.about-paragraph {
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.about-skills-grid {
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 1.5rem;
+		margin: 2rem 0;
+	}
+
+	.about-skill-card {
+		padding: 1.5rem;
+	}
+
+	.about-skill-title {
+		font-size: 0.875rem;
+	}
+
+	.about-skill-desc {
+		font-size: 0.9rem;
+	}
+
+	.about-paragraph--culture {
+		padding-left: 1.5rem;
+	}
+
+	.about-image-block {
+		max-width: 360px;
+		height: 360px;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.about-section {
+		padding: 4rem 2rem;
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+
+	.about-text-block {
+		max-width: 600px;
+	}
+
+	.about-heading {
+		font-size: 2.5rem;
+	}
+
+	.about-skills-grid {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+
+	.about-image-block {
+		max-width: 400px;
+		height: 400px;
 	}
 }

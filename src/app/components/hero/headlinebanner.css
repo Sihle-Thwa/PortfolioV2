@@ -1,40 +1,88 @@
+/* ============================================================
+   HEADLINE BANNER
+   Component-level styles — no layout breakpoints needed.
+   Responsive adjustments handled via parent section context.
+   Breakpoints:
+     - Large Desktop  : min-width: 1440px
+     - Desktop        : min-width: 1024px
+     - Tablet         : min-width: 768px
+     - Mobile         : below 768px (base styles)
+   ============================================================ */
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
-/* Wrapper */
+/* ── Wrapper ── */
 .banner {
-  width: 100%;
-  overflow: hidden;
-  height: 2.25rem;
+	width: 100%;
+	overflow: hidden;
+	height: 2.25rem;
 }
 
-/* Scrolling Track */
+/* ── Scrolling Track ── */
 .banner__track {
-  display: flex;
-  gap: 0.75rem;
-  width: max-content;
-  animation: marquee 30s linear infinite;
+	display: flex;
+	gap: 0.625rem;
+	width: max-content;
+	animation: marquee 30s linear infinite;
 }
 
-/* Individual Chip */
+/* ── Individual Chip ── */
 .banner__chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 0.875rem;
-  height: 1.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: var(--colour-surface);
-  border: 1px solid var(--colour-border);
-  color: var(--colour-fg);
-  white-space: nowrap;
-  flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	padding: 0 0.75rem;
+	height: 1.625rem;
+	border-radius: 9999px;
+	font-size: 0.6875rem;
+	font-weight: 500;
+	background: var(--colour-surface);
+	border: 1px solid var(--colour-border);
+	color: var(--colour-fg);
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+/* ============================================================
+   TABLET  ≥ 768px
+   ============================================================ */
+@media (min-width: 768px) {
+	.banner__track {
+		gap: 0.75rem;
+	}
+
+	.banner__chip {
+		padding: 0 0.875rem;
+		height: 1.75rem;
+		font-size: 0.75rem;
+	}
+}
+
+/* ============================================================
+   DESKTOP  ≥ 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+	.banner {
+		height: 2.25rem;
+	}
+
+	.banner__chip {
+		padding: 0 0.875rem;
+		height: 1.75rem;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  ≥ 1440px
+   ============================================================ */
+@media (min-width: 1440px) {
+	.banner__track {
+		gap: 0.75rem;
+	}
 }
