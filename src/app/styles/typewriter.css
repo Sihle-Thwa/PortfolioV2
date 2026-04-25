@@ -1,17 +1,22 @@
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
 
 .typewriter-cursor {
-  display: inline-block;
-  width: 4px;
-  height: 0.85em;
-  background: var(--colour-bg);
-  margin-left: 0.25rem;
-  vertical-align: middle;
+	display: inline-block;
+	width: 4px;
+	height: 0.85em;
+	background: var(--colour-bg);
+	margin-left: 0.25rem;
+	vertical-align: middle;
 }
 
 .typewriter-cursor--blink {
-  animation: blink 1s infinite;
+	animation: blink 1s infinite;
 }

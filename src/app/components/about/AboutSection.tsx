@@ -1,46 +1,68 @@
-"use client";
-import Image from "next/image";
-import profileImg from "../../../../public/AnimatedPortrait.png";
-import "./aboutsection.css";
+"use client"
+import Image from "next/image"
+import profileImg from "../../../../public/AnimatedPortrait.png"
+import "./aboutsection.css"
 
 export default function AboutSection() {
-  return (
-    <section className="about" id="about">
-      <div className="about__container">
-        <div className="about__text-block">
-          <h2 className="about__heading">About Me</h2>
-          <p className="about__paragraph">
-            I am a passionate Full-Stack Web Developer and IT &amp; Computer
-            Science Educator with a strong foundation in building modern,
-            scalable, and user-centric applications. My journey began with Java,
-            SQL, HTML, and CSS, and has since expanded to mastering JavaScript,
-            Python, and C, along with frameworks like Next.js, React.js,
-            Node.js, Express.js, TailwindCSS, and MaterialUI.
-          </p>
-          <p className="about__paragraph about__paragraph--muted">
-            I specialise in developing robust APIs, responsive interfaces, and
-            database-driven solutions using MySQL, PostgreSQL, MongoDB, and
-            Microsoft SQL Server. Whether it&apos;s building enterprise-scale
-            applications or refining user experiences, I thrive on transforming
-            complex challenges into elegant, practical solutions.
-          </p>
-          <p className="about__paragraph about__paragraph--muted">
-            I enjoy mentoring the next generation of developers, bridging theory
-            with industry practice, and fostering curiosity and problem-solving
-            skills in IT and Computer Science. Beyond the classroom and building
-            applications, I&apos;m dedicated to continuous learning, innovation,
-            and contributing to impactful projects.
-          </p>
-        </div>
+	return (
+		<section className="about-section" id="about">
+			<div className="about-container">
+				<div className="about-text-block">
+					<h2 className="about-heading">
+						Building Scalable Systems & Mentoring Engineers
+					</h2>
 
-        <div className="about__image-block">
-          <Image
-            className="about__portrait"
-            src={profileImg}
-            alt="Siphesihle B. Mthethwa portrait"
-          />
-        </div>
-      </div>
-    </section>
-  );
+					<p className="about-paragraph">
+						I am a <strong>Full-Stack Developer and CS Educator</strong>{" "}
+						dedicated to transforming complex architectural challenges into
+						elegant, production-ready solutions. With a foundation rooted in
+						Java and C, I bridge the gap between low-level performance and
+						modern web scalability.
+					</p>
+
+					<div className="about-skills-grid">
+						<div className="about-skill-card">
+							<h3 className="about-skill-title">Frontend</h3>
+							<p className="about-skill-desc">
+								Crafting responsive, accessible interfaces with{" "}
+								<strong>Next.js, React, and TailwindCSS.</strong>
+							</p>
+						</div>
+
+						<div className="about-skill-card">
+							<h3 className="about-skill-title">Backend & APIs</h3>
+							<p className="about-skill-desc">
+								Architecting robust server-side logic using{" "}
+								<strong>Node.js, Express, and Python.</strong>
+							</p>
+						</div>
+
+						<div className="about-skill-card">
+							<h3 className="about-skill-title">Data Architecture</h3>
+							<p className="about-skill-desc">
+								Designing high-availability database solutions across{" "}
+								<strong>PostgreSQL, MongoDB, and SQL Server.</strong>
+							</p>
+						</div>
+					</div>
+
+					<p className="about-paragraph about-paragraph--culture">
+						I don’t just write code; I foster a culture of excellence. My
+						background in IT education allows me to bridge the gap between
+						theoretical computer science and industry-standard DevOps practices,
+						ensuring every project is{" "}
+						<strong>secure, scalable, and built to last.</strong>
+					</p>
+				</div>
+
+				<div className="about-image-block">
+					<Image
+						className="about-portrait"
+						src={profileImg}
+						alt="Siphesihle B. Mthethwa portrait"
+					/>
+				</div>
+			</div>
+		</section>
+	)
 }

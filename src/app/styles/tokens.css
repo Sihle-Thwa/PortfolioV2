@@ -1,58 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-   /* ===== Font Families ===== */
-  --font-sans: 'Josefin Sans', sans-serif;
-  --font-mono: 'Geist Mono', monospace;
+	/* ===== Font Sizes & Weights ===== */
+	--font-size-xs: 12px;
+	--font-size-sm: 14px;
+	--font-size-md: 16px;
+	--font-size-lg: 20px;
+	--font-size-xl: 60px;
 
-    /* ===== Font Sizes & Weights ===== */
-  --font-size-xs: 12px;
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 20px; 
-  --font-size-xl: 60px;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
 
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  
-  
-  /* ===== Brand Colors ===== */
-  --beige-500: #F4DEB7;   /* Warm Beige */
-  --espresso-700: #3B2C24;/* Rich Espresso */
-  --sand-200: #FFFBEB;    /* Soft Sand */
-  --sun-500: #f59B0A;     /* Sunlight Yellow */
-  --charcoal-900: #1C1C1C;/* Charcoal Black */
-  --olive-500: #A5A682;   /* Muted Olive */
-  --steel-400: #7B8D93;   /* Cool Steel */
-  --off-white: #F8F8F8;   /* Off White */
-  --light-gray: #d3d1cf;      /* Light Gray */
+	/* ===== Brand Colors ===== */
+	--beige-500: #f4deb7; /* Warm Beige */
+	--espresso-700: #3b2c24; /* Rich Espresso */
+	--sand-200: #fffbeb; /* Soft Sand */
+	--sun-500: #f59b0a; /* Sunlight Yellow */
+	--charcoal-900: #1c1c1c; /* Charcoal Black */
+	--olive-500: #a5a682; /* Muted Olive */
+	--steel-400: #7b8d93; /* Cool Steel */
+	--off-white: #f8f8f8; /* Off White */
+	--light-gray: #d3d1cf; /* Light Gray */
 
+	/* ===== Radii & Shadows ===== */
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 6px 12px rgba(0, 0, 0, 0.08);
+	--shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
 
-  /* ===== Radii & Shadows ===== */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+	/* ===== THEME ===== */
+	--colour-bg: var(--off-white);
+	--colour-surface: var(--sand-200);
+	--colour-muted: var(--beige-500);
+	--colour-fg: var(--charcoal-900);
+	--colour-fg-muted: rgba(42, 39, 36, 0.85);
+	--colour-primary: var(--charcoal-900);
+	--colour-accent: var(--sun-500);
+	--colour-secondary: var(--olive-500);
+	--colour-link: var(--espresso-700);
+	--colour-border: var(--light-gray);
+	--colour-nav-border: var(--espresso-700);
+	--colour-ring: var(--sun-500);
 
-  /* ===== THEME ===== */
-  --colour-bg: var(--off-white);            
-  --colour-surface: var(--sand-200);                 
-  --colour-muted: var(--beige-500);        
-  --colour-fg: var(--charcoal-900);        
-  --colour-fg-muted: rgba(42,39,36,0.85);  
-  --colour-primary: var(--charcoal-900);   
-  --colour-accent: var(--sun-500);         
-  --colour-secondary: var(--olive-500);      
-  --colour-link: var(--espresso-700);
-  --colour-border: var(--light-gray);
-  --colour-nav-border: var(--espresso-700);
-  --colour-ring: var(--sun-500);
-
-/* ===== Overlay ===== */
-  --overlay-bg: rgba(0, 0, 0, 0.15); /* Semi-transparent black */
-
+	/* ===== Overlay ===== */
+	--overlay-bg: rgba(0, 0, 0, 0.15); /* Semi-transparent black */
 }
