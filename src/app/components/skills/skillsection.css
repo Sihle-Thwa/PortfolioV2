@@ -1,98 +1,98 @@
 .c-skill {
-  padding: 4rem 1.5rem;
-  background: var(--colour-surface);
-  color: var(--colour-fg);
-  margin: 0 auto;
+	padding: 4rem 1.5rem;
+	background: var(--colour-surface);
+	color: var(--colour-fg);
+	margin: 0 auto;
 }
 
 /* Title */
 .c-skill-title {
-  text-align: center;
-  color: var(--colour-accent);
-  font-size: 3.25rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  margin-bottom: 1.5rem;
+	text-align: center;
+	color: var(--colour-accent);
+	font-size: 3.25rem;
+	font-weight: 600;
+	letter-spacing: -0.025em;
+	margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
-  .c-skill-title {
-    font-size: 2.25rem;
-    font-weight: 500;
-  }
+	.c-skill-title {
+		font-size: 2.25rem;
+		font-weight: 500;
+	}
 }
 
 /* Toggle Fieldset */
 .c-skill-toggle {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  border: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	border: none;
+	padding: 0;
+	margin: 0 0 2rem 0;
 }
 
 /* Toggle Option Label */
 .c-skill-toggle-option {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  cursor: pointer;
-  padding: 0.375rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid var(--colour-border);
-  background: var(--colour-bg);
-  color: var(--colour-fg);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	cursor: pointer;
+	padding: 0.375rem 1rem;
+	border-radius: 9999px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	border: 1px solid var(--colour-border);
+	background: var(--colour-bg);
+	color: var(--colour-fg);
+	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .c-skill-toggle-option:has(input:checked) {
-  background: var(--colour-accent);
-  color: var(--colour-bg);
-  border-color: var(--colour-accent);
+	background: var(--colour-accent);
+	color: var(--colour-bg);
+	border-color: var(--colour-accent);
 }
 
 .c-skill-toggle-option:hover {
-  color: var(--colour-fg);
+	color: var(--colour-fg);
 }
 
 .c-skill-toggle-option:has(input:checked):hover {
-  color: var(--colour-fg);
+	color: var(--colour-fg);
 }
 
 /* Hide radio input visually */
 .c-skill-toggle-option input[type="radio"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
 }
 
 /* Group Grid */
 .c-skill-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .c-skill-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+	.c-skill-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (min-width: 1024px) {
-  .c-skill-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.c-skill-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 /* Carousel Wrapper */
 .c-skill-carousel-wrap {
-  width: 100%;
-  overflow: hidden;
+	width: 100%;
+	overflow: hidden;
 }

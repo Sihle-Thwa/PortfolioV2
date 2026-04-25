@@ -1,40 +1,40 @@
 .c-skill-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: var(--colour-secondary);
-  border: 1px solid var(--colour-secondary);
-  color: var(--colour-bg);
-  white-space: nowrap;
-  transition: background 0.15s ease, border-color 0.15s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	padding: 0.25rem 0.625rem;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 500;
+	background: var(--colour-secondary);
+	border: 1px solid var(--colour-secondary);
+	color: var(--colour-bg);
+	white-space: nowrap;
+	transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .c-skill-item:hover {
-  background: var(--colour-accent);
-  border-color: var(--colour-primary);
+	background: var(--colour-accent);
+	border-color: var(--colour-primary);
 }
 
 /* Icon Wrapper */
 .c-skill-item-iconwrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
 }
 
 /* Icon Image */
 .c-skill-item-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  display: block;
+	width: 18px;
+	height: 18px;
+	object-fit: contain;
+	display: block;
 }
 
 /* Label */
 .c-skill-item-label {
-  line-height: 1;
+	line-height: 1;
 }
