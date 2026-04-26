@@ -19,7 +19,7 @@ export default function Footer() {
 		<footer className="footer">
 			<div className="footer__container">
 				<p>
-					{new Date().getFullYear()} Siphesihle B. Mthethwa. All rights
+					© {new Date().getFullYear()} Siphesihle B. Mthethwa. All rights
 					reserved.
 				</p>
 				<nav className="footer__nav">

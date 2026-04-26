@@ -10,15 +10,13 @@
 /* ── Section Wrapper ── */
 .contact {
 	width: 100%;
-	padding: 3rem 0;
+	padding: 3rem 1.25rem;
 	background: var(--colour-surface);
 }
 
 /* ── Container ── */
 .contact__container {
 	width: 100%;
-	margin: 0 auto;
-	padding: 1.25rem;
 }
 
 /* ── Header ── */
@@ -29,40 +27,37 @@
 
 /* ── Title ── */
 .contact__title {
-	font-size: 1.625rem;
-	font-weight: 700;
-	color: var(--colour-fg);
+	color: var(--colour-accent);
+	font-size: 1.75rem;
+	font-weight: 600;
 	letter-spacing: -0.025em;
-	margin-bottom: 0.75rem;
 }
 
 /* ── Subtitle ── */
 .contact__subtitle {
 	color: var(--colour-fg-muted);
-	font-size: 0.9375rem;
-	max-width: 26rem;
-	margin: 0 auto;
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
 }
 
 /* ── Grid ── */
 .contact__grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 2rem;
-	margin: 0 auto;
+	gap: 1 rem;
 }
 
 /* ── Info Block ── */
 .contact__info-block {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 1rem;
 }
 
 /* ── Info Title ── */
 .contact__info-title {
-	font-size: 1.125rem;
-	font-weight: 700;
+	font-size: 1.0625rem;
+	font-weight: 600;
 	color: var(--colour-fg);
 }
 
@@ -239,11 +234,11 @@
    ============================================================ */
 @media (min-width: 768px) {
 	.contact {
-		padding: 3.5rem 0;
+		padding: 3.5rem 2rem;
 	}
 
 	.contact__container {
-		padding: 1.5rem 2rem;
+		width: 100%;
 	}
 
 	.contact__header {
@@ -259,9 +254,9 @@
 	}
 
 	.contact__grid {
+		width: 100%;
 		grid-template-columns: 1fr 1fr;
-		gap: 2.5rem;
-		max-width: 56rem;
+		gap: 1.5rem;
 	}
 
 	.contact__info-icon {
@@ -277,7 +272,6 @@
 
 	.contact__form {
 		padding: 1.5rem;
-		gap: 1.25rem;
 	}
 
 	.contact__form-title {
@@ -286,7 +280,7 @@
 
 	.contact__input,
 	.contact__textarea {
-		padding: 0.75rem 1rem;
+		font-size: 0.875rem;
 	}
 }
 
@@ -295,24 +289,31 @@
    ============================================================ */
 @media (min-width: 1024px) {
 	.contact {
-		padding: 4rem 0;
+		padding: 4rem 2rem;
 	}
 
 	.contact__container {
-		max-width: 1024px;
-		padding: 2rem;
+		width: 100%;
 	}
 
 	.contact__header {
-		margin-bottom: 3rem;
+		margin-bottom: 2.5rem;
 	}
 
 	.contact__title {
-		font-size: 2.125rem;
+		font-size: 2.25rem;
+		line-height: 2.75rem;
 	}
 
 	.contact__subtitle {
-		max-width: 28rem;
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	}
+
+	.contact__grid {
+		width: 100%;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
 	}
 }
 
@@ -320,11 +321,25 @@
    LARGE DESKTOP  ≥ 1440px
    ============================================================ */
 @media (min-width: 1440px) {
+	.contact {
+		padding: 4rem 2rem;
+	}
+
 	.contact__container {
-		max-width: 1200px;
+		width: 100%;
+	}
+
+	.contact__header {
+		margin-bottom: 2.5rem;
 	}
 
 	.contact__title {
-		font-size: 2.25rem;
+		font-size: 2.5rem;
+		line-height: 3rem;
+	}
+
+	.contact__subtitle {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
 	}
 }

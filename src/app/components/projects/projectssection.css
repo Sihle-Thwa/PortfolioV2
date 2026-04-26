@@ -87,27 +87,14 @@
    ============================================================ */
 @media (min-width: 1440px) {
 	.c-projects {
-		max-width: 1440px;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		padding: 4rem 2rem;
+		padding: 3.5rem 2rem;
 	}
 
 	.projects-container {
 		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: 0 auto;
 	}
 	.c-projects-title {
 		font-size: 2.25rem;
-	}
-
-	.c-projects-grid {
-		width: 100%;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 2rem;
+		line-height: 2.75rem;
 	}
 }
