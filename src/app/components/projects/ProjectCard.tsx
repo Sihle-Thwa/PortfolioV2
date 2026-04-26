@@ -23,6 +23,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 					<p className="c-project-tags">{project.tags.join(", ")}</p>
 				)}
                 <div className="c-project-links">
+                {project.href && (
                 <a
 					href={project.href}
 					target="_blank"
@@ -30,8 +31,9 @@ export default function ProjectCard({ project }: { project: Project }) {
 					className="c-project-link-site">
 					View Site 
                     <Globe size={16} style={{ marginLeft: "4px" }} />
-				
 				</a>
+                )}
+                {project.codebase && (
                 <a
 					href={project.codebase}
 					target="_blank"
@@ -39,8 +41,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 					className="c-project-link-code">
 					View Code 
                     <Code2 size={16} style={{ marginLeft: "4px" }} />
-				
 				</a>
+                )}
                 </div>
 				
 			</div>

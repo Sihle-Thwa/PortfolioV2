@@ -7,31 +7,23 @@
      - Mobile         : below 768px (base styles)
    ============================================================ */
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	font-family: "Space Grotesk", sans-serif;
-}
-
 /* ── Navbar ── */
 .navbar {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	width: 100%;
 	z-index: 50;
 	background-color: var(--colour-bg);
 	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
-	border-bottom: 1px solid var(--colour-border);
+	border-bottom: 1px solid var(--colour-nav-border);
 }
 
 /* ── Container ── */
 .navbar__container {
+	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 1.25rem;
+	padding: 0 1.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -54,7 +46,7 @@
 .navbar__desktop-list {
 	display: none; /* hidden on mobile */
 	align-items: center;
-	gap: 1.5rem;
+	gap: 2rem;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -75,9 +67,6 @@
 
 /* ── Mobile Toggle ── */
 .navbar__toggle {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	padding: 0.5rem;
 	color: var(--colour-fg);
 	background: none;
@@ -88,11 +77,12 @@
 /* ── Mobile Menu ── */
 .navbar__mobile-menu {
 	background: var(--colour-bg);
-	border-bottom: 1px solid var(--colour-border);
+	border-bottom: 1px solid var(--colour-nav-border);
 }
 
 /* ── Mobile Nav List ── */
 .navbar__mobile-list {
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 1rem 1.25rem;
 	display: flex;
@@ -158,8 +148,11 @@
    LARGE DESKTOP  ≥ 1440px
    ============================================================ */
 @media (min-width: 1440px) {
+	.navbar {
+		padding: 0 2rem;
+	}
 	.navbar__container {
 		max-width: 1200px;
-		padding: 0 1.5rem;
+		padding: 0 2rem;
 	}
 }

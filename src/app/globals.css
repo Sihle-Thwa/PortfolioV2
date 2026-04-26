@@ -5,6 +5,12 @@
 @import "./components/projects/projectcard.css";
 @import "./components/projects/projectssection.css";
 
+*,
+*::before,
+*::after {
+	font-family: "Space Grotesk";
+}
+
 #root {
 	max-width: 1440px;
 	width: 100%;
